@@ -1,0 +1,6 @@
+#!/bin/sh
+if [ -S "/tmp/mpvsocket" ]; then
+	t=$(echo "{ \"command\": [\"get_property_string\", \"volume\"] }" | socat - /tmp/mpvsocket)
+	l=$(echo $t | sed -E 's/.*data":"([^.]*)\..*/\1/')
+	if [ "$l" != "" ]; then echo "$l%"; fi
+fi

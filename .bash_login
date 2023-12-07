@@ -1,0 +1,19 @@
+. /home/paczur/Scripts/system/pc/path
+export PATH
+tty="$(tty | cut -c9-)"
+wm=""
+case "$tty" in
+	"1")
+		wm="i3"
+		;;
+	*)
+		wm=""
+		;;
+esac
+if [ "$wm" != "" ]
+then
+	exec startx ~/.xinitrc "$wm" -- "vt$tty"
+else
+	set bell_style none
+	clear
+fi

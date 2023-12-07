@@ -1,0 +1,6 @@
+DEFAULT = Code New Roman
+UNICODE = Code New Roman
+U+f000-f8ff = Font Awesome 6 Free Solid
+U+e000-efff = Font Awesome 6 Brands
+ISO10646_UCS4_1 = IPAexGothic
+ISO10646_UCS4_1_FULLWIDTH = IPAexGothic

@@ -1,0 +1,92 @@
+# i3blocks config file
+#
+# Please see man i3blocks for a complete reference!
+# The man page is also hosted at http://vivien.github.io/i3blocks
+#
+# List of valid properties:
+#
+# align
+# color
+# command
+# full_text
+# instance
+# interval
+# label
+# min_width
+# name
+# separator
+# separator_block_width
+# short_text
+# signal
+# urgent
+
+#command=cat ~/Stats/$BLOCK_NAME
+command=~/.config/i3blocks/$BLOCK_NAME
+separator_block_width=1
+separator=false
+border_left=10
+border_right=10
+border_top=0
+border_bottom=0
+background=#333333
+border=#333333
+color=#ffffff
+markup=cairo
+
+[mpv-volume]
+label= 
+#border=#f000f0
+#background=#f000f0
+interval=30
+signal=10
+
+#[memory]
+#label= 
+#border=#ffff00
+#background=#ffff00
+#interval=5
+
+#[disk]
+#instance=/home
+#label= 
+#border=#ffffff
+#background=#ffffff
+#interval=-1
+
+[cpu]
+label= 
+#background=#ff0000
+#border=#ff0000
+interval=5
+
+#[battery]
+#color=#00ff00
+#interval=60
+
+[gpu]
+label= 
+#command=echo $(nvidia-smi --format=csv --query-gpu=utilization.gpu | sed '1d' | rev | cut -c3- | rev)%
+#background=#00ff00
+#border=#00ff00
+interval=5
+
+[net]
+#background=#0000ff
+#border=#0000ff
+interval=60
+
+
+[emerge-update]
+interval=-1
+signal=10
+command=[ -f "/home/paczur/Temp/update" ] && echo "" || echo ""
+#border=#ff00ff
+#background=#ff00ff
+
+[time]
+command=date '+%d-%m-%Y %H:%M:%S'
+#color=#ffffff
+#background=#222222
+#border=#222222
+interval=1
+

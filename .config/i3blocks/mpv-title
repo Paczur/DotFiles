@@ -1,0 +1,6 @@
+#!/bin/sh
+if [ -S "/tmp/mpvsocket" ]; then
+	t=$(echo "{ \"command\": [\"get_property_string\", \"media-title\"] }" | socat - /tmp/mpvsocket)
+	title=$(echo $t | sed -E 's/.*data":"([^"]*)".*/\1/')
+	if [ "$title" != "" ]; then echo "$title"; fi
+fi

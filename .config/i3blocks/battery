@@ -1,0 +1,21 @@
+#!/bin/env bash
+
+charge_now="$(cat /sys/class/power_supply/BAT1/charge_now)"
+charge_full="$(cat /sys/class/power_supply/BAT1/charge_full)"
+percent="$(($charge_now*100/$charge_full))"
+
+if [ "$(cat /sys/class/power_supply/BAT1/status)" = "Charging" ]; then
+  status=""
+elif [ $percent -le 13 ]; then
+  status=""
+elif [ $percent -le 38 ]; then
+  status=""
+elif [ $percent -le 63 ]; then
+  status=""
+elif [ $percent -le 88 ]; then
+  status=""
+else
+  status=""
+fi
+
+echo "$status $percent%"

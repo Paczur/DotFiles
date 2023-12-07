@@ -1,0 +1,8 @@
+#!/bin/sh
+if [ -S "/tmp/mpvsocket" ]; then
+	t=$(echo "{ \"command\": [\"get_property_string\", \"core-idle\"] }" | socat - /tmp/mpvsocket)
+	status=$(echo $t | sed -E 's/.*data":"([^"]*)".*/\1/')
+	if [ "$status" = "no" ]; then echo ""
+	elif [ "$status" = "yes" ]; then echo ""
+	fi
+fi

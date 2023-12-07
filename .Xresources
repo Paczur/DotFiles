@@ -1,0 +1,40 @@
+*selectToClipboard: true
+*faceName: DejaVu Sans Mono
+*faceSize: 9
+*savelines: 16384
+*ScrollBar: false
+*Background: black
+*Foreground: white
+*pointerColor: white
+*termName: xterm-256color
+
+!Rxvt.background:black
+Rxvt.font: xft:DejaVu Sans Mono:size=10
+Rxvt.saveLines: 16384
+Rxvt.scrollBar: false
+Rxvt.foreground: white
+Rxvt.background: black
+Rxvt.cursorBlink: true
+Rxvt.cursorColor: white
+Rxvt.cursorUnderline: true
+Rxvt.pointerColor: white
+!Rxvt.color1: #cdd800000000
+!Rxvt.color2: #0000cdd80000
+!Rxvt.color3: #cdd8cdd80000
+!Rxvt.color4: #00000000eefc
+!Rxvt.color5: #cdd80000cdd8
+!Rxvt.color6: #0000cdd8e5fb
+!Rxvt.color7: #e5fbe5fbe5fb
+!Rxvt.color8: #7f6f7f6f7f6f
+!Rxvt.color9: #ffff00000000
+!Rxvt.color10: #0000ffff0000
+!Rxvt.color11: #ffffffff0000
+!Rxvt.color12: #5c4b5c4bffff
+!Rxvt.color13: #ffff0000ffff
+!Rxvt.color14: #0000ffffffff
+!Rxvt.color15: #ffffffffffff
+Rxvt.termName: screen-256color
+Rxvt.transparent: false
+RXvt.depth: 32
+Rxvt.shading: 50
+Rxvt.inheritPixmap: true

@@ -1,0 +1,20 @@
+#!/bin/sh
+if [ -S "/tmp/mpvsocket" ]; then
+  t=$(echo "{ \"command\": [\"get_property_string\", \"time-remaining\"] }" | socat - /tmp/mpvsocket)
+  remaining=$(echo $t | sed -E 's/.*data":"([^.]*)\..*/\1/')
+  hours=$(((remaining/3600)))
+  minutes=$(((remaining/60-60*hours)))
+  seconds=$(((remaining-3600*hours-60*minutes)))
+  if [ -S "/tmp/mpvsocket" ]; then
+	t=$(echo "{ \"command\": [\"get_property_string\", \"core-idle\"] }" | socat - /tmp/mpvsocket)
+	status=$(echo $t | sed -E 's/.*data":"([^"]*)".*/\1/')
+	if [ "$status" = "no" ]; then status=""
+	elif [ "$status" = "yes" ]; then status=""
+	fi
+fi
+  if [ $hours -gt 0 ]; then printf "%s %.2d:%.2d:%.2d\n" $status $hours $minutes $seconds
+  elif [ $minutes -gt 0 ]; then printf "%s %.2d:%.2d\n" $status $minutes $seconds
+  elif [ $seconds -gt 0 ]; then printf "%s %.2d:%.2d\n" $status $minutes $seconds
+  fi
+fi
+

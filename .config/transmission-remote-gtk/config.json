@@ -1,0 +1,275 @@
+{
+  "profiles" : [
+    {
+      "profile-name" : "Default",
+      "hostname" : "0.0.0.0",
+      "port" : 9091,
+      "rpc-url-path" : "/transmission/rpc",
+      "username" : "",
+      "password" : "",
+      "auto-connect" : true,
+      "ssl" : false,
+      "ssl-validate" : false,
+      "timeout" : 40,
+      "retries" : 3,
+      "update-active-only" : false,
+      "activeonly-fullsync-enabled" : false,
+      "activeonly-fullsync-every" : 2,
+      "update-interval" : 3,
+      "min-update-interval" : 3,
+      "session-update-interval" : 60,
+      "last-add-destination" : "/media/hdd/Torrents/Anime",
+      "last-move-destination" : "/media/games/Patrycja",
+      "custom-headers" : [],
+      "exec-commands" : [],
+      "destinations" : [
+        {
+          "label" : "Animu",
+          "dir" : "/media/hdd/Torrents/Anime"
+        },
+        {
+          "label" : "Rest",
+          "dir" : "/media/hdd/Torrents"
+        },
+        {
+          "label" : "Music",
+          "dir" : "/media/hdd/Torrents/Music"
+        },
+        {
+          "label" : "Movies",
+          "dir" : "/media/hdd/Torrents/Movies"
+        },
+        {
+          "label" : "Manga",
+          "dir" : "/media/hdd/Torrents/Manga"
+        },
+        {
+          "label" : "TV Shows",
+          "dir" : "/media/hdd/Torrents/TV Shows"
+        },
+        {
+          "label" : "AudioBook",
+          "dir" : "/media/hdd/Torrents/AudioBook"
+        },
+        {
+          "label" : "Patrycja",
+          "dir" : "/media/games/Patrycja"
+        },
+        {
+          "label" : "Games",
+          "dir" : "/media/games/Torrents"
+        }
+      ]
+    },
+    {
+      "profile-name" : "Carbon",
+      "hostname" : "Carbon",
+      "port" : 9091,
+      "rpc-url-path" : "/transmission/rpc",
+      "username" : "",
+      "password" : "",
+      "auto-connect" : false,
+      "ssl" : false,
+      "ssl-validate" : false,
+      "timeout" : 40,
+      "retries" : 3,
+      "update-active-only" : false,
+      "activeonly-fullsync-enabled" : false,
+      "activeonly-fullsync-every" : 2,
+      "update-interval" : 3,
+      "min-update-interval" : 3,
+      "session-update-interval" : 60,
+      "custom-headers" : [],
+      "exec-commands" : [],
+      "destinations" : []
+    }
+  ],
+  "profile-id" : 0,
+  "tree-views" : {
+    "TrgTorrentTreeView" : {
+      "sort-col" : 1,
+      "sort-type" : 1,
+      "widths" : [
+        477,
+        96,
+        81,
+        168,
+        89,
+        119,
+        134,
+        151,
+        123,
+        108,
+        123,
+        151,
+        82,
+        192
+      ],
+      "columns" : [
+        "name",
+        "size",
+        "done",
+        "status",
+        "seeds",
+        "leechers",
+        "connected-peers",
+        "down-speed",
+        "up-speed",
+        "eta",
+        "uploaded",
+        "downloaded",
+        "ratio",
+        "added"
+      ]
+    },
+    "TrgTrackersTreeView" : {
+      "sort-col" : -2,
+      "sort-type" : 0,
+      "widths" : [
+        58,
+        467,
+        75,
+        151,
+        160,
+        198,
+        362,
+        445
+      ],
+      "columns" : [
+        "tier",
+        "announce-url",
+        "last-announce-peer-count",
+        "seeder-count",
+        "leecher-count",
+        "last-announce-time",
+        "last-result",
+        "scrape-url"
+      ]
+    },
+    "TrgFilesTreeView" : {
+      "sort-col" : -2,
+      "sort-type" : 0,
+      "widths" : [
+        1239,
+        167,
+        171,
+        180,
+        159
+      ],
+      "columns" : [
+        "name",
+        "size",
+        "progress",
+        "wanted",
+        "priority"
+      ]
+    },
+    "TrgPeersTreeView" : {
+      "sort-col" : -2,
+      "sort-type" : 0,
+      "widths" : [
+        286,
+        494,
+        245,
+        217,
+        212,
+        177,
+        285
+      ],
+      "columns" : [
+        "ip",
+        "host",
+        "down-speed",
+        "up-speed",
+        "progress",
+        "flags",
+        "client"
+      ]
+    },
+    "TrgFilesTreeView-dialog" : {
+      "sort-col" : -2,
+      "sort-type" : 0,
+      "widths" : [
+        845,
+        220,
+        224,
+        233,
+        210
+      ],
+      "columns" : [
+        "name",
+        "size",
+        "progress",
+        "wanted",
+        "priority"
+      ]
+    },
+    "TrgPeersTreeView-dialog" : {
+      "sort-col" : -2,
+      "sort-type" : 0,
+      "widths" : [
+        246,
+        441,
+        234,
+        206,
+        201,
+        166,
+        238
+      ],
+      "columns" : [
+        "ip",
+        "host",
+        "down-speed",
+        "up-speed",
+        "progress",
+        "flags",
+        "client"
+      ]
+    },
+    "TrgTrackersTreeView-dialog" : {
+      "sort-col" : -2,
+      "sort-type" : 0,
+      "widths" : [
+        70,
+        460,
+        87,
+        163,
+        172,
+        192,
+        262,
+        432
+      ],
+      "columns" : [
+        "tier",
+        "announce-url",
+        "last-announce-peer-count",
+        "seeder-count",
+        "leecher-count",
+        "last-announce-time",
+        "last-result",
+        "scrape-url"
+      ]
+    }
+  },
+  "start-paused" : false,
+  "add-options-dialog" : true,
+  "delete-local-torrent" : false,
+  "show-state-selector" : true,
+  "filter-dirs" : true,
+  "filter-trackers" : false,
+  "directories-first" : true,
+  "show-notebook" : true,
+  "system-tray" : false,
+  "system-tray-minimise" : false,
+  "add-notify" : false,
+  "complete-notify" : true,
+  "last-torrent-dir" : "/home/paczur/Torrents/torrents/Games",
+  "style" : 1,
+  "dialog-width" : 1764,
+  "dialog-height" : 609,
+  "window-height" : 1055,
+  "window-width" : 1920,
+  "notebook-paned-pos" : 596,
+  "states-paned-pos" : 276,
+  "state-selector-last" : 14
+}

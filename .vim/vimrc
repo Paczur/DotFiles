@@ -1,0 +1,77 @@
+au BufRead,BufNewFile *.scala set filetype=scala
+au! Syntax scala source syntax/scala.vim
+au! Syntax markdown source syntax/markdown.vim
+au! Syntax html source syntax/html.vim
+
+set nocompatible
+set guifont=Code_New_Roman:h14
+set guioptions='r'
+set backspace=2
+set fillchars=vert:\|,stl:-,stlnc:-,eob:~
+
+set noruler
+set laststatus=2
+set statusline=%-0.30(--%t--%)%=%0.20(%c:%l--%p%%%)%=%0.30(%{FugitiveStatusline()}%w%h%r%m%y--%)
+set wildmenu
+set wildmode=longest:full,full
+set exrc
+
+colo custom
+set clipboard=unnamedplus
+let &colorcolumn="81,82"
+set noswapfile
+set autoindent
+set shiftwidth=2
+set tabstop=2
+set softtabstop=2
+set expandtab
+set nowrap
+set number
+set complete=
+set incsearch
+set signcolumn=yes
+set conceallevel=2
+let g:awk_is_gawk=1
+set so=3
+set foldlevel=0
+set path=.,include/**,modules/**,src/**,,
+set switchbuf="useopen,vsplit"
+set hidden
+set tags=./tags;/
+set errorformat^=%f:%l:%c\ style:\ %m,%f:%l:%c:\ %t%*[^\ ]\ %m
+
+
+call plug#begin()
+"Plug 'https://github.com/tribela/vim-transparent'
+Plug 'https://github.com/craigemery/vim-autotag'
+Plug 'https://github.com/vim-scripts/taglist.vim'
+Plug 'https://github.com/chazy/cscope_maps'
+Plug 'https://github.com/airblade/vim-gitgutter'
+Plug 'https://github.com/tpope/vim-fugitive'
+Plug 'https://github.com/mikelue/vim-maven-plugin'
+Plug 'https://github.com/powerman/vim-plugin-AnsiEsc'
+Plug 'https://github.com/mattn/emmet-vim'
+Plug 'https://github.com/gregsexton/matchtag'
+Plug 'https://github.com/matze/vim-move'
+Plug 'https://github.com/vim-scripts/sudo.vim'
+Plug 'https://github.com/derekwyatt/vim-scala'
+Plug 'https://github.com/bfrg/vim-qf-diagnostics'
+call plug#end()
+
+let g:move_key_modifier = 'C'
+let g:move_key_modifier_visualmode = 'C'
+let g:qfdiagnostics = { 'virttext': 1 }
+autocmd QuickfixCmdPost  make  DiagnosticsPlace
+filetype on
+filetype plugin on
+filetype indent on
+syntax on
+
+
+autocmd FileType scheme set lisp
+autocmd FileType css set foldmethod=marker
+autocmd FileType html set foldmethod=indent
+autocmd FileType html set foldlevel=5
+"remove trailing whitespace
+autocmd BufWritePre *\(.h\|.c\) :%s/\s\+$//e
+autocmd BufWritePost * :GitGutter
