@@ -1,0 +1,17 @@
+black=#111111
+red=#dd0000
+green=#00dd00
+blue=#0000dd
+magenta=#dd00dd
+cyan=#00dddd
+yellow=#dddd00
+white=#dddddd
+
+hl_black=#333333
+hl_red=#ff0000
+hl_green=#00ff00
+hl_blue=#0000ff
+hl_magenta=#ff00ff
+hl_cyan=#00ffff
+hl_yellow=#ffff00
+hl_white=#ffffff

@@ -1,6 +1,6 @@
 use_transbg = false
 alpha = 0
-fg_color = #ffffffffffff
+fg_color = #ffffff
 bg_color = #111111
 scrollbar_mode = none
 borderless = false
