@@ -35,7 +35,6 @@ no_focus [tiling]
 mouse_warping none
 focus_follows_mouse no
 gaps inner 20
-gaps top -10
 floating_modifier $mod
 
 workspace $ws1 output $m1
