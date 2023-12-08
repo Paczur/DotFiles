@@ -38,10 +38,10 @@ interval=5
 
 [date]
 label= 
-command=date '+%d-%m-%Y'
-interval=60
+command=date '+%a %d'
+interval=3600
 
 [time]
 label= 
-command=date '+%H:%M:%S'
-interval=1
+command=date '+%H:%M'
+interval=30
