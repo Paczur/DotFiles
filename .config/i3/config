@@ -135,10 +135,10 @@ bindsym $mod+Shift+r restart
 bindsym --release $mod+p exec scrot -s -q 100 -e "xclip -selection clipboard -t image/png -i $scrot_path" $scrot_path
 
 #laptop config
-bindsym XF86MonBrightnessDown exec xbacklight -dec 2
-bindsym XF86MonBrightnessUp exec xbacklight -inc 2
-bindsym F1 exec xbacklight -dec 2
-bindsym F2 exec xbacklight -inc 2
+bindsym XF86MonBrightnessDown exec xbacklight -dec 2 && pkill -SIGRTMIN+11 i3blocks
+bindsym XF86MonBrightnessUp exec xbacklight -inc 2 && pkill -SIGRTMIN+11 i3blocks
+bindsym F1 exec xbacklight -dec 2 && pkill -SIGRTMIN+11 i3blocks
+bindsym F2 exec xbacklight -inc 2 && pkill -SIGRTMIN+11 i3blocks
 
 bindsym $mod+w mode $window
 bindsym $mod+c mode $mpv
@@ -188,12 +188,12 @@ mode $window {
   bindsym $mod+c mode $mpv
 }
 mode $mpv {
-	bindsym f exec "echo 'cycle pause' | socat - /tmp/mpvsocket && pkill -SIGRTMIN+12 i3blocks"
-	bindsym d exec "echo 'playlist_next' | socat - /tmp/mpvsocket && pkill -SIGRTMIN+11 i3blocks"
-	bindsym a exec "echo 'playlist_prev' | socat - /tmp/mpvsocket && pkill -SIGRTMIN+11 i3blocks"
+	bindsym f exec "echo 'cycle pause' | socat - /tmp/mpvsocket"
+	bindsym d exec "echo 'playlist_next' | socat - /tmp/mpvsocket"
+	bindsym a exec "echo 'playlist_prev' | socat - /tmp/mpvsocket"
 	bindsym w exec "echo 'add volume 2' | socat - /tmp/mpvsocket && pkill -SIGRTMIN+10 i3blocks"
 	bindsym s exec "echo 'add volume -2' | socat - /tmp/mpvsocket && pkill -SIGRTMIN+10 i3blocks"
-	bindsym q exec "echo 'quit' | socat - /tmp/mpvsocket && pkill -SIGRTMIN+10 i3blocks; pkill -SIGRTMIN+11 i3blocks; pkill -SIGRTMIN+12 i3blocks; rm /tmp/mpvsocket"
+	bindsym q exec "echo 'quit' | socat - /tmp/mpvsocket && pkill -SIGRTMIN+10 i3blocks; rm /tmp/mpvsocket"
   bindsym Escape mode "default"
 	bindsym $mod+c mode "default"
   bindsym $mod+s mode $system

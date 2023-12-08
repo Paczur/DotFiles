@@ -15,24 +15,26 @@ label=
 interval=30
 signal=10
 
-[memory]
-label= 
-interval=5
+[emerge-update]
+interval=0
+signal=10
+command=[ -f "/home/paczur/Temp/update" ] && echo "" || echo ""
 
-[cpu]
-label= 
-interval=5
-
-[battery]
-interval=60
+[brightness]
+label= 
+interval=-1
+signal=11
+command=x=$(xbacklight -get); if [ -n "$x" ]; then echo ${x%.*}%; fi
 
 [net]
 interval=60
 
-[emerge-update]
-interval=-1
-signal=10
-command=[ -f "/home/paczur/Temp/update" ] && echo "" || echo ""
+[battery]
+interval=60
+
+[cpu]
+label= 
+interval=5
 
 [time]
 command=date '+%d-%m-%Y %H:%M:%S'
