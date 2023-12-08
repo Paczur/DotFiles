@@ -19,6 +19,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
+. ~/.bash_aliases
 . /usr/share/git/git-prompt.sh
 xset -b b off
 GIT_PS1_SHOWDIRTYSTATE="yes"
