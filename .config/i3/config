@@ -17,8 +17,8 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10:"
-set $m1 "DP-0"
-set $m2 "HDMI-0"
+set $m1 "eDP1"
+set $m2 "HDMI1"
 set $system ""
 set $mpv ""
 set $window ""
@@ -50,10 +50,10 @@ workspace $ws9 output $m2
 workspace $ws10 output $m1
 
 bar {
- output primary
- output nonprimary
- tray_output primary
- tray_output nonprimary
+ output $m1
+ output $m2
+ tray_output $m1
+ tray_output $m2
  position top
  separator_symbol " "
  status_command i3blocks
