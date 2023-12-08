@@ -59,16 +59,16 @@ label=
 #border=#ff0000
 interval=5
 
-#[battery]
+[battery]
 #color=#00ff00
-#interval=60
+interval=60
 
-[gpu]
-label= 
+#[gpu]
+#label= 
 #command=echo $(nvidia-smi --format=csv --query-gpu=utilization.gpu | sed '1d' | rev | cut -c3- | rev)%
 #background=#00ff00
 #border=#00ff00
-interval=5
+#interval=5
 
 [net]
 #background=#0000ff
