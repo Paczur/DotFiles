@@ -1,0 +1,10 @@
+[user]
+	name = P4C2UR
+	email = dpaczurb@gmail.com
+[merge]
+	tool = vimdiff
+[init]
+	defaultBranch = master
+[safe]
+	directory = /media/pendrive/Git/Scripts
+	directory = /media/pendrive/Git/DotFiles
