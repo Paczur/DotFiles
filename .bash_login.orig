@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+. /home/paczur/Scripts/system/laptop/path
+=======
 . /home/paczur/Scripts/system/path
+>>>>>>> 45b9aeb (Fix .bash_login)
 export PATH
 tty="$(tty | cut -c9-)"
 wm=""
