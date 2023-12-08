@@ -92,7 +92,7 @@ for_window [class="^Tamagotchi$"] floating enable
 
 bindsym $mod+Return exec mlterm
 bindsym $mod+Shift+q kill
-bindsym $mod+d exec dmenu_run -f -fn "Code New Roman 14" -nb '#000000' -nf '#ffffff' -sb '#ffff00' -sf '#000000' 
+bindsym $mod+d exec dmenu_run -f -i -fn "Code New Roman 14" -nb '#000000' -nf '#ffffff' -sb '#333333' -sf '#ffffff'
 bindsym $mod+f fullscreen toggle
 bindsym $mod+shift+f bar mode toggle
 
