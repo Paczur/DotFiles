@@ -21,7 +21,7 @@ signal=10
 command=[ -f "/home/paczur/Temp/update" ] && echo "" || echo ""
 
 [brightness]
-label= 
+label= 
 interval=-1
 signal=11
 command=x=$(xbacklight -get); if [ -n "$x" ]; then echo ${x%.*}%; fi
@@ -36,6 +36,12 @@ interval=60
 label= 
 interval=5
 
+[date]
+label= 
+command=date '+%d-%m-%Y'
+interval=60
+
 [time]
-command=date '+%d-%m-%Y %H:%M:%S'
+label= 
+command=date '+%H:%M:%S'
 interval=1
