@@ -5,7 +5,7 @@ au! Syntax html source syntax/html.vim
 
 set nocompatible
 set guifont=Code_New_Roman:h14
-set guioptions='r'
+set guioptions=r
 set backspace=2
 set fillchars=vert:\|,stl:-,stlnc:-,eob:~
 
