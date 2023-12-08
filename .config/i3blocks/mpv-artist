@@ -1,6 +1,0 @@
-#!/bin/bash
-if [ -S "/tmp/mpvsocket" ]; then
-	t=$(echo "{ \"command\": [\"get_property_string\", \"metadata/by-key/artist\"] }" | socat - /tmp/mpvsocket)
-	artist=$(echo $t | sed -E 's/.*data":"([^"]*)".*/\1/')
-	if [ "$artist" != "" ] && [ "$artist" != "$t" ]; then echo "$artist"; fi
-fi

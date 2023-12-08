@@ -1,8 +1,0 @@
-cmd=$(genlop -c | grep 'Currently' | cut -c20-)
-done=$(echo $cmd | cut -d ' ' -f1)
-all=$(echo $cmd | rev | cut -d ' ' -f1 | rev)
-if [ "$all" != '' ]
- then
-        echo $done/$all
-fi
-
