@@ -75,9 +75,9 @@ bar {
  }
 }
 
-client.focused $w $b $w $w $w
-client.focused_inactive $g $b $w $g $g
-client.unfocused $g $b $w $g $g
+client.focused $w $d $w $w $w
+client.focused_inactive $g $d $w $g $g
+client.unfocused $g $d $w $g $g
 client.urgent $g $b $b $b $b
 client.background $g
 
