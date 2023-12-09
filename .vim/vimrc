@@ -60,7 +60,6 @@ call plug#end()
 
 let g:move_key_modifier = 'C'
 let g:move_key_modifier_visualmode = 'C'
-let g:qfdiagnostics = { 'virttext': 1 }
 autocmd QuickfixCmdPost  make  DiagnosticsPlace
 filetype on
 filetype plugin on
