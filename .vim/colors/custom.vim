@@ -22,11 +22,11 @@ let g:colors_name="custom"
 " --------------------------------
 " Editor settings
 " --------------------------------
-hi Normal       ctermfg=White    ctermbg=NONE cterm=NONE guifg=White    guibg=NONE gui=NONE
-hi Cursor       ctermfg=White    ctermbg=NONE cterm=NONE guifg=NONE     guibg=NONE  gui=reverse
-hi CursorLine   ctermfg=White    ctermbg=NONE cterm=NONE guifg=NONE     guibg=NONE  gui=reverse
-hi LineNr       ctermfg=DarkGray ctermbg=NONE cterm=NONE guifg=DarkGray guibg=NONE gui=NONE
-hi CursorLineNR ctermfg=DarkGray ctermbg=NONE cterm=NONE guifg=DarkGray guibg=NONE gui=NONE
+hi Normal       ctermfg=White    ctermbg=NONE cterm=NONE guifg=White    guibg=#111111 gui=NONE
+hi Cursor       ctermfg=White    ctermbg=NONE cterm=NONE guifg=NONE     guibg=NONE    gui=reverse
+hi CursorLine   ctermfg=White    ctermbg=NONE cterm=NONE guifg=NONE     guibg=NONE    gui=reverse
+hi LineNr       ctermfg=DarkGray ctermbg=NONE cterm=NONE guifg=DarkGray guibg=NONE    gui=NONE
+hi CursorLineNR ctermfg=DarkGray ctermbg=NONE cterm=NONE guifg=DarkGray guibg=NONE    gui=NONE
 
 " -----------------
 " - Number column -

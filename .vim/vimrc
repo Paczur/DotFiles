@@ -4,7 +4,7 @@ au! Syntax markdown source syntax/markdown.vim
 au! Syntax html source syntax/html.vim
 
 set nocompatible
-set guifont=Code_New_Roman:h14
+set guifont=Code\ New\ Roman\\,\ 14
 set guioptions=r
 set backspace=2
 set fillchars=vert:\|,stl:-,stlnc:-,eob:~
