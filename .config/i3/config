@@ -26,6 +26,7 @@ set $scrot_path "/home/paczur/Multimedia/Pictures/Screenshots/Scrot/%d-%m-%Y_%H-
 
 font pango: Code New Roman, IPAexGothic, Font Awesome 6 Free Solid 14
 
+popup_during_fullscreen leave_fullscreen
 focus_on_window_activation none
 default_floating_border pixel 4
 default_border pixel 2
