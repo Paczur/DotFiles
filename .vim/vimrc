@@ -104,7 +104,14 @@ Plug 'https://github.com/vim-scripts/sudo.vim'
 Plug 'https://github.com/derekwyatt/vim-scala'
 Plug 'https://github.com/bfrg/vim-qf-diagnostics'
 call plug#end()
-let g:qfdiagnostics = { 'sign_note': {'text': 'N', 'priority': 11, 'texthl': 'MoreMsg',},}
+let g:qfdiagnostics = {
+      \  'texthl': 0,
+      \  'sign_error': { 'text': '●', 'priority': 14, 'texthl': 'ErrorMsg'},
+      \  'sign_warning': { 'text': '●', 'priority': 13, 'texthl': 'WarningMsg'},
+      \  'sign_info': { 'text': '●', 'priority': 12, 'texthl': 'MoreMsg'},
+      \  'sign_note': { 'text': '●', 'priority': 11, 'texthl': 'MoreMsg'},
+      \  'sign_other': { 'text': '●', 'priority': 10, 'texthl': 'ErrorMsg'},
+      \}
 let g:move_key_modifier = 'C'
 let g:move_key_modifier_visualmode = 'C'
 autocmd QuickfixCmdPost  make  DiagnosticsPlace
