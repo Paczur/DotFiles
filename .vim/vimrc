@@ -43,7 +43,7 @@ set expandtab
 "FOLDS {{{
 set foldlevel=0
 function! FoldText()
-    let line = substitute(substitute(substitute(substitute(getline(v:foldstart), '{\+', '', ''), '^"\s*', '', ''), '/\*\s*\(.*\)\s*\*/', '\=submatch(1)', ''), '^\s*//\s*', '', '')
+    let line = substitute(substitute(substitute(substitute(substitute(getline(v:foldstart), '{\+', '', ''), '^"\s*', '', ''), '/\*\s*\(.*\)\s*\*/', '\=submatch(1)', ''), '^\s*//\s*', '', ''), '^#\s*', '', '')
     let lines_count = v:foldend - v:foldstart + 1
     let lines_count_text = printf("%10s", lines_count . ' lines')
     let foldchar = matchstr(&fillchars, 'fold:\zs.')
@@ -72,6 +72,9 @@ autocmd FileType python set foldnestmax=1
 autocmd FileType vim set foldmethod=marker
 autocmd FileType vim set foldcolumn=2
 autocmd FileType vim set foldnestmax=1
+autocmd FileType i3config set foldcolumn=3
+autocmd FileType i3config set foldmethod=marker
+autocmd FileType i3config set foldnestmax=2
 "}}}
 
 "PLUGINS {{{
