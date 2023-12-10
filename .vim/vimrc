@@ -7,11 +7,11 @@ set nocompatible
 set guifont=Code\ New\ Roman\\,\ 14
 set guioptions=r
 set backspace=2
-set fillchars=vert:\|,stl:-,stlnc:-,eob:~
+set fillchars=eob:·,vert:│,stl:─,stlnc:─,fold:\ ,foldsep:│,foldopen:┬
 
 set noruler
 set laststatus=2
-set statusline=%-0.30(--%t--%)%=%0.20(%c:%l--%p%%%)%=%0.30(%{FugitiveStatusline()}%w%h%r%m%y--%)
+set statusline=%-0.30(──%t──%)%=%0.20(%c:%l──%p%%%)%=%0.30(%{FugitiveStatusline()}%w%h%r%m%y──%)
 set wildmenu
 set wildmode=longest:full,full
 set exrc

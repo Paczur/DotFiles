@@ -168,7 +168,7 @@ hi  markdownH4Delimiter        ctermfg=Gray     ctermbg=NONE cterm=NONE        g
 hi  markdownH5Delimiter        ctermfg=Gray     ctermbg=NONE cterm=NONE        guifg=Gray     guibg=NONE gui=NONE
 hi  markdownH6Delimiter        ctermfg=Gray     ctermbg=NONE cterm=NONE        guifg=Gray     guibg=NONE gui=NONE
 hi  markdownUrl                ctermfg=Yellow   ctermbg=NONE cterm=NONE        guifg=Yellow   guibg=NONE gui=NONE
-hi  debugPC                    ctermfg=Black    ctermbg=Gray cterm=NONE        guifg=Black    guibg=Gray  gui=NONE
+hi  debugPC                    ctermfg=Black    ctermbg=Gray cterm=NONE        guifg=Black    guibg=Gray gui=NONE
 hi  StatusLineTerm             ctermfg=Gray     ctermbg=NONE cterm=NONE        guifg=Gray     guibg=NONE gui=NONE
 hi  StatusLineTermNC           ctermfg=DarkGray ctermbg=NONE cterm=NONE        guifg=DarkGray guibg=NONE gui=NONE
 "hi ColorColumn                ctermfg=Yellow   ctermbg=NONE cterm=NONE        guifg=Yellow   guibg=NONE gui=NONE
@@ -180,8 +180,8 @@ hi  Paren                      ctermfg=DarkGray ctermbg=NONE cterm=NONE        g
 hi  Important                  ctermfg=Yellow   ctermbg=NONE cterm=NONE        guifg=Yellow   guibg=NONE gui=NONE
 "hi chezFunction               ctermfg=White    ctermbg=NONE cterm=BOLD        guifg=White    guibg=NONE gui=BOLD
 hi  Danger                     ctermfg=White    ctermbg=NONE cterm=ITALIC,BOLD guifg=White    guibg=NONE gui=ITALIC,BOLD
-hi  WildMenu                   ctermfg=Black    ctermbg=Gray cterm=NONE        guifg=Black    guibg=Gray  gui=NONE
-hi  RedundantSpaces            ctermfg=Black    ctermbg=Gray cterm=NONE        guifg=Black    guibg=Gray  gui=NONE
+hi  WildMenu                   ctermfg=Black    ctermbg=Gray cterm=NONE        guifg=Black    guibg=Gray gui=NONE
+hi  RedundantSpaces            ctermfg=Black    ctermbg=Gray cterm=NONE        guifg=Black    guibg=Gray gui=NONE
 
 if (t==1)
   syntax on
