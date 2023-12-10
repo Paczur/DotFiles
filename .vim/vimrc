@@ -16,20 +16,11 @@ autocmd BufWritePre *\(.h\|.c\) :%s/\s\+$//e
 "}}}
 
 "VISUAL ONLY {{{
-function! QFType(t)
-  if len(getqflist()) == 0
-    return ''
-  else
-    let upper=len(filter(getqflist(), {k,v -> v.type==toupper(a:t)}))
-    let lower=len(filter(getqflist(), {k,v -> v.type==tolower(a:t)}))
-    return (lower+upper)
-  endif
-endfunction
 colo custom
 set fillchars=eob:·,vert:│,stl:─,stlnc:─,fold:\ ,foldsep:│,foldopen:┬
 set noruler
 set laststatus=2
-set statusline=%-0.30(──%t─%#ErrorMsg#%{QFType('E')}%*─%#WarningMsg#%{QFType('W')}%*─%)%=%0.20(%c:%l/%L%)%=%0.30(%{FugitiveStatusline()}%w%h%r%m%y──%)
+set statusline=%-0.30(──%t──%)%=%0.20(%c:%l/%L%)%=%0.30(%{FugitiveStatusline()}%w%h%r%m%y──%)
 let &colorcolumn="81,82"
 set nonumber
 set signcolumn=auto
