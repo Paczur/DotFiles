@@ -11,7 +11,7 @@ set fillchars=eob:·,vert:│,stl:─,stlnc:─,fold:\ ,foldsep:│,foldopen:┬
 
 set noruler
 set laststatus=2
-set statusline=%-0.30(──%t──%)%=%0.20(%c:%l──%p%%%)%=%0.30(%{FugitiveStatusline()}%w%h%r%m%y──%)
+set statusline=%-0.30(──%t──%)%=%0.20(%c:%l/%L%)%=%0.30(%{FugitiveStatusline()}%w%h%r%m%y──%)
 set wildmenu
 set wildmode=longest:full,full
 set exrc
