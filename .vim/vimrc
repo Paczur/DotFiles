@@ -42,6 +42,7 @@ set expandtab
 
 "FOLDS {{{
 set foldlevel=0
+set foldnestmax=0
 function! FoldText()
     let line = substitute(substitute(substitute(substitute(substitute(getline(v:foldstart), '{\+', '', ''), '^"\s*', '', ''), '/\*\s*\(.*\)\s*\*/', '\=submatch(1)', ''), '^\s*//\s*', '', ''), '^#\s*', '', '')
     let lines_count = v:foldend - v:foldstart + 1
@@ -53,7 +54,9 @@ function! FoldText()
     return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
 endfunction
 function! FoldColumn()
-  if &foldnestmax == 1
+  if &foldnestmax == 0
+    set foldcolumn=0
+  elseif &foldnestmax == 1
     set foldcolumn=2
   else
     let &foldcolumn=&foldnestmax*2+1
@@ -66,6 +69,7 @@ autocmd FileType java set foldmethod=syntax
 autocmd FileType java set foldlevel=1
 autocmd FileType java set foldnestmax=2
 autocmd FileType css set foldmethod=marker
+autocmd FileType css set foldnestmax=1
 autocmd FileType html set foldmethod=indent
 autocmd FileType html set foldlevel=5
 autocmd FileType htmldjango set foldmethod=indent
