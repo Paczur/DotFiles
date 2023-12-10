@@ -52,29 +52,35 @@ function! FoldText()
     let foldtextlength = strlen(substitute(foldtextstart . foldtextend, '.', 'x', 'g')) + &foldcolumn
     return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
 endfunction
-autocmd FileType * set foldtext=FoldText()
+function! FoldColumn()
+  if &foldnestmax == 1
+    set foldcolumn=2
+  else
+    let &foldcolumn=&foldnestmax*2+1
+  endif
+endfunction
+
 autocmd FileType c set foldmethod=syntax
 autocmd FileType c set foldnestmax=1
-autocmd FileType c set foldcolumn=2
 autocmd FileType java set foldmethod=syntax
 autocmd FileType java set foldlevel=1
 autocmd FileType java set foldnestmax=2
-autocmd FileType java set foldcolumn=3
 autocmd FileType css set foldmethod=marker
-autocmd FileType css set foldcolumn=2
 autocmd FileType html set foldmethod=indent
 autocmd FileType html set foldlevel=5
 autocmd FileType htmldjango set foldmethod=indent
 autocmd FileType htmldjango set foldlevel=5
-autocmd FileType python set foldcolumn=2
 autocmd FileType python set foldmethod=indent
 autocmd FileType python set foldnestmax=1
 autocmd FileType vim set foldmethod=marker
-autocmd FileType vim set foldcolumn=2
 autocmd FileType vim set foldnestmax=1
-autocmd FileType i3config set foldcolumn=3
 autocmd FileType i3config set foldmethod=marker
 autocmd FileType i3config set foldnestmax=2
+
+autocmd FileType * call FoldColumn()
+autocmd FileType * set foldtext=FoldText()
+
+autocmd FileType htmldjango set foldcolumn=0
 "}}}
 
 "PLUGINS {{{
