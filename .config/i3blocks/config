@@ -16,6 +16,7 @@ interval=30
 signal=10
 
 [emerge-update]
+<<<<<<< HEAD
 interval=0
 signal=10
 command=[ -f "/home/paczur/Temp/update" ] && echo "" || echo ""
@@ -26,8 +27,14 @@ interval=-1
 signal=11
 command=x=$(xbacklight -get); if [ -n "$x" ]; then echo ${x%.*}%; fi
 
+[emerge-update]
+interval=once
+signal=11
+command=[ -f "/home/paczur/System/Tmp/update" ] && echo "" || echo ""
+
 [net]
 interval=60
+signal=12
 
 [battery]
 interval=60
