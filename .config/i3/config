@@ -2,13 +2,11 @@
 
 # VARIABLES {{{
 set $mod Mod1
-set $y #f3e66e
-set $r #ff0000
+set $y #f3f36e
+set $r #f36e6e
 set $g #333333
 set $d #111111
-set $b #000000
-set $w #ffffff
-set $p #ff00ff
+set $w #f3f3f3
 set $ws1 "1:Ⅰ"
 set $ws2 "2:Ⅱ"
 set $ws3 "3:Ⅲ"
@@ -203,7 +201,7 @@ gaps top -5
 client.focused          $w           $d $w   $w        $w
 client.focused_inactive $g           $d $w   $g        $g
 client.unfocused        $g           $d $w   $g        $g
-client.urgent           $y           $b $b   $y        $y
+client.urgent           $y           $d $d   $y        $y
 client.background $g
 #}}}
 #}}}
