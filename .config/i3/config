@@ -3,7 +3,6 @@
 # VARIABLES {{{
 set $mod Mod1
 set $y #f3f36e
-set $r #f36e6e
 set $g #333333
 set $d #111111
 set $w #f3f3f3
