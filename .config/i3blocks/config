@@ -7,7 +7,7 @@ border_top=0
 border_bottom=0
 background=#333333
 border=#333333
-color=#ffffff
+color=#f3f3f3
 markup=cairo
 
 [mpv-volume]
