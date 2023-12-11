@@ -4,7 +4,7 @@ charge_now="$(cat /sys/class/power_supply/BAT1/charge_now)"
 charge_full="$(cat /sys/class/power_supply/BAT1/charge_full)"
 percent="$(($charge_now*100/$charge_full))"
 
-if [ "$(cat /sys/class/power_supply/BAT1/status)" = "Charging" ]; then
+if [ "$(cat /sys/class/power_supply/BAT1/status)" != "Discharging" ]; then
   status=""
 elif [ $percent -le 13 ]; then
   echo " $percent%" #full_text
