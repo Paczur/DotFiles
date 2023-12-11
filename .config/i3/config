@@ -2,7 +2,7 @@
 
 # VARIABLES {{{
 set $mod Mod1
-set $y #ffff00
+set $y #f3e66e
 set $r #ff0000
 set $g #333333
 set $d #111111
@@ -102,11 +102,12 @@ bar {
     i3bar_command i3bar
 # COLORS {{{
     colors {
-      active_workspace $g $g $w
-        focused_workspace $d $w $d
-        inactive_workspace $g $g $w
-        urgent_workspace $g $d $w
-        binding_mode $w $d $w
+        #class             border background text
+        active_workspace   $g     $g         $w
+        focused_workspace  $w     $w         $d
+        inactive_workspace $g     $g         $w
+        urgent_workspace   $y     $y         $d
+        binding_mode       $w     $d         $w
         background $d
         statusline $d
     }
@@ -198,10 +199,11 @@ gaps inner 15
 gaps top -5
 
 # COLORS {{{
-client.focused $w $d $w $w $w
-client.focused_inactive $g $d $w $g $g
-client.unfocused $g $d $w $g $g
-client.urgent $g $b $b $b $b
+#class                  title_border bg text indicator border
+client.focused          $w           $d $w   $w        $w
+client.focused_inactive $g           $d $w   $g        $g
+client.unfocused        $g           $d $w   $g        $g
+client.urgent           $y           $b $b   $y        $y
 client.background $g
 #}}}
 #}}}
