@@ -1,4 +1,4 @@
-use_transbg = false
+use_transbg = true
 alpha = 0
 fg_color = #ffffff
 bg_color = #111111
