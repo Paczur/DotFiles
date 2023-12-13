@@ -1,4 +1,4 @@
-black      = #6e6e6e
+black      = #111111
 red        = #f36e6e
 green      = #6ef36e
 blue       = #6e6ef3
@@ -6,7 +6,7 @@ yellow     = #f3f36e
 magenta    = #f36ef3
 cyan       = #6e6ef3
 white      = #f3f3f3
-hl_black   = #6e6e6e
+hl_black   = #111111
 hl_red     = #f36e6e
 hl_green   = #6ef36e
 hl_blue    = #6e6ef3
