@@ -86,15 +86,13 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 bar {
   output $m1
     output $m2
-    tray_output $m1
-    tray_output $m2
+    tray_output none
     position top
     separator_symbol " "
     status_command i3blocks
     workspace_buttons yes
     strip_workspace_numbers yes
     padding 3 0
-    tray_padding 3
     workspace_min_width 40
     i3bar_command i3bar
 # COLORS {{{
