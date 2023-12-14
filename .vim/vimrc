@@ -12,7 +12,7 @@ set incsearch
 set so=3
 set switchbuf="useopen,vsplit"
 set hidden
-autocmd BufWritePre *\(.h\|.c\) :%s/\s\+$//e
+autocmd BufWritePre *\(.html\|.css\|.java\|.h\|.c\) :%s/\s\+$//e
 "}}}
 
 "VISUAL ONLY {{{
