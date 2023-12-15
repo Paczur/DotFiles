@@ -72,7 +72,7 @@ function! FoldMethod(lnum)
   "Otherwise return foldlevel equal to indent /shiftwidth (like if
   "foldmethod=indent)
   else  "return indent base fold
-    return indent(a:lnum)/&shiftwidth
+    return indent(a:lnum+1)/&shiftwidth
 endfunction
 function! FoldColumn()
   if &foldnestmax == 0

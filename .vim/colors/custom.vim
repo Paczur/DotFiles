@@ -188,4 +188,11 @@ endif
 
 syn region Important start=".TODO" end="\n" containedin=.*omment.*
 syn region Important start="!:" end=":!\|\n" containedin=.*omment.*
+
+syn match comment "\v(^#include.*\n)+" fold
+syn match comment "\v(^import.*\n)+" fold
+
+syn region CommentBlock start="/\*" end="\*/" transparent keepend extend fold
+syn match comment "\v(^\s*//.*\n)+" fold
+
 match RedundantSpaces /\s\+$/
