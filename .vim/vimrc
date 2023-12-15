@@ -53,27 +53,6 @@ function! FoldText()
     let foldtextlength = strlen(substitute(foldtextstart . foldtextend, '.', 'x', 'g')) + &foldcolumn
     return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
 endfunction
-"TODO: Fix this function
-function! FoldMethod(lnum)
-  "get string of current line
-  let crLine=getline(a:lnum)
-
-  " check if empty line
-  if empty(crLine) "Empty line or end comment
-    return -1 " so same indent level as line before
-  endif
-
-  " check if comment
-  let a:data=join( map(synstack(a:lnum, 1), 'synIDattr(v:val, "name")') )
-  if a:data =~ ".*omment.*"
-    return '='
-  endif
-
-  "Otherwise return foldlevel equal to indent /shiftwidth (like if
-  "foldmethod=indent)
-  else  "return indent base fold
-    return indent(a:lnum+1)/&shiftwidth
-endfunction
 function! FoldColumn()
   if &foldnestmax == 0
     set foldcolumn=0
