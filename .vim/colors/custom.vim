@@ -8,7 +8,6 @@ set background=dark
 
 syn match Paren "[(\[{]"
 syn match Paren "[)\]}]"
-syn region Important oneline start="[!\(TODO\)]:"hs=s+2 end="[\(:!\)\n]"he=e-2 containedin=.*Comment.* contained
 
 highlight clear
 if exists("syntax_on")
@@ -187,4 +186,6 @@ if (t==1)
   syntax on
 endif
 
+syn region Important start=".TODO" end="\n" containedin=.*omment.*
+syn region Important start="!:" end=":!\|\n" containedin=.*omment.*
 match RedundantSpaces /\s\+$/
