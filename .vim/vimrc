@@ -21,7 +21,7 @@ colo custom
 set fillchars=eob:\ ,vert:│,stl:─,stlnc:─,fold:\ ,foldsep:│,foldopen:┬
 set noruler
 set laststatus=2
-set statusline=%-0.30(─\ %f\ %)%=%-0.10(\ %l/%L:%c\ %)%=%0.30(\ %m%{FugitiveStatusline()}%y\ ─%)
+set statusline=%-0.50(─\ %f\ %)%=%-0.13(\ %l/%L:%c\ %)%=%0.20(\ %m%{FugitiveStatusline()}%y\ ─%)
 let &colorcolumn="81,82"
 set nonumber
 set signcolumn=auto
