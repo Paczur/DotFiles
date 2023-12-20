@@ -101,7 +101,7 @@ autocmd FileType htmldjango set foldcolumn=0
 
 "PLUGINS {{{
 call plug#begin()
-"Plug 'https://github.com/tribela/vim-transparent'
+
 Plug 'https://github.com/craigemery/vim-autotag'
 Plug 'https://github.com/vim-scripts/taglist.vim'
 Plug 'https://github.com/chazy/cscope_maps'
@@ -115,6 +115,9 @@ Plug 'https://github.com/matze/vim-move'
 Plug 'https://github.com/vim-scripts/sudo.vim'
 Plug 'https://github.com/derekwyatt/vim-scala'
 Plug 'https://github.com/bfrg/vim-qf-diagnostics'
+Plug 'https://github.com/tpope/vim-commentary'
+Plug 'https://github.com/machakann/vim-sandwich'
+
 call plug#end()
 let g:qfdiagnostics = {
       \  'texthl': 0,
