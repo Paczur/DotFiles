@@ -1,5 +1,6 @@
 set background=dark
 set t_Co=256
+
 highlight clear
 if exists("syntax_on")
     syntax reset
@@ -121,15 +122,6 @@ hi RedundantSpaces            ctermfg=Black    ctermbg=Gray     cterm=NONE      
 if (t==1)
   syntax on
 endif
-
-syn region Important start=".TODO" end="\n" containedin=.*omment.*
-syn region Important start="!:" end=":!\|\n" containedin=.*omment.*
-
-syn match comment "\v(^#include.*\n)+" fold
-syn match comment "\v(^import.*\n)+" fold
-
-syn region CommentBlock start="/\*" end="\*/" transparent keepend extend fold
-syn match comment "\v(^\s*//.*\n)+" fold
 
 match RedundantSpaces /\s\+$/
 "match Paren /[{}[\]()]/

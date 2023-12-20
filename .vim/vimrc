@@ -146,6 +146,12 @@ filetype on
 filetype plugin on
 filetype indent on
 syntax on
+autocmd Syntax * syn region Important start="[^ ]*TODO" end="\n" containedin=.*omment.*
+autocmd Syntax * syn region Important start="!:" end=":!\|\n" containedin=.*omment.*
+autocmd Syntax * syn match comment "\v(^#include.*\n)+" fold
+autocmd Syntax * syn match comment "\v(^import.*\n)+" fold
+autocmd Syntax * syn region CommentBlock start="/\*" end="\*/" transparent keepend extend fold
+autocmd Syntax * syn match comment "\v(^\s*//.*\n)+" fold
 "}}}
 
 "PROGRAMMING {{{
