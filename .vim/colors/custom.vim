@@ -19,7 +19,7 @@ hi FoldColumn                 ctermfg=DarkGray ctermbg=NONE     cterm=NONE      
 hi SignColumn                 ctermfg=DarkGray ctermbg=NONE     cterm=NONE        guifg=DarkGray guibg=NONE     gui=NONE
 hi Folded                     ctermfg=DarkGray ctermbg=NONE     cterm=NONE        guifg=DarkGray guibg=NONE     gui=NONE
 hi VertSplit                  ctermfg=DarkGray ctermbg=NONE     cterm=NONE        guifg=DarkGray guibg=NONE     gui=NONE
-hi ColorColumn                ctermfg=Red      ctermbg=NONE     cterm=NONE        guifg=DarkGray guibg=NONE     gui=NONE
+hi ColorColumn                ctermfg=DarkGray ctermbg=NONE     cterm=NONE        guifg=DarkGray guibg=NONE     gui=NONE
 hi TabLine                    ctermfg=DarkGray ctermbg=NONE     cterm=NONE        guifg=DarkGray guibg=NONE     gui=NONE
 hi TabLineFill                ctermfg=DarkGray ctermbg=NONE     cterm=NONE        guifg=DarkGray guibg=NONE     gui=NONE
 hi TabLineSel                 ctermfg=DarkGray ctermbg=NONE     cterm=NONE        guifg=DarkGray guibg=NONE     gui=NONE
@@ -132,4 +132,4 @@ syn region CommentBlock start="/\*" end="\*/" transparent keepend extend fold
 syn match comment "\v(^\s*//.*\n)+" fold
 
 match RedundantSpaces /\s\+$/
-match Paren /[{}[\]()]/
+"match Paren /[{}[\]()]/
