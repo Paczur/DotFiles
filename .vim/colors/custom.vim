@@ -12,7 +12,7 @@ let g:colors_name="custom"
 
 hi Normal                     ctermfg=White    ctermbg=NONE     cterm=NONE        guifg=White    guibg=NONE     gui=NONE
 hi Cursor                     ctermfg=White    ctermbg=NONE     cterm=NONE        guifg=NONE     guibg=NONE     gui=reverse
-hi CursorLine                 ctermfg=White    ctermbg=NONE     cterm=NONE        guifg=NONE     guibg=NONE     gui=reverse
+hi CursorLine                 ctermfg=NONE    ctermbg=NONE     cterm=NONE        guifg=NONE     guibg=NONE     gui=NONE
 hi LineNr                     ctermfg=DarkGray ctermbg=NONE     cterm=NONE        guifg=DarkGray guibg=NONE     gui=NONE
 hi CursorLineNR               ctermfg=DarkGray ctermbg=NONE     cterm=NONE        guifg=DarkGray guibg=NONE     gui=NONE
 hi CursorColumn               ctermfg=NONE     ctermbg=NONE     cterm=NONE        guifg=Black    guibg=NONE     gui=NONE
@@ -20,11 +20,11 @@ hi FoldColumn                 ctermfg=DarkGray ctermbg=NONE     cterm=NONE      
 hi SignColumn                 ctermfg=DarkGray ctermbg=NONE     cterm=NONE        guifg=DarkGray guibg=NONE     gui=NONE
 hi Folded                     ctermfg=DarkGray ctermbg=NONE     cterm=NONE        guifg=DarkGray guibg=NONE     gui=NONE
 hi VertSplit                  ctermfg=DarkGray ctermbg=NONE     cterm=NONE        guifg=DarkGray guibg=NONE     gui=NONE
-hi ColorColumn                ctermfg=DarkGray ctermbg=NONE     cterm=NONE        guifg=DarkGray guibg=NONE     gui=NONE
+hi ColorColumn                ctermfg=Red      ctermbg=NONE     cterm=NONE        guifg=DarkGray guibg=NONE     gui=NONE
 hi TabLine                    ctermfg=DarkGray ctermbg=NONE     cterm=NONE        guifg=DarkGray guibg=NONE     gui=NONE
 hi TabLineFill                ctermfg=DarkGray ctermbg=NONE     cterm=NONE        guifg=DarkGray guibg=NONE     gui=NONE
 hi TabLineSel                 ctermfg=DarkGray ctermbg=NONE     cterm=NONE        guifg=DarkGray guibg=NONE     gui=NONE
-hi Directory                  ctermfg=White    ctermbg=NONE     cterm=NONE        guifg=White    guibg=NONE     gui=NONE
+hi Directory                  ctermfg=Blue    ctermbg=NONE     cterm=NONE        guifg=White    guibg=NONE     gui=NONE
 hi Search                     ctermfg=Yellow   ctermbg=NONE     cterm=NONE        guifg=Yellow   guibg=NONE     gui=NONE
 hi IncSearch                  ctermfg=Yellow   ctermbg=NONE     cterm=NONE        guifg=Yellow   guibg=NONE     gui=NONE
 hi StatusLine                 ctermfg=Gray     ctermbg=NONE     cterm=NONE        guifg=Gray     guibg=NONE     gui=NONE
