@@ -14,8 +14,6 @@ set so=3
 set switchbuf="useopen,vsplit"
 set hidden
 let mapleader=' '
-noremap p "0p
-noremap P "0P
 
 autocmd BufWritePre *\(.html\|.css\|.java\|.h\|.c\) :%s/\s\+$//e
 "}}}
@@ -186,6 +184,8 @@ let g:termdebug_popup = 0
 let g:termdebug_use_prompt = 1
 command -nargs=1 Javadoc execute "silent !javadocs-search <args>" | :redraw!
 cnoreabbrev f find
+runtime! macros/matchit.vim
+runtime ftplugin/man.vim
 autocmd Syntax java set keywordprg=:Javadoc
 autocmd Syntax java set path+=**/src/main/java/**
 autocmd Syntax python,html,htmldjango,css set path+=**/templates/*,**/static/**

@@ -10,6 +10,25 @@ esac
 
 HISTCONTROL=ignoreboth
 shopt -s checkwinsize
+PROMPT_DIRTRIM=2
+bind Space:magic-space
+shopt -s globstar 2>/dev/null
+bind "set completion-map-case on"
+bind "set mark-symlinked-directories on"
+shopt -s histappend
+shopt -s cmdhist
+HISTSIZE=500000
+HISTFILESIZE=100000
+HISTCONTROL="earsedups:ignoreboth"
+export HISTIGNORE="&:[]*:exit:ls:bg:fg:history:clear"
+HISTTIMEFORMAT="%F %T "
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
+bind '"\e[C": forward-char'
+bind '"\e[D": backward-char'
+shopt -s dirspell 2> /dev/null
+shopt -s cdspell 2> /dev/null
+CDPATH=".:~"
 
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
