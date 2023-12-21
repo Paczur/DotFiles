@@ -122,6 +122,7 @@ Plug 'https://github.com/sheerun/vim-polyglot'
 
 call plug#end()
 let g:gutentags_project_root = ['Makefile','tags']
+let g:gutentags_add_default_project_roots = 0
 let g:qfdiagnostics = {
       \  'texthl': 0,
       \  'sign_error': { 'text': '●', 'priority': 14, 'texthl': 'ErrorMsg'},
