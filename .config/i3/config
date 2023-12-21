@@ -218,9 +218,7 @@ bindsym $mod+d exec dmenu_run -f -i -fn "Code New Roman 14" -nb '#000000' -nf '#
 bindsym $mod+f fullscreen toggle
 bindsym $mod+Shift+r restart
 bindsym --release $mod+p exec scrot -s -q 100 -e "xclip -selection clipboard -t image/png -i $scrot_path" $scrot_path
-bindsym XF86MonBrightnessDown exec xbacklight -dec 2 && pkill -SIGRTMIN+13 i3blocks
-bindsym XF86MonBrightnessUp exec xbacklight -inc 2 && pkill -SIGRTMIN+13 i3blocks
-bindsym F1 exec xbacklight -dec 2 && pkill -SIGRTMIN+11 i3blocks
-bindsym F2 exec xbacklight -inc 2 && pkill -SIGRTMIN+11 i3blocks
+bindsym XF86MonBrightnessDown exec xbacklight -dec 2 && pkill -SIGRTMIN+11 i3blocks
+bindsym XF86MonBrightnessUp exec xbacklight -inc 2 && pkill -SIGRTMIN+11 i3blocks
 #}}}
 #}}}
