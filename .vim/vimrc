@@ -121,6 +121,7 @@ Plug 'https://github.com/machakann/vim-sandwich'
 Plug 'https://github.com/sheerun/vim-polyglot'
 
 call plug#end()
+let g:gutentags_project_root = ['Makefile','tags']
 let g:qfdiagnostics = {
       \  'texthl': 0,
       \  'sign_error': { 'text': '●', 'priority': 14, 'texthl': 'ErrorMsg'},
