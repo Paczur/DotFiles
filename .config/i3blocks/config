@@ -23,7 +23,7 @@ command=[ -f "/home/paczur/Temp/update" ] && echo "" || echo ""
 [brightness]
 label= 
 interval=-1
-signal=13
+signal=11
 command=x=$(xbacklight -get); if [ -n "$x" ]; then echo ${x%.*}%; fi
 
 [emerge-update]
