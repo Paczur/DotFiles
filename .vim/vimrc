@@ -1,4 +1,5 @@
 "USABILITY {{{
+set path-=/usr/include
 set nocompatible
 set backspace=2
 set wildmenu
@@ -170,5 +171,10 @@ let g:termdebug_wide=1
 let g:termdebug_popup = 0
 let g:termdebug_use_prompt = 1
 command -nargs=1 Javadoc execute "silent !javadocs-search <args>" | :redraw!
+cnoreabbrev f find
 autocmd Syntax java set keywordprg=:Javadoc
+autocmd Syntax java set path+=**/src/main/java/**
+autocmd Syntax python,html,htmldjango,css set path+=**/templates/*,**/static/**
+autocmd Syntax c set path+=modules/**
+autocmd Syntax scala set path+=**/src/main/scala/**
 "}}}
