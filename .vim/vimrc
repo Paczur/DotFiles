@@ -12,7 +12,8 @@ set incsearch
 set so=3
 set switchbuf="useopen,vsplit"
 set hidden
-set formatoptions=rqn2jc
+let mapleader=' '
+
 autocmd BufWritePre *\(.html\|.css\|.java\|.h\|.c\) :%s/\s\+$//e
 "}}}
 
@@ -21,12 +22,12 @@ colo custom
 set fillchars=eob:\ ,vert:│,stl:─,stlnc:─,fold:\ ,foldsep:│,foldopen:┬
 set noruler
 set laststatus=2
-set statusline=─\ %f\ %=\ %l/%L:%c\ %=\ %m%{FugitiveStatusline()}%y\ ─
+set statusline=─\ %f\ %=\ %l/%L:%c\ %=\ %m\ %{FugitiveStatusline()}\ %y\ ─
 let &colorcolumn="81,82,99,100"
 set nonumber
 set signcolumn=auto
 set conceallevel=2
-au BufWinEnter quickfix setl statusline=─\ %f\ %=\ %l/%L:%c\ %=\ %m%{FugitiveStatusline()}%y\ ─
+au BufWinEnter quickfix let &statusline=&statusline
 "}}}
 
 "GVIM {{{
@@ -113,10 +114,10 @@ Plug 'https://github.com/mattn/emmet-vim'
 Plug 'https://github.com/gregsexton/matchtag'
 Plug 'https://github.com/matze/vim-move'
 Plug 'https://github.com/vim-scripts/sudo.vim'
-Plug 'https://github.com/derekwyatt/vim-scala'
 Plug 'https://github.com/bfrg/vim-qf-diagnostics'
 Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/machakann/vim-sandwich'
+Plug 'https://github.com/sheerun/vim-polyglot'
 
 call plug#end()
 let g:qfdiagnostics = {
@@ -152,6 +153,7 @@ autocmd Syntax * syn match comment "\v(^#include.*\n)+" fold
 autocmd Syntax * syn match comment "\v(^import.*\n)+" fold
 autocmd Syntax * syn region CommentBlock start="/\*" end="\*/" transparent keepend extend fold
 autocmd Syntax * syn match comment "\v(^\s*//.*\n)+" fold
+autocmd Syntax * set formatoptions=rqn2jc
 "}}}
 
 "PROGRAMMING {{{
@@ -167,4 +169,6 @@ packadd termdebug
 let g:termdebug_wide=1
 let g:termdebug_popup = 0
 let g:termdebug_use_prompt = 1
+command -nargs=1 Javadoc execute "silent !javadocs-search <args>" | :redraw!
+autocmd Syntax java set keywordprg=:Javadoc
 "}}}
