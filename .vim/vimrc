@@ -1,4 +1,5 @@
 "USABILITY {{{
+set encoding=UTF-8
 set path-=/usr/include
 set nocompatible
 set backspace=2
@@ -119,6 +120,10 @@ Plug 'https://github.com/bfrg/vim-qf-diagnostics'
 Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/machakann/vim-sandwich'
 Plug 'https://github.com/sheerun/vim-polyglot'
+Plug 'https://github.com/preservim/nerdtree'
+Plug 'https://github.com/tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'https://github.com/Xuyuanp/nerdtree-git-plugin'
+Plug 'https://github.com/ryanoasis/vim-devicons'
 
 call plug#end()
 let g:gutentags_ctags_extra_args = [

@@ -39,11 +39,11 @@ signal=12
 interval=60
 
 [cpu]
-label= 
+label= 
 interval=5
 
 [date]
-label= 
+label=󰃶 
 command=date '+%a %d'
 interval=3600
 

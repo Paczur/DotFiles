@@ -8,6 +8,7 @@ case $- in
       *) return;;
 esac
 
+shopt -s lastpipe
 HISTCONTROL=ignoreboth
 shopt -s checkwinsize
 PROMPT_DIRTRIM=2
@@ -49,4 +50,4 @@ GIT_PS1_SHOWUNTRACKEDFILES="yes"
 GIT_PS1_SHOWCONFLICTSTATE="yes"
 GIT_PS1_SHOWCOLORHINTS="yes"
 GIT_PS1_DESCRIBE_STYPE="branch"
-PS1='\[$(ps1-repo)\]\[$(__git_ps1 " (%s)")\] '
+PS1='$(ps1-repo)$(__git_ps1 " (%s)") '

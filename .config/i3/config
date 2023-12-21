@@ -9,9 +9,9 @@ set $w #f3f3f3
 set $ws1 "1:Ⅰ"
 set $ws2 "2:Ⅱ"
 set $ws3 "3:Ⅲ"
-set $ws4 "4:"
+set $ws4 "4:"
 set $ws5 "5:"
-set $ws6 "6:"
+set $ws6 "6:󱕴"
 set $ws7 "7:Ⅶ"
 set $ws8 "8:Ⅷ"
 set $ws9 "9:Ⅸ"
@@ -180,7 +180,7 @@ mode $mpv {
 #}}}
 
 # EYECANDY {{{
-font pango: Code New Roman, IPAexGothic, Font Awesome 6 Free Solid 14
+font pango: CodeNewRoman Nerd Font Propo, IPAexGothic 14
 
 default_floating_border pixel 4
 default_border pixel 2
