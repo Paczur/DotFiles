@@ -1,4 +1,5 @@
 . /home/paczur/Scripts/system/path
+. ~/.bashrc
 export PATH
 tty="$(tty | cut -c9-)"
 wm=""

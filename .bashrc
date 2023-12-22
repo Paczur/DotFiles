@@ -4,8 +4,8 @@
 
 # If not running interactively, don't do anything
 case $- in
-    *i*) ;;
-      *) return;;
+  *i*) ;;
+  *) return;;
 esac
 
 shopt -s no_empty_cmd_completion
@@ -32,7 +32,7 @@ shopt -s dirspell 2> /dev/null
 shopt -s cdspell 2> /dev/null
 CDPATH=".:~"
 cd () {
-    command cd "$@" > /dev/null
+  command cd "$@" > /dev/null
 }
 
 if ! shopt -oq posix; then
@@ -52,6 +52,8 @@ C=$'\001\e[36m\002'
 M=$'\001\e[35m\002'
 Y=$'\001\e[33m\002'
 RESET=$"\001\e[00m\002"
+BO='('
+BC=')'
 
 markers=".git:README.md:LICENSE:.vimrc:Makefile"
 
@@ -61,47 +63,57 @@ GIT_PS1_SHOWUNTRACKEDFILES="yes"
 GIT_PS1_SHOWCONFLICTSTATE="yes"
 GIT_PS1_SHOWCOLORHINTS="yes"
 GIT_PS1_DESCRIBE_STYPE="branch"
+GIT_PS1_STATESEPARATOR="${G}${BC}${G}${BO}"
 . /usr/share/git/git-prompt.sh
 
 __ps1() {
-    if [[ $? != 0 ]]; then
-      status='x '
+
+  if [[ $? != 0 ]]; then
+    status='${R}${BO}x${BC}'
   else
-      status=''
-    fi
+    status=''
+  fi
 
-    pwd="$(pwd)"
-    host="${G}$(hostname -s)"
-    work="${B}$(echo "$pwd" | sed "s/${HOME//\//\\\/}/~/")"
+  pwd="$(pwd)"
 
-    readarray -d ':' -t marray < <(echo "$markers")
-    dir="$pwd"
-    while [ "$dir" != "/" ]; do
-      for marker in ${marray[@]}; do
-        if [ -e "$dir/$marker" ]; then
-          repodir="$dir"
-          found="true"
-          break
-        fi
-      done
-      if [ -n "$found" ]; then
+  if [ -n "$SSH_TTY" ]; then
+    host="${G}${BO}$(hostname -s)${BC} "
+  else
+    host=""
+  fi
+
+  work="${B}${BO}$(echo "$pwd" | sed "s/${HOME//\//\\\/}/~/")${BC}"
+
+  readarray -d ':' -t marray < <(echo "$markers")
+  dir="$pwd"
+  repodir=""
+  found=""
+  while [ "$dir" != "/" ]; do
+    for marker in ${marray[@]}; do
+      if [ -e "$dir/$marker" ]; then
+        repodir="$dir"
+        found="true"
         break
       fi
-      dir="$(dirname "$dir")"
     done
-
-
-    if [ -n "$repodir" ]; then
-      name="$(basename "$repodir")"
-      prompt="$(echo -n "${pwd}" \
-        | sed "s/${repodir//\//\\\/}/${name//\//\\\/}\\${B}/")"
-      if [ "$prompt" = "${name}${B}" ]; then
-        prompt+="${C}"
-      fi
-      work="${C} ${prompt}"
+    if [ -n "$found" ]; then
+      break
     fi
+    dir="$(dirname "$dir")"
+  done
 
-    PS1="${R}${status}${host} ${work}$(__git_ps1 ">%s")${RESET} "
+
+  if [ -n "$repodir" ]; then
+    name="$(basename "$repodir")"
+    prompt="$(echo -n "${pwd}" \
+      | sed "s/${repodir//\//\\\/}/${name//\//\\\/}\\${B}/")"
+          if [ "$prompt" = "${name}${B}" ]; then
+            prompt+="${C}"
+          fi
+          work="${C}${BO}${prompt}${BC}"
+  fi
+
+  PS1="${status}${host}${work}$(__git_ps1 "${G}${BO}%s${G}${BC}")${RESET} "
 }
 
-PROMPT_COMMAND=__ps1
+export PROMPT_COMMAND=__ps1
