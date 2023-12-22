@@ -8,6 +8,7 @@ case $- in
       *) return;;
 esac
 
+shopt -s no_empty_cmd_completion
 shopt -s lastpipe
 HISTCONTROL=ignoreboth
 shopt -s checkwinsize
@@ -42,12 +43,65 @@ if ! shopt -oq posix; then
   fi
 fi
 
-. /usr/share/git/git-prompt.sh
 xset -b b off
+
+R=$'\001\e[31m\002'
+G=$'\001\e[32m\002'
+B=$'\001\e[34m\002'
+C=$'\001\e[36m\002'
+M=$'\001\e[35m\002'
+Y=$'\001\e[33m\002'
+RESET=$"\001\e[00m\002"
+
+markers=".git:README.md:LICENSE:.vimrc:Makefile"
+
 GIT_PS1_SHOWDIRTYSTATE="yes"
 GIT_PS1_SHOWSTASHSTATE="yes"
 GIT_PS1_SHOWUNTRACKEDFILES="yes"
 GIT_PS1_SHOWCONFLICTSTATE="yes"
 GIT_PS1_SHOWCOLORHINTS="yes"
 GIT_PS1_DESCRIBE_STYPE="branch"
-PS1='$(ps1-repo)$(__git_ps1 " (%s)") '
+. /usr/share/git/git-prompt.sh
+
+__ps1() {
+    if [[ $? != 0 ]]; then
+      status='x '
+  else
+      status=''
+    fi
+
+    pwd="$(pwd)"
+    host="${G}$(hostname -s)"
+    work="${B}$(echo "$pwd" | sed "s/${HOME//\//\\\/}/~/")"
+
+    readarray -d ':' -t marray < <(echo "$markers")
+    dir="$pwd"
+    while [ "$dir" != "/" ]; do
+      for marker in ${marray[@]}; do
+        if [ -e "$dir/$marker" ]; then
+          repodir="$dir"
+          found="true"
+          break
+        fi
+      done
+      if [ -n "$found" ]; then
+        break
+      fi
+      dir="$(dirname "$dir")"
+    done
+
+
+    if [ -n "$repodir" ]; then
+      name="$(basename "$repodir")"
+      prompt="$(echo -n "${pwd}" \
+        | sed "s/${repodir//\//\\\/}/${name//\//\\\/}\\${B}/")"
+      if [ "$prompt" = "${name}${B}" ]; then
+        prompt+="${C}"
+      fi
+      work="${C} ${prompt}"
+    fi
+
+    PS1="${R}${status}${host} ${work}$(__git_ps1 ">%s")${RESET} "
+}
+
+PROMPT_COMMAND=__ps1
