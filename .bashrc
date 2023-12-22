@@ -77,7 +77,7 @@ __ps1() {
   pwd="$(pwd)"
 
   if [ -n "$SSH_TTY" ]; then
-    host="${G}${BO}$(hostname -s)${BC} "
+    host="${G}${BO}$(hostname -s)${BC}"
   else
     host=""
   fi
@@ -103,17 +103,22 @@ __ps1() {
   done
 
 
+  branch="$(__git_ps1 "${G}${BO}%s${G}${BC}")${RESET}"
+
   if [ -n "$repodir" ]; then
-    name="$(basename "$repodir")"
     prompt="$(echo -n "${pwd}" \
-      | sed "s/${repodir//\//\\\/}/${name//\//\\\/}\\${B}/")"
-          if [ "$prompt" = "${name}${B}" ]; then
-            prompt+="${C}"
+      | sed "s/${repodir//\//\\\/}//")"
+          if [ -z "$prompt" ]; then
+            work=""
+          else
+            work="${B}${BO}.${prompt}${BC}"
           fi
-          work="${C}${BO}${prompt}${BC}"
+          project="${C}${BO} $(basename "$repodir")${BC}"
+        else
+          project=""
   fi
 
-  PS1="${status}${host}${work}$(__git_ps1 "${G}${BO}%s${G}${BC}")${RESET} "
+  PS1="${status}${host}${project}${branch}${work} ${RESET}"
 }
 
 export PROMPT_COMMAND=__ps1
