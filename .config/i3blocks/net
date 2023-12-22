@@ -14,9 +14,9 @@ fi
 if [ -d /sys/class/net/eth0 ]; then
   if [ "$(cat /sys/class/net/eth0/operstate)" = "up" ]; then
     if [ "$(cat /sys/class/net/eth0/carrier)" = "1" ]; then
-      eth=""
+      eth="󰌗"
     else
-      eth=""
+      eth="󱘖"
     fi
   fi
   full="$eth"

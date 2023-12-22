@@ -118,7 +118,7 @@ __ps1() {
           project=""
   fi
 
-  PS1="${status}${host}${project}${branch}${work} ${RESET}"
+  PS1="${status}${host}${project}${branch}${work}${RESET} "
 }
 
 export PROMPT_COMMAND=__ps1
