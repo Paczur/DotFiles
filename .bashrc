@@ -85,10 +85,10 @@ __ps1_git_status() {
       state+="${gstash_color}${gstash_char}"
     fi
     if [ "${count[0]}" -ne 0 ]; then
-      state+="${gahead_color}${count[0]}${gahead_char}"
+      state+="${gahead_color}${gahead_char}"
     fi
     if [ "${count[1]}" -ne 0 ]; then
-      state+="${gbehind_color}${count[1]}${gbehind_char}"
+      state+="${gbehind_color}${gbehind_char}"
     fi
 
     if [ -n "$state" ]; then
