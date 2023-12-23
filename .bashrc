@@ -1,7 +1,3 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-#see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
-
 # If not running interactively, don't do anything
 case $- in
   *i*) ;;
@@ -45,80 +41,107 @@ fi
 
 xset -b b off
 
-R=$'\001\e[31m\002'
-G=$'\001\e[32m\002'
-B=$'\001\e[34m\002'
-C=$'\001\e[36m\002'
-M=$'\001\e[35m\002'
-Y=$'\001\e[33m\002'
-RESET=$"\001\e[00m\002"
+R='\001\e[31m\002'
+G='\001\e[32m\002'
+B='\001\e[34m\002'
+C='\001\e[36m\002'
+M='\001\e[35m\002'
+Y='\001\e[33m\002'
+RESET='\001\e[00m\002'
 BO='('
 BC=')'
 
-markers=".git:README.md:LICENSE:.vimrc:Makefile"
-
-GIT_PS1_SHOWDIRTYSTATE="yes"
-GIT_PS1_SHOWSTASHSTATE="yes"
-GIT_PS1_SHOWUNTRACKEDFILES="yes"
-GIT_PS1_SHOWCONFLICTSTATE="yes"
-GIT_PS1_SHOWCOLORHINTS="yes"
-GIT_PS1_DESCRIBE_STYPE="branch"
-GIT_PS1_STATESEPARATOR="${G}${BC}${G}${BO}"
-. /usr/share/git/git-prompt.sh
-
-__ps1() {
-
+__ps1_exit_code() {
   if [[ $? != 0 ]]; then
-    status='${R}${BO}x${BC}'
-  else
-    status=''
+    echo "${R}${BO}x${BC}"
   fi
-
-  pwd="$(pwd)"
-
+}
+__ps1_ssh() {
   if [ -n "$SSH_TTY" ]; then
-    host="${G}${BO}$(hostname -s)${BC}"
-  else
-    host=""
+    echo "${G}${BO}$(hostname -s)${BC}"
   fi
-
-  work="${B}${BO}$(echo "$pwd" | sed "s/${HOME//\//\\\/}/~/")${BC}"
-
-  readarray -d ':' -t marray < <(echo "$markers")
-  dir="$pwd"
-  repodir=""
-  found=""
+}
+__ps1_git_dir() {
+  local dir="$(pwd)"
   while [ "$dir" != "/" ]; do
-    for marker in ${marray[@]}; do
-      if [ -e "$dir/$marker" ]; then
-        repodir="$dir"
-        found="true"
-        break
-      fi
-    done
-    if [ -n "$found" ]; then
-      break
+    if [ -d "$dir/.git" ]; then
+      echo "$dir"
+      return
     fi
     dir="$(dirname "$dir")"
   done
-
-
-  branch="$(__git_ps1 "${G}${BO}%s${G}${BC}")${RESET}"
-
-  if [ -n "$repodir" ]; then
-    prompt="$(echo -n "${pwd}" \
-      | sed "s/${repodir//\//\\\/}//")"
-          if [ -z "$prompt" ]; then
-            work=""
-          else
-            work="${B}${BO}.${prompt}${BC}"
-          fi
-          project="${C}${BO} $(basename "$repodir")${BC}"
-        else
-          project=""
-  fi
-
-  PS1="${status}${host}${project}${branch}${work}${RESET} "
 }
+__ps1_git_status() {
+  local git_status="$(git status 2>&1)"
+  local git_dir="$(echo "${git_status}" |\
+    grep 'fatal: this operation must be run in a work tree')"
+  if [ -z "${git_dir}" ]; then
+    local unstaged="$(echo "${git_status}" |\
+      grep 'Changes not staged for commit')"
+    local staged="$(echo "${git_status}" | grep 'Changes to be committed')"
+    local untracked="$(echo "${git_status}" | grep 'Untracked files')"
+    local state="${G}${BO}"
+    if [ -n "$unstaged" ]; then
+      state+="${R}*"
+    fi
+    if [ -n "$staged" ]; then
+      state+="${G}+"
+    fi
+    if [ -n "$untracked" ]; then
+      state+="${R}%"
+    fi
+    if [ -e "$1/.git/refs/stash" ]; then
+      state+="${B}$"
+    fi
+    echo "$state${G}${BC}"
+  fi
+}
+__ps1_git_branch() {
+  echo "${G}${BO}$(sed 's/.*\///g' "$1/.git/HEAD")${BC}"
+}
+__ps1_cwd() {
+  local pwd="$(pwd)"
+  local cwd="$(echo "$pwd" | sed "s/${HOME//\//\\\/}/~/")"
+  if [ -z "$1" ]; then
+    echo "${B}${BO}$cwd${BC}"
+  else
+    cwd="$(echo "$pwd" | sed "s/${1//\//\\\/}//")"
+    if [ -n "$cwd" ]; then
+      echo "${B}${BO}.$cwd${BC}"
+    fi
+  fi
+}
+__ps1_venv() {
+  if [ -n "${VIRTUAL_ENV_PROMPT}" ]; then
+    echo "${RESET}${BO}${VIRTUAL_ENV_PROMPT}${BC}"
+  fi
+}
+__ps1_jobs() {
+  local job_count="$(jobs -r | wc -l)"
+  if [ "${job_count}" -ne 0 ]; then
+    echo "${M}${BO}${job_count}${BC}"
+  fi
+}
+__ps1() {
+  local x="$(__ps1_exit_code)"
+  local jobs="$(__ps1_jobs)"
+  local host="$(__ps1_ssh)"
+  local git="$(__ps1_git_dir)"
+  if [ -n "$git" ]; then
+    local project="${C}${BO}$(basename "$git")${BC}"
+    local branch="$(__ps1_git_branch "$git")"
+    local state="$(__ps1_git_status "$git")"
+  fi
+  local venv="$(__ps1_venv)"
+  local cwd="$(__ps1_cwd "$git")"
 
-export PROMPT_COMMAND=__ps1
+  PS1="${x}${jobs}${host}${project}${branch}${state}${venv}${cwd}${RESET} "
+
+  local PS1_CLEAN="$(echo "$PS1" |\
+    sed 's/\\001\\e\[[0-9]\+m\\002//g;s/\[[0-9]*m//g')"
+  if (( "${#PS1_CLEAN}>${COLUMNS}/2" )); then
+    PS1+="\n"
+   fi
+ }
+
+ export PROMPT_COMMAND=__ps1

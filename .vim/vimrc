@@ -95,6 +95,8 @@ autocmd FileType vim set foldmethod=marker
 autocmd FileType vim set foldnestmax=1
 autocmd FileType i3config set foldmethod=marker
 autocmd FileType i3config set foldnestmax=2
+autocmd FileType sh set foldmethod=indent
+autocmd FileType sh set foldnestmax=1
 
 autocmd FileType * call FoldColumn()
 autocmd FileType * set foldtext=FoldText()
