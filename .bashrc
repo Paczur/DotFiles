@@ -41,16 +41,6 @@ fi
 
 xset -b b off
 
-R='\001\e[31m\002'
-G='\001\e[32m\002'
-B='\001\e[34m\002'
-C='\001\e[36m\002'
-M='\001\e[35m\002'
-Y='\001\e[33m\002'
-RESET='\001\e[00m\002'
-BO='('
-BC=')'
-
 __ps1_exit_code() {
   if [[ $? != 0 ]]; then
     echo "${R}${BO}x${BC}"
@@ -125,6 +115,16 @@ __ps1_jobs() {
   fi
 }
 __ps1() {
+  local R='\001\e[31m\002'
+  local G='\001\e[32m\002'
+  local B='\001\e[34m\002'
+  local C='\001\e[36m\002'
+  local M='\001\e[35m\002'
+  local Y='\001\e[33m\002'
+  local RESET='\001\e[00m\002'
+  local BO='('
+  local BC=')'
+
   local x="$(__ps1_exit_code)"
   local jobs="$(__ps1_jobs)"
   local host="$(__ps1_ssh)"
@@ -143,7 +143,7 @@ __ps1() {
     sed 's/\\001\\e\[[0-9]\+m\\002//g;s/\[[0-9]*m//g')"
   if (( "${#PS1_CLEAN}>${COLUMNS}/2" )); then
     PS1+="\n"
-   fi
- }
+  fi
+}
 
- export PROMPT_COMMAND=__ps1
+export PROMPT_COMMAND=__ps1
