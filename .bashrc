@@ -41,11 +41,6 @@ fi
 
 xset -b b off
 
-__ps1_exit_code() {
-  if [[ $? != 0 ]]; then
-    echo "${R}${BO}x${BC}"
-  fi
-}
 __ps1_ssh() {
   if [ -n "$SSH_TTY" ]; then
     echo "${G}${BO}$(hostname -s)${BC}"
@@ -115,6 +110,9 @@ __ps1_jobs() {
   fi
 }
 __ps1() {
+  if [[ $? != 0 ]]; then
+    local x="x"
+  fi
   local R='\001\e[31m\002'
   local G='\001\e[32m\002'
   local B='\001\e[34m\002'
@@ -125,7 +123,9 @@ __ps1() {
   local BO='('
   local BC=')'
 
-  local x="$(__ps1_exit_code)"
+  if [ -n "$x" ]; then
+    x="${R}${BO}x${BC}"
+  fi
   local jobs="$(__ps1_jobs)"
   local host="$(__ps1_ssh)"
   local git="$(__ps1_git_dir)"
