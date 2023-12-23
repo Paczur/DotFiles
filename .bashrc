@@ -80,7 +80,7 @@ __ps1_git_status() {
       grep 'Changes not staged for commit')"
     local staged="$(echo "${git_status}" | grep 'Changes to be committed')"
     local untracked="$(echo "${git_status}" | grep 'Untracked files')"
-    local state="${G}${BO}"
+    local state=""
     if [ -n "$unstaged" ]; then
       state+="${R}*"
     fi
@@ -93,7 +93,9 @@ __ps1_git_status() {
     if [ -e "$1/.git/refs/stash" ]; then
       state+="${B}$"
     fi
-    echo "$state${G}${BC}"
+    if [ -n "$state" ]; then
+      echo "${G}${BO}$state${G}${BC}"
+    fi
   fi
 }
 __ps1_git_branch() {
