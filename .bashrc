@@ -43,7 +43,7 @@ xset -b b off
 
 __ps1_ssh() {
   if [ -n "$SSH_TTY" ]; then
-    echo "${G}${BO}$(hostname -s)${BC}"
+    echo "${host_color}${BO}$(hostname -s)${BC}"
   fi
 }
 __ps1_git_dir() {
@@ -57,6 +57,7 @@ __ps1_git_dir() {
   done
 }
 __ps1_git_status() {
+  #Takes git_dir as argument
   local git_status="$(git status 2>&1)"
   local git_dir="$(echo "${git_status}" |\
     grep 'fatal: this operation must be run in a work tree')"
@@ -65,48 +66,62 @@ __ps1_git_status() {
       grep 'Changes not staged for commit')"
     local staged="$(echo "${git_status}" | grep 'Changes to be committed')"
     local untracked="$(echo "${git_status}" | grep 'Untracked files')"
+    local remote="$(git branch --list \
+      "$(git branch --show-current)" "--format=%(upstream:remotename)")"
+    local branch="$(sed 's/.*\///g' "$1/.git/HEAD")"
+    local count=($(git rev-list --left-right --count $branch...$remote/$branch))
     local state=""
+
     if [ -n "$unstaged" ]; then
-      state+="${R}*"
+      state+="${gunstaged_color}${gunstaged_char}"
     fi
     if [ -n "$staged" ]; then
-      state+="${G}+"
+      state+="${gstaged_color}${gstaged_char}"
     fi
     if [ -n "$untracked" ]; then
-      state+="${R}%"
+      state+="${guntracked_color}${guntracked_char}"
     fi
     if [ -e "$1/.git/refs/stash" ]; then
-      state+="${B}$"
+      state+="${gstash_color}${gstash_char}"
     fi
+    if [ "${count[0]}" -ne 0 ]; then
+      state+="${gahead_color}${count[0]}${gahead_char}"
+    fi
+    if [ "${count[1]}" -ne 0 ]; then
+      state+="${gbehind_color}${count[1]}${gbehind_char}"
+    fi
+
     if [ -n "$state" ]; then
-      echo "${G}${BO}$state${G}${BC}"
+      echo "${gstatus_color}${BO}$state${gstatus_color}${BC}"
     fi
   fi
 }
 __ps1_git_branch() {
-  echo "${G}${BO}$(sed 's/.*\///g' "$1/.git/HEAD")${BC}"
+  #Takes git_dir as argument
+  echo "${gbranch_color}${BO}$(sed 's/.*\///g' "$1/.git/HEAD")${BC}"
 }
 __ps1_cwd() {
+  #Takes dir to shorten as argument
   local pwd="$(pwd)"
   local cwd="$(echo "$pwd" | sed "s/${HOME//\//\\\/}/~/")"
   if [ -z "$1" ]; then
-    echo "${B}${BO}$cwd${BC}"
+    echo "${cwd_color}${BO}$cwd${BC}"
   else
     cwd="$(echo "$pwd" | sed "s/${1//\//\\\/}//")"
     if [ -n "$cwd" ]; then
-      echo "${B}${BO}.$cwd${BC}"
+      echo "${cwd_color}${BO}.$cwd${BC}"
     fi
   fi
 }
 __ps1_venv() {
   if [ -n "${VIRTUAL_ENV_PROMPT}" ]; then
-    echo "${RESET}${BO}${VIRTUAL_ENV_PROMPT}${BC}"
+    echo "${venv_color}${BO}${VIRTUAL_ENV_PROMPT}${BC}"
   fi
 }
 __ps1_jobs() {
-  local job_count="$(jobs -r | wc -l)"
-  if [ "${job_count}" -ne 0 ]; then
-    echo "${M}${BO}${job_count}${BC}"
+  local job_colorount="$(jobs -r | wc -l)"
+  if [ "${job_colorount}" -ne 0 ]; then
+    echo "${jobs_color}${BO}${job_colorount}${BC}"
   fi
 }
 __ps1() {
@@ -123,18 +138,38 @@ __ps1() {
   local BO='('
   local BC=')'
 
+  local jobs_color="${M}"
+  local venv_color="${RESET}"
+  local cwd_color="${B}"
+  local gbranch_color="${G}"
+  local gstatus_color="${G}"
+  local gunstaged_color="${R}"
+  local guntracked_color="${R}"
+  local gstash_color="${B}"
+  local gstaged_color="${G}"
+  local gahead_color="${G}"
+  local gbehind_color="${R}"
+  local host_color="${G}"
+
+  local gunstaged_char='✱'
+  local guntracked_char='%'
+  local gstash_char='≡'
+  local gstaged_char='+'
+  local gahead_char='↑'
+  local gbehind_char='↓'
+
   if [ -n "$x" ]; then
     x="${R}${BO}x${BC}"
   fi
   local jobs="$(__ps1_jobs)"
   local host="$(__ps1_ssh)"
   local git="$(__ps1_git_dir)"
+  local venv="$(__ps1_venv)"
   if [ -n "$git" ]; then
     local project="${C}${BO}$(basename "$git")${BC}"
     local branch="$(__ps1_git_branch "$git")"
     local state="$(__ps1_git_status "$git")"
   fi
-  local venv="$(__ps1_venv)"
   local cwd="$(__ps1_cwd "$git")"
 
   PS1="${x}${jobs}${host}${project}${branch}${state}${venv}${cwd}${RESET} "
@@ -142,7 +177,7 @@ __ps1() {
   local PS1_CLEAN="$(echo "$PS1" |\
     sed 's/\\001\\e\[[0-9]\+m\\002//g;s/\[[0-9]*m//g')"
   if (( "${#PS1_CLEAN}>${COLUMNS}/2" )); then
-    PS1+="\n"
+    PS1+="\n🢒 "
   fi
 }
 
