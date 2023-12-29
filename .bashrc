@@ -26,10 +26,6 @@ bind '"\e[C": forward-char'
 bind '"\e[D": backward-char'
 shopt -s dirspell 2> /dev/null
 shopt -s cdspell 2> /dev/null
-CDPATH=".:~"
-cd () {
-  command cd "$@" > /dev/null
-}
 
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
