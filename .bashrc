@@ -154,7 +154,7 @@ gbehind_char='↓'
 __ps1() {
   local st="$?"
   if [[ "$st" != 0 ]]; then
-    x="${R}${BO}$st${BC}"
+    local x="${R}${BO}$st${BC}"
   fi
 
   local jobs="$(__ps1_jobs)"
