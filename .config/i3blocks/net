@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/bin/env dash
 full=""
 if [ -d /sys/class/net/wlan0 ]; then
   if [ "$(cat /sys/class/net/wlan0/operstate)" = "up" ]; then

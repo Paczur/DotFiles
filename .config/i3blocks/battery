@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/bin/env dash
 
 charge_now="$(cat /sys/class/power_supply/BAT1/charge_now)"
 charge_full="$(cat /sys/class/power_supply/BAT1/charge_full)"

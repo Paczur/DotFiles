@@ -120,47 +120,48 @@ __ps1_jobs() {
     echo "${jobs_color}${BO}${job_colorount}${BC}"
   fi
 }
+
+R='\001\e[31m\002'
+G='\001\e[32m\002'
+B='\001\e[34m\002'
+C='\001\e[36m\002'
+M='\001\e[35m\002'
+Y='\001\e[33m\002'
+RESET='\001\e[00m\002'
+BO='('
+BC=')'
+
+jobs_color="${M}"
+venv_color="${RESET}"
+cwd_color="${B}"
+gbranch_color="${G}"
+gstatus_color="${G}"
+gunstaged_color="${R}"
+guntracked_color="${R}"
+gstash_color="${B}"
+gstaged_color="${G}"
+gahead_color="${G}"
+gbehind_color="${R}"
+host_color="${G}"
+
+gunstaged_char='✱'
+guntracked_char='%'
+gstash_char='≡'
+gstaged_char='+'
+gahead_char='↑'
+gbehind_char='↓'
+
 __ps1() {
-  if [[ $? != 0 ]]; then
-    local x="x"
+  local st="$?"
+  if [[ "$st" != 0 ]]; then
+    x="${R}${BO}$st${BC}"
   fi
-  local R='\001\e[31m\002'
-  local G='\001\e[32m\002'
-  local B='\001\e[34m\002'
-  local C='\001\e[36m\002'
-  local M='\001\e[35m\002'
-  local Y='\001\e[33m\002'
-  local RESET='\001\e[00m\002'
-  local BO='('
-  local BC=')'
 
-  local jobs_color="${M}"
-  local venv_color="${RESET}"
-  local cwd_color="${B}"
-  local gbranch_color="${G}"
-  local gstatus_color="${G}"
-  local gunstaged_color="${R}"
-  local guntracked_color="${R}"
-  local gstash_color="${B}"
-  local gstaged_color="${G}"
-  local gahead_color="${G}"
-  local gbehind_color="${R}"
-  local host_color="${G}"
-
-  local gunstaged_char='✱'
-  local guntracked_char='%'
-  local gstash_char='≡'
-  local gstaged_char='+'
-  local gahead_char='↑'
-  local gbehind_char='↓'
-
-  if [ -n "$x" ]; then
-    x="${R}${BO}x${BC}"
-  fi
   local jobs="$(__ps1_jobs)"
   local host="$(__ps1_ssh)"
-  local git="$(__ps1_git_dir)"
   local venv="$(__ps1_venv)"
+
+  local git="$(__ps1_git_dir)"
   if [ -n "$git" ]; then
     local project="${C}${BO}$(basename "$git")${BC}"
     local branch="$(__ps1_git_branch "$git")"
@@ -173,7 +174,7 @@ __ps1() {
   local PS1_CLEAN="$(echo "$PS1" |\
     sed 's/\\001\\e\[[0-9]\+m\\002//g;s/\[[0-9]*m//g')"
   if (( "${#PS1_CLEAN}>${COLUMNS}/2" )); then
-    PS1+="\n🢒 "
+    PS1="╭${PS1}\n╰🢒 "
   fi
 }
 
