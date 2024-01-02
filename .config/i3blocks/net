@@ -5,7 +5,7 @@ if [ -d /sys/class/net/wlan0 ]; then
     wifi=""
     ssid="$(iwgetid | sed 's/wlan0 \+ESSID:"\(.*\)"/\1/')"
     if [ -n "$ssid" ]; then
-      wifi+=" $ssid"
+      wifi="$wifi $ssid"
     fi
   fi
   full="$wifi"
