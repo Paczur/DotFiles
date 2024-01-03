@@ -35,8 +35,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-xset -b b off
-
 __ps1_host() {
   local host="$(hostname -s)"
   if [ "$host" != "Silver" ]; then
