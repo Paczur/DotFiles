@@ -37,9 +37,15 @@ fi
 
 xset -b b off
 
-__ps1_ssh() {
+__ps1_host() {
   if [ -n "$SSH_TTY" ]; then
     echo "${host_color}${BO}$(hostname -s)${BC}"
+  fi
+}
+__ps1_user() {
+  local user="$(whoami)"
+  if [ "$user" != "paczur" ]; then
+    echo "${user_color}${BO}${user}${BC}"
   fi
 }
 __ps1_git_dir() {
@@ -143,6 +149,7 @@ gstaged_color="${G}"
 gahead_color="${G}"
 gbehind_color="${R}"
 host_color="${G}"
+user_color="${R}"
 
 gunstaged_char='✱'
 guntracked_char='%'
@@ -158,7 +165,8 @@ __ps1() {
   fi
 
   local jobs="$(__ps1_jobs)"
-  local host="$(__ps1_ssh)"
+  local host="$(__ps1_host)"
+  local user="$(__ps1_user)"
   local venv="$(__ps1_venv)"
 
   local git="$(__ps1_git_dir)"
@@ -169,7 +177,7 @@ __ps1() {
   fi
   local cwd="$(__ps1_cwd "$git")"
 
-  PS1="${x}${jobs}${host}${project}${branch}${state}${venv}${cwd}${RESET} "
+  PS1="${x}${jobs}${host}${user}${project}${branch}${state}${venv}${cwd}${RESET} "
 
   local PS1_CLEAN="$(echo "$PS1" |\
     sed 's/\\001\\e\[[0-9]\+m\\002//g;s/\[[0-9]*m//g')"
