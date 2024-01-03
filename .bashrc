@@ -35,8 +35,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-xset -b b off
-
 __ps1_host() {
   if [ -n "$(pstree -ps $$ | grep "sshd")" ]; then
     echo "${host_color}${BO}$(hostname -s)${BC}"
