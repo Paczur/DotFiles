@@ -38,8 +38,9 @@ fi
 xset -b b off
 
 __ps1_host() {
-  if [ -n "$(pstree -ps $$ | grep "sshd")" ]; then
-    echo "${host_color}${BO}$(hostname -s)${BC}"
+  local host="$(hostname -s)"
+  if [ "$host" != "Silver" ]; then
+    echo "${host_color}${BO}${host}${BC}"
   fi
 }
 __ps1_user() {
