@@ -11,9 +11,14 @@ color=#f3f3f3
 markup=cairo
 
 [mpv-volume]
-label= 
+label= 
 interval=30
 signal=10
+
+[volume]
+interval=-1
+signal=13
+command=volume g
 
 [emerge-update]
 interval=0

@@ -19,7 +19,7 @@ set $ws10 "10:"
 set $m1 "eDP1"
 set $m2 "HDMI1"
 set $system ""
-set $mpv ""
+set $audio ""
 set $window ""
 set $scrot_path "/home/paczur/Multimedia/Pictures/Screenshots/Scrot/%d-%m-%Y_%H-%M-%S_$wx$h.png"
 #}}}
@@ -112,7 +112,7 @@ bar {
 
 # MODES {{{
 bindsym $mod+w mode $window
-bindsym $mod+c mode $mpv
+bindsym $mod+c mode $audio
 bindsym $mod+s mode $system
 
 # SYSTEM {{{
@@ -125,7 +125,7 @@ mode $system {
     bindsym Escape mode "default"
     bindsym $mod+s mode "default"
     bindsym $mod+w mode $window
-    bindsym $mod+c mode $mpv
+    bindsym $mod+c mode $audio
 }
 #}}}
 
@@ -159,12 +159,12 @@ mode $window {
     bindsym Escape mode "default"
     bindsym $mod+w mode "default"
     bindsym $mod+s mode $system
-    bindsym $mod+c mode $mpv
+    bindsym $mod+c mode $audio
 }
 #}}}
 
 # MPV {{{
-mode $mpv {
+mode $audio {
   bindsym f exec "echo 'cycle pause' | socat - /tmp/mpvsocket"
     bindsym d exec "echo 'playlist_next' | socat - /tmp/mpvsocket"
     bindsym a exec "echo 'playlist_prev' | socat - /tmp/mpvsocket"
@@ -218,7 +218,11 @@ bindsym $mod+d exec dmenu_run -f -i -fn "Code New Roman 14" -nb '#000000' -nf '#
 bindsym $mod+f fullscreen toggle
 bindsym $mod+Shift+r restart
 bindsym --release $mod+p exec scrot -s -q 100 -e "xclip -selection clipboard -t image/png -i $scrot_path" $scrot_path
+
 bindsym XF86MonBrightnessDown exec xbacklight -dec 2 && pkill -SIGRTMIN+11 i3blocks
 bindsym XF86MonBrightnessUp exec xbacklight -inc 2 && pkill -SIGRTMIN+11 i3blocks
+bindsym XF86AudioMute exec volume m && pkill -SIGRTMIN+13 i3blocks
+bindsym XF86AudioLowerVolume exec volume - && pkill -SIGRTMIN+13 i3blocks
+bindsym XF86AudioRaiseVolume exec volume + && pkill -SIGRTMIN+13 i3blocks
 #}}}
 #}}}
