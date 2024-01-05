@@ -19,7 +19,7 @@ set $ws10 "10:"
 set $m1 "eDP1"
 set $m2 "HDMI1"
 set $system ""
-set $audio ""
+set $mpv ""
 set $window ""
 set $scrot_path "/home/paczur/Multimedia/Pictures/Screenshots/Scrot/%d-%m-%Y_%H-%M-%S_$wx$h.png"
 #}}}
@@ -112,7 +112,7 @@ bar {
 
 # MODES {{{
 bindsym $mod+w mode $window
-bindsym $mod+c mode $audio
+bindsym $mod+c mode $mpv
 bindsym $mod+s mode $system
 
 # SYSTEM {{{
@@ -125,7 +125,7 @@ mode $system {
     bindsym Escape mode "default"
     bindsym $mod+s mode "default"
     bindsym $mod+w mode $window
-    bindsym $mod+c mode $audio
+    bindsym $mod+c mode $mpv
 }
 #}}}
 
@@ -159,12 +159,12 @@ mode $window {
     bindsym Escape mode "default"
     bindsym $mod+w mode "default"
     bindsym $mod+s mode $system
-    bindsym $mod+c mode $audio
+    bindsym $mod+c mode $mpv
 }
 #}}}
 
 # MPV {{{
-mode $audio {
+mode $mpv {
   bindsym f exec "echo 'cycle pause' | socat - /tmp/mpvsocket"
     bindsym d exec "echo 'playlist_next' | socat - /tmp/mpvsocket"
     bindsym a exec "echo 'playlist_prev' | socat - /tmp/mpvsocket"
