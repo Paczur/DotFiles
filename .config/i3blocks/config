@@ -21,7 +21,7 @@ background=#f3f36e
 border=#f3f36e
 color=#111111
 signal=14
-command=[ -f "/home/paczur/Temp/update" ] && echo "" || echo ""
+command=[ -f "/home/paczur/System/Tmp/update" ] && echo "󰳡" || echo ""
 
 [volume]
 interval=-1
