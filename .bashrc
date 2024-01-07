@@ -69,7 +69,7 @@ __ps1_git_status() {
     local remote="$(git branch --list \
       "$(git branch --show-current)" "--format=%(upstream:remotename)")"
     local branch="$(sed 's/.*\///g' "$1/.git/HEAD")"
-    local count=($(git rev-list --left-right --count $branch...$remote/$branch))
+    local count=($(git rev-list --left-right --count $branch...$remote/$branch 2>&1))
     local state=""
 
     if [ -n "$unstaged" ]; then
@@ -84,11 +84,13 @@ __ps1_git_status() {
     if [ -e "$1/.git/refs/stash" ]; then
       state+="${gstash_color}${gstash_char}"
     fi
-    if [ "${count[0]}" -ne 0 ]; then
-      state+="${gahead_color}${gahead_char}"
-    fi
-    if [ "${count[1]}" -ne 0 ]; then
-      state+="${gbehind_color}${gbehind_char}"
+    if [ "${count[0]}" != "fatal:" ]; then
+      if [ "${count[0]}" -ne 0 ]; then
+        state+="${gahead_color}${gahead_char}"
+      fi
+      if [ "${count[1]}" -ne 0 ]; then
+        state+="${gbehind_color}${gbehind_char}"
+      fi
     fi
 
     if [ -n "$state" ]; then
