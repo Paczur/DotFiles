@@ -224,5 +224,6 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 2 && pkill -SIGRTMIN+11 i3block
 bindsym XF86AudioMute exec volume m && pkill -SIGRTMIN+13 i3blocks
 bindsym XF86AudioLowerVolume exec volume - && pkill -SIGRTMIN+13 i3blocks
 bindsym XF86AudioRaiseVolume exec volume + && pkill -SIGRTMIN+13 i3blocks
+bindsym XF86WLAN exec wpa_cli scan && sleep 2 && pkill -SIGRTMIN+12 i3blocks
 #}}}
 #}}}
