@@ -10,11 +10,6 @@ border=#333333
 color=#f3f3f3
 markup=cairo
 
-[mpv-volume]
-label= 
-interval=30
-signal=10
-
 [emerge-update]
 interval=0
 background=#f3f36e
@@ -22,6 +17,11 @@ border=#f3f36e
 color=#111111
 signal=14
 command=[ -f "/home/paczur/System/Tmp/update" ] && echo "󰳡" || echo ""
+
+[mpv-volume]
+label= 
+interval=30
+signal=10
 
 [volume]
 interval=-1
