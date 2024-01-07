@@ -1,7 +1,16 @@
-#!/bin/env dash
+#!/bin/env bash
+old="${full_text}"
 if [ -S "/tmp/mpvsocket" ]; then
 	t=$(echo "{ \"command\": [\"get_property_string\", \"volume\"] }" \
 		| socat - /tmp/mpvsocket)
 	l=$(echo $t | sed -E 's/.*data":"([^.]*)\..*/\1/')
-	if [ "$l" != "" ]; then echo "$l%"; fi
+	if [ "$l" != "" ]; then
+		value="$l%"
+		echo "$value"
+		if [ -n "$old" ] && [ "$old" != "$label$value" ]; then
+			nohup < <(sleep 2 && pkill -SIGRTMIN+10 i3blocks)
+			exit 33
+		fi
+	fi
 fi
+

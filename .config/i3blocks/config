@@ -15,26 +15,19 @@ label=
 interval=30
 signal=10
 
+[emerge-update]
+interval=0
+signal=14
+command=[ -f "/home/paczur/Temp/update" ] && echo "" || echo ""
+
 [volume]
 interval=-1
 signal=13
-command=volume g
-
-[emerge-update]
-interval=0
-signal=10
-command=[ -f "/home/paczur/Temp/update" ] && echo "" || echo ""
 
 [brightness]
 label= 
 interval=-1
 signal=11
-command=x=$(xbacklight -get); if [ -n "$x" ]; then echo ${x%.*}%; fi
-
-[emerge-update]
-interval=once
-signal=11
-command=[ -f "/home/paczur/System/Tmp/update" ] && echo "" || echo ""
 
 [net]
 interval=60

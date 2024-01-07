@@ -1,0 +1,8 @@
+#!/bin/env bash
+old="${full_text}"
+value="$(volume g)"
+echo "$value"
+if [ -n "$old" ] && [ "$old" != "$label$value" ]; then
+  nohup < <(sleep 2 && pkill -SIGRTMIN+13 i3blocks)
+  exit 33
+fi
