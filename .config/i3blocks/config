@@ -9,9 +9,15 @@ background=#333333
 border=#333333
 color=#f3f3f3
 markup=cairo
+interval=0
+
+#Ordering - Sum of:
+#Temporary  - 8
+#Clickables - 4
+#Signalled  - 2
+#Timed      - 1
 
 [emerge-update]
-interval=0
 background=#f3f36e
 border=#f3f36e
 color=#111111
@@ -20,24 +26,23 @@ command=[ -f "/home/paczur/System/Tmp/update" ] && echo "󰳡" || echo ""
 
 [mpv-volume]
 label= 
-interval=30
 signal=10
-
-[volume]
-interval=-1
-signal=13
-
-[brightness]
-label= 
-interval=-1
-signal=11
 
 [net]
 interval=60
 signal=12
 
+[volume]
+interval=-1
+signal=13
+
 [dnd]
 interval=-1
+
+[brightness]
+label= 
+interval=-1
+signal=11
 
 [battery]
 interval=60
