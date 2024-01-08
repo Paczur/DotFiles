@@ -1,4 +1,6 @@
 #!/bin/env bash
+old="${full_text}"
+
 if [ -d /sys/class/net/eth0 ]; then
   if [ "$(cat /sys/class/net/eth0/operstate)" = "up" ]; then
     if [ "$(cat /sys/class/net/eth0/carrier)" = "1" ]; then
@@ -39,6 +41,11 @@ if [ -n "$button" ]; then
     sleep 0.5
     pkill -SIGRTMIN+12 i3blocks
   done)
+fi
+
+if [ -n "$old" ] && [ "$old" != "$status" ]; then
+  nohup < <(sleep 2 && pkill -SIGRTMIN+12 i3blocks)
+  exit 33
 fi
 
 echo "$status"
