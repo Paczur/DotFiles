@@ -37,15 +37,15 @@ fi
 
 if [ -n "$button" ]; then
   nohup < <(
-  for i in $(seq 0 20); do
+  for i in $(seq 0 40); do
     sleep 0.5
     pkill -SIGRTMIN+12 i3blocks
   done)
 fi
 
+echo "$status"
+
 if [ -n "$old" ] && [ "$old" != "$status" ]; then
   nohup < <(sleep 2 && pkill -SIGRTMIN+12 i3blocks)
   exit 33
 fi
-
-echo "$status"
