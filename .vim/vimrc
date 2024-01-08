@@ -193,7 +193,7 @@ runtime! macros/matchit.vim
 runtime ftplugin/man.vim
 autocmd Syntax java set keywordprg=:Javadoc
 autocmd Syntax java set path+=**/src/main/java/**
-autocmd Syntax python,html,htmldjango,css set path+=**/templates/*,**/static/**
+autocmd Syntax python,html,htmldjango,css,javascript set path+=**/templates/*,**/static/**
 autocmd Syntax c set path+=modules/**
 autocmd Syntax scala set path+=**/src/main/scala/**
 "}}}
