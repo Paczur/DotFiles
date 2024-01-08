@@ -1,4 +1,9 @@
 #!/bin/env bash
+
+if [ -n "$button" ]; then
+  volume m
+fi
+
 old="${full_text}"
 value="$(volume g)"
 echo "$value"
