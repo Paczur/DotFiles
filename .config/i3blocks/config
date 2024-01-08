@@ -36,6 +36,9 @@ signal=11
 interval=60
 signal=12
 
+[dnd]
+interval=-1
+
 [battery]
 interval=60
 

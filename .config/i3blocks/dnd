@@ -1,0 +1,22 @@
+#!/bin/env dash
+process="$(ps -A | grep dunst)"
+
+
+
+if [ -z "$process" ]; then
+  if [ -n "$button" ]; then
+    run-with-logging dunst
+    mode=""
+  else
+    mode=""
+  fi
+else
+  if [ -n "$button" ]; then
+    killall dunst
+    mode=""
+  else
+    mode=""
+  fi
+fi
+
+echo "$mode"
