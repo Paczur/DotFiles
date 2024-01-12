@@ -124,8 +124,10 @@ Plug 'https://github.com/bfrg/vim-qf-diagnostics'
 Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/machakann/vim-sandwich'
 Plug 'https://github.com/sheerun/vim-polyglot'
+Plug 'https://github.com/lervag/vimtex'
 
 call plug#end()
+let g:vimtex_view_method = 'mupdf'
 let g:gutentags_ctags_extra_args = [
       \ '--fields=+ailmnS'
       \]
