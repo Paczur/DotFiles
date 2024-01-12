@@ -23,6 +23,7 @@ border=#f3f36e
 color=#111111
 signal=14
 command=[ -f "/home/paczur/System/Tmp/update" ] && echo "󰳡" || echo ""
+interval=-1
 
 [mpv-volume]
 label= 
