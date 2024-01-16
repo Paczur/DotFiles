@@ -14,7 +14,7 @@ x-scheme-handler/eclipse+command x-scheme-handler/eclipse+mpc=_home_Paczur_Progr
 x-scheme-handler/discord-455712169795780630=discord-455712169795780630.desktop
 x-scheme-handler/discord-719647875465871400=discord-719647875465871400.desktop
 x-scheme-handler/mailto=userapp-Evolution-QF2UW0.desktop
-application/x-core=userapp-em-4FJYH1.desktop
+application/x-core=gvim.desktop
 image/gif=userapp-sxiv -a-V2SDI1.desktop
 text/plain=gvim.desktop
 x-scheme-handler/discord-696343075731144724=discord-696343075731144724.desktop
@@ -74,7 +74,7 @@ font/ttf=org.gnome.FontManager.desktop;org.gnome.FontViewer.desktop;
 x-scheme-handler/mailto=userapp-Evolution-QF2UW0.desktop;
 audio/flac=vlc.desktop;
 application/vnd.ms-excel=libreoffice-calc.desktop;
-application/x-core=userapp-em-4FJYH1.desktop;
+application/x-core=gvim.desktop;
 image/x-xcf=zzz-gimp.desktop;
 x-scheme-handler/tg=org.telegram.desktop.desktop;org.telegram.desktop._f79d601e26a782fd149b3ffb098aae9f.desktop;
 
