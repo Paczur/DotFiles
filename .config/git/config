@@ -3,6 +3,8 @@
 	email = paczur@Silver
 [merge]
 	tool = vimdiff
+[push]
+	autoSetupRemote = true
 [init]
 	defaultBranch = master
 [safe]
