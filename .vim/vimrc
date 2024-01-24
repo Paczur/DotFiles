@@ -199,6 +199,7 @@ command -nargs=1 Javadoc execute "silent !javadocs-search <args>" | :redraw!
 cnoreabbrev f find
 runtime! macros/matchit.vim
 runtime ftplugin/man.vim
+autocmd Syntax c set commentstring=//%s
 autocmd Syntax java set keywordprg=:Javadoc
 autocmd Syntax java set path+=**/src/main/java/**
 autocmd Syntax python,html,htmldjango,css,javascript set path+=**/templates/*,**/static/**
