@@ -214,7 +214,7 @@ floating_modifier $mod
 # KEYBINDS {{{
 bindsym $mod+Return exec mlterm
 bindsym $mod+Shift+q kill
-bindsym $mod+d exec dmenu_run -f -i -fn "Code New Roman 14" -nb '#000000' -nf '#ffffff' -sb '#333333' -sf '#ffffff'
+bindsym $mod+d exec dmenu_run -f -i -fn "CodeNewRoman Nerd Font Mono 25" -nb '#111111' -nf '#ffffff' -sb '#333333' -sf '#ffffff'
 bindsym $mod+f fullscreen toggle
 bindsym $mod+Shift+r restart
 bindsym --release $mod+p exec scrot -s -q 100 -e "xclip -selection clipboard -t image/png -i $scrot_path" $scrot_path
