@@ -9,11 +9,12 @@ set exrc
 set clipboard=unnamedplus
 set noswapfile
 set nowrap
+set autoread
 set complete=
 set incsearch
 set so=3
-set switchbuf="useopen,vsplit"
-set hidden
+set switchbuf="useopen,vsplit,hsplit"
+set nohidden
 let mapleader=' '
 
 autocmd BufWritePre *\(.html\|.css\|.java\|.h\|.c\) :%s/\s\+$//e
@@ -209,4 +210,5 @@ autocmd Syntax java set path+=**/src/main/java/**
 autocmd Syntax python,html,htmldjango,css,javascript set path+=**/templates/*,**/static/**
 autocmd Syntax c set path+=modules/**,src/**
 autocmd Syntax scala set path+=**/src/main/scala/**
+autocmd CursorHold * checktime
 "}}}
