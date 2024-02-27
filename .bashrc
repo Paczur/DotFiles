@@ -117,7 +117,7 @@ __ps1_cwd() {
 }
 __ps1_venv() {
   if [ -n "${VIRTUAL_ENV_PROMPT}" ]; then
-    echo "${venv_color}${BO}${VIRTUAL_ENV_PROMPT}${BC}"
+    echo "${venv_color}${BO}$(basename ${VIRTUAL_ENV})${BC}"
   fi
 }
 __ps1_jobs() {
