@@ -80,7 +80,7 @@ endfunction
 
 set foldexpr=FoldMethod(v:lnum)
 autocmd FileType c set foldmethod=syntax
-autocmd FileType c set foldnestmax=1
+autocmd FileType c set foldnestmax=2
 autocmd FileType java set foldmethod=syntax
 autocmd FileType java set foldlevel=1
 autocmd FileType java set foldnestmax=2
@@ -126,6 +126,8 @@ Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/machakann/vim-sandwich'
 Plug 'https://github.com/sheerun/vim-polyglot'
 Plug 'https://github.com/lervag/vimtex'
+Plug 'https://github.com/vhdirk/vim-cmake'
+Plug 'https://github.com/skywind3000/asyncrun.vim'
 
 call plug#end()
 let g:tex_flavor='latex'
@@ -187,6 +189,7 @@ set tags=./tags;/
 set csprg=gtags-cscope
 set errorformat^=%f:%l:%c\ style:\ %m,%f:%l:%c:\ %t%*[^\ ]\ %m
 let c_gnu=1
+let c_no_comment_fold = 1
 let c_comment_strings=1
 let c_space_errors=1
 let c_syntax_for_h=1

@@ -1,1 +1,1 @@
-syn keyword Danger free malloc calloc realloc
+syn keyword Danger free malloc calloc realloc reallocyarray
