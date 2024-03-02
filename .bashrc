@@ -151,7 +151,7 @@ gbehind_color="${R}"
 host_color="${G}"
 user_color="${R}"
 
-gunstaged_char='✱'
+gunstaged_char='*'
 guntracked_char='%'
 gstash_char='≡'
 gstaged_char='+'
