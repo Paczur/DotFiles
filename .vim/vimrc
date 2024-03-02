@@ -76,7 +76,7 @@ function! FoldColumn()
   elseif &foldnestmax == 1
     set foldcolumn=2
   else
-    let &foldcolumn=&foldnestmax
+    let &foldcolumn=&foldnestmax+1
   endif
 endfunction
 
