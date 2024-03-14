@@ -7,6 +7,7 @@
 *Foreground: white
 *pointerColor: white
 *termName: xterm-256color
+*BellIsUrgent: true
 
 !Rxvt.background:black
 Rxvt.font: xft:DejaVu Sans Mono:size=10
