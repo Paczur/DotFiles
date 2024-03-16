@@ -212,9 +212,10 @@ runtime ftplugin/man.vim
 autocmd Syntax c set commentstring=//%s
 autocmd Syntax cpp set commentstring=//%s
 autocmd Syntax java set keywordprg=:Javadoc
-autocmd Syntax java set path+=**/src/main/java/**
-autocmd Syntax python,html,htmldjango,css,javascript set path+=**/templates/*,**/static/**
+autocmd Syntax java set path+=/*/src/main/java/**
+autocmd Syntax python,html,htmldjango,css,javascript
+      \ set path+=*/templates/*,*/static/**,static/**,templates/**
 autocmd Syntax c set path+=modules/**
-autocmd Syntax scala set path+=**/src/main/scala/**
+autocmd Syntax scala set path+=/*/src/main/scala/**
 autocmd CursorHold * checktime
 "}}}
