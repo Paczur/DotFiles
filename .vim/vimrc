@@ -64,7 +64,7 @@ function! FoldText()
     let lines_count = v:foldend - v:foldstart + 1
     let lines_count_text = printf("%10s", lines_count . ' lines')
     let foldchar = matchstr(&fillchars, 'fold:\zs.')
-    let foldtextstart = strpart(line, 0, (winwidth(0)*2)/3)
+    let foldtextstart = strpart(line, 0, 80)
     let foldtextend = lines_count_text . repeat(foldchar, 8)
     let foldtextlength = strlen(substitute(foldtextstart . foldtextend,
 \                                          '.', 'x', 'g')) + &foldcolumn
@@ -194,7 +194,7 @@ let c_gnu=1
 let c_comment_strings=1
 let c_space_errors=1
 let c_syntax_for_h=1
-set cinoptions=:0,b1,(0,c0
+set cinoptions=:0,b1,(0,c0,L0,l1
 set cinkeys=0=break,o,O,e,i,=if,0=switch,=for,=while,0},0{,0),0],;,0#,*<Return>
 packadd termdebug
 let g:termdebug_wide=1
@@ -203,6 +203,7 @@ let g:termdebug_use_prompt = 1
 command -nargs=1 Javadoc execute "silent !javadocs-search <args>" | :redraw!
 cnoreabbrev f find
 cnoreabbrev m make
+cnoreabbrev ma make all
 cnoreabbrev co botright copen
 cnoreabbrev copen botright copen
 cnoreabbrev vf vert sf
