@@ -55,21 +55,24 @@ autocmd FileType c set cindent
 set foldlevel=0
 set foldnestmax=0
 function! FoldText()
-    let line = substitute(substitute(
-\              substitute(substitute(
-\              substitute(getline(v:foldstart),
-\                         '{\+', '', ''),
-\                         '^"\s*', '', ''),
-\                         '/\*\s*\(.*\)\s*\*/', '\=submatch(1)', ''),
-\                         '^\s*//\s*', '', ''), '^#\s*', '', '')
-    let lines_count = v:foldend - v:foldstart + 1
-    let lines_count_text = printf("%10s", lines_count . ' lines')
-    let foldchar = matchstr(&fillchars, 'fold:\zs.')
-    let foldtextstart = strpart(line, 0, 80)
-    let foldtextend = lines_count_text . repeat(foldchar, 8)
-    let foldtextlength = strlen(substitute(foldtextstart . foldtextend,
-\                                          '.', 'x', 'g')) + &foldcolumn
-    return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
+  let line = substitute(substitute(
+        \    substitute(substitute(
+        \    substitute(substitute(substitute(getline(v:foldstart),
+        \ '{\+',                '',                ''),
+        \ '^"\s*',              '',                ''),
+        \ '/\*\s*\(.*\)\s*\*/', '\=submatch(1)',   ''),
+        \ '^\s*//\s*',          '',                ''),
+        \ '^#\s*',              '',                ''),
+        \ '\s\s',               '--',              'g'),
+        \ '-\s',                '--',              '')
+        let lines_count = v:foldend - v:foldstart + 1
+  let lines_count_text = printf("%10s", lines_count . ' lines')
+  let foldchar = matchstr(&fillchars, 'fold:\zs.')
+  let foldtextstart = strpart(line, 0, 80)
+  let foldtextend = lines_count_text . repeat(foldchar, 8)
+  let foldtextlength = strlen(substitute(foldtextstart . foldtextend,
+        \                                          '.', 'x', 'g')) + &foldcolumn
+  return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
 endfunction
 function! FoldColumn()
   if &foldnestmax == 0
