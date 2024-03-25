@@ -1,6 +1,7 @@
 "USABILITY {{{
 set encoding=UTF-8
 set path-=/usr/include
+set path+=src/**
 set nocompatible
 set backspace=2
 set wildmenu
@@ -83,6 +84,8 @@ endfunction
 set foldexpr=FoldMethod(v:lnum)
 autocmd FileType c set foldmethod=syntax
 autocmd FileType c set foldnestmax=2
+autocmd FileType cpp set foldmethod=syntax
+autocmd FileType cpp set foldnestmax=2
 autocmd FileType java set foldmethod=syntax
 autocmd FileType java set foldlevel=1
 autocmd FileType java set foldnestmax=2
@@ -210,10 +213,12 @@ cnoreabbrev vf vert sf
 runtime! macros/matchit.vim
 runtime ftplugin/man.vim
 autocmd Syntax c set commentstring=//%s
+autocmd Syntax cpp set commentstring=//%s
 autocmd Syntax java set keywordprg=:Javadoc
-autocmd Syntax java set path+=**/src/main/java/**
-autocmd Syntax python,html,htmldjango,css,javascript set path+=**/templates/*,**/static/**
-autocmd Syntax c set path+=modules/**,src/**
-autocmd Syntax scala set path+=**/src/main/scala/**
+autocmd Syntax java set path+=/*/src/main/java/**
+autocmd Syntax python,html,htmldjango,css,javascript
+      \ set path+=*/templates/*,*/static/**,static/**,templates/**
+autocmd Syntax c set path+=modules/**
+autocmd Syntax scala set path+=/*/src/main/scala/**
 autocmd CursorHold * checktime
 "}}}
