@@ -216,6 +216,8 @@ cnoreabbrev ma make all
 cnoreabbrev co botright copen
 cnoreabbrev copen botright copen
 cnoreabbrev vf vert sf
+cnoreabbrev run !./Runfile
+cnoreabbrev r !./Runfile
 runtime! macros/matchit.vim
 runtime ftplugin/man.vim
 autocmd Syntax c set commentstring=//%s

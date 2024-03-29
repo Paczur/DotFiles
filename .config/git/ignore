@@ -3,5 +3,6 @@ cscope.out
 GPATH
 GTAGS
 GRTAGS
+Runfile
 .vimrc
 **/.vimrc
