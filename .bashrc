@@ -193,6 +193,14 @@ cd() {
   elif [ -n "${VIRTUAL_ENV_PROMPT}" ]; then
     deactivate
   fi
+  if [ -e "Runfile" ]; then
+    ./Runfile open
+    RUNFILE="$PWD/Runfile"
+  elif [ -n "$RUNFILE" ]; then
+    "$RUNFILE" close &
+    RUNFILE=""
+  fi
+
   ls
 }
 
