@@ -186,4 +186,14 @@ __ps1() {
   fi
 }
 
+cd() {
+  builtin cd "$@" || return
+  if [ -d ".venv" ]; then
+    . ./.venv/bin/activate
+  elif [ -n "${VIRTUAL_ENV_PROMPT}" ]; then
+    deactivate
+  fi
+  ls
+}
+
 export PROMPT_COMMAND=__ps1
