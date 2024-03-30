@@ -1,0 +1,12 @@
+[user]
+	name = paczur
+	email = paczur@Iron
+[merge]
+	tool = vimdiff
+[push]
+	autoSetupRemote = true
+[init]
+	defaultBranch = master
+[safe]
+	directory = /media/pendrive/Git/Scripts
+	directory = /media/pendrive/Git/DotFiles

@@ -1,12 +1,1 @@
-[user]
-	name = paczur
-	email = paczur@Silver
-[merge]
-	tool = vimdiff
-[push]
-	autoSetupRemote = true
-[init]
-	defaultBranch = master
-[safe]
-	directory = /media/pendrive/Git/Scripts
-	directory = /media/pendrive/Git/DotFiles
+../../silver/.config/git/config
