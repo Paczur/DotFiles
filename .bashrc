@@ -198,6 +198,7 @@ cd() {
     RUNFILE="$PWD/Runfile"
   elif [ -n "$RUNFILE" ]; then
     "$RUNFILE" close &> /dev/null &
+    disown
     RUNFILE=""
   fi
 
