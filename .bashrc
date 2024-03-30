@@ -197,7 +197,7 @@ cd() {
     ./Runfile open
     RUNFILE="$PWD/Runfile"
   elif [ -n "$RUNFILE" ]; then
-    "$RUNFILE" close &
+    "$RUNFILE" close &> /dev/null &
     RUNFILE=""
   fi
 
