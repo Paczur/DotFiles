@@ -150,6 +150,7 @@ gahead_color="${G}"
 gbehind_color="${R}"
 host_color="${G}"
 user_color="${R}"
+cursor="\e[5 q"
 
 gunstaged_char='*'
 guntracked_char='%'
@@ -177,7 +178,7 @@ __ps1() {
   fi
   local cwd="$(__ps1_cwd "$git")"
 
-  PS1="${x}${jobs}${host}${user}${project}${branch}${state}${venv}${cwd}${RESET} "
+  PS1="${x}${jobs}${host}${user}${project}${branch}${state}${venv}${cwd}${RESET}${cursor} "
 
   local PS1_CLEAN="$(echo "$PS1" |\
     sed 's/\\001\\e\[[0-9]\+m\\002//g;s/\[[0-9]*m//g')"

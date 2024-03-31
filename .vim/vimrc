@@ -15,6 +15,9 @@ set complete=
 set incsearch
 set so=3
 set switchbuf="useopen,vsplit,hsplit"
+set ttyfast
+set ttimeout
+set ttimeoutlen=1
 set nohidden
 let mapleader='-'
 
@@ -25,6 +28,10 @@ autocmd BufWritePre *\(.html\|.css\|.java\|.h\|.c\) :%s/\s\+$//e
 
 "VISUAL ONLY {{{
 colo custom
+let &t_SI .= "\e[5 q"
+let &t_SR .= "\e[3 q"
+let &t_EI .= "\e[1 q"
+set guicursor=i:blinkwait0-blinkon100-blinkoff150
 set fillchars=eob:\ ,vert:│,stl:─,stlnc:─,fold:\ ,foldsep:│,foldopen:┬
 set noruler
 set laststatus=2

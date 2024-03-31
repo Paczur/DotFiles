@@ -27,3 +27,4 @@ input_method = ibus
 use_urgent_bell = true
 use_clipboard=true
 vt_color_mode=true
+blink=true
