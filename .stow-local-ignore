@@ -1,5 +1,5 @@
-.git
-.gitignore
-Runfile
-silver
-iron
+^.git$
+^.gitignore$
+^Runfile$
+^silver$
+^iron$
