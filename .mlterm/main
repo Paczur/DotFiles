@@ -1,4 +1,4 @@
-use_transbg = true
+use_transbg = false
 alpha = 127
 fg_color = #ffffff
 bg_color = #000000
@@ -7,7 +7,7 @@ borderless = false
 fontsize = 17
 name = xterm-256color
 type_engine = cairo
-line_space = 1
+line_space = 0
 logsize=16384
 use_aafont = true
 use_ot_layout = true

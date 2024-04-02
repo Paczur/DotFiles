@@ -150,7 +150,7 @@ gahead_color="${G}"
 gbehind_color="${R}"
 host_color="${G}"
 user_color="${R}"
-cursor="\e[5 q"
+cursor="\001\e[5 q\002"
 
 gunstaged_char='*'
 guntracked_char='%'
@@ -206,4 +206,14 @@ cd() {
   ls
 }
 
-export PROMPT_COMMAND=__ps1
+clean_ps1() {
+  export PROMPT_COMMAND=''
+  PS1='$ '
+}
+
+normal_ps1() {
+  export PROMPT_COMMAND=__ps1
+}
+
+
+normal_ps1
