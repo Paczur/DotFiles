@@ -1,127 +1,127 @@
 set background=dark
-set t_Co=256
-
-highlight clear
-if exists("syntax_on")
-    syntax reset
-    let t=1
-else
-  let t=0
-endif
+set t_Co=16
 let g:colors_name="custom"
 
-hi Normal                     ctermfg=White    ctermbg=NONE     cterm=NONE        guifg=White    guibg=Black    gui=NONE
-hi Cursor                     ctermfg=White    ctermbg=NONE     cterm=NONE        guifg=NONE     guibg=Black    gui=reverse
-hi CursorLine                 ctermfg=NONE     ctermbg=NONE     cterm=NONE        guifg=NONE     guibg=Black    gui=NONE
-hi LineNr                     ctermfg=DarkGray ctermbg=NONE     cterm=NONE        guifg=DarkGray guibg=Black    gui=NONE
-hi CursorLineNR               ctermfg=DarkGray ctermbg=NONE     cterm=NONE        guifg=DarkGray guibg=Black    gui=NONE
-hi CursorColumn               ctermfg=NONE     ctermbg=NONE     cterm=NONE        guifg=Black    guibg=Black    gui=NONE
-hi FoldColumn                 ctermfg=DarkGray ctermbg=NONE     cterm=NONE        guifg=DarkGray guibg=Black    gui=NONE
-hi SignColumn                 ctermfg=DarkGray ctermbg=NONE     cterm=NONE        guifg=DarkGray guibg=Black    gui=NONE
-hi Folded                     ctermfg=DarkGray ctermbg=NONE     cterm=NONE        guifg=DarkGray guibg=Black    gui=NONE
-hi VertSplit                  ctermfg=DarkGray ctermbg=NONE     cterm=NONE        guifg=DarkGray guibg=Black    gui=NONE
-hi ColorColumn                ctermfg=Red      ctermbg=NONE     cterm=NONE        guifg=DarkGray guibg=Black    gui=NONE
-hi TabLine                    ctermfg=DarkGray ctermbg=NONE     cterm=NONE        guifg=DarkGray guibg=Black    gui=NONE
-hi TabLineFill                ctermfg=DarkGray ctermbg=NONE     cterm=NONE        guifg=DarkGray guibg=Black    gui=NONE
-hi TabLineSel                 ctermfg=DarkGray ctermbg=NONE     cterm=NONE        guifg=DarkGray guibg=Black    gui=NONE
-hi Directory                  ctermfg=Blue     ctermbg=NONE     cterm=NONE        guifg=White    guibg=Black    gui=NONE
-hi Search                     ctermfg=Yellow   ctermbg=NONE     cterm=NONE        guifg=Yellow   guibg=Black    gui=NONE
-hi IncSearch                  ctermfg=Yellow   ctermbg=NONE     cterm=NONE        guifg=Yellow   guibg=Black    gui=NONE
-hi StatusLine                 ctermfg=Gray     ctermbg=NONE     cterm=NONE        guifg=Gray     guibg=Black    gui=NONE
-hi StatusLineNC               ctermfg=DarkGray ctermbg=NONE     cterm=NONE        guifg=DarkGray guibg=Black    gui=NONE
-hi WildMenu                   ctermfg=Gray     ctermbg=NONE     cterm=NONE        guifg=Gray     guibg=Black    gui=NONE
-hi Question                   ctermfg=DarkGray ctermbg=NONE     cterm=NONE        guifg=DarkGray guibg=Black    gui=NONE
-hi Title                      ctermfg=White    ctermbg=NONE     cterm=NONE        guifg=White    guibg=Black    gui=NONE
-hi ModeMsg                    ctermfg=DarkGray ctermbg=NONE     cterm=NONE        guifg=DarkGray guibg=Black    gui=NONE
-hi MoreMsg                    ctermfg=Cyan     ctermbg=NONE     cterm=NONE        guifg=Cyan     guibg=Black    gui=NONE
-hi MatchParen                 ctermfg=White    ctermbg=DarkGray cterm=NONE        guifg=White    guibg=DarkGray gui=NONE
-hi Visual                     ctermfg=White    ctermbg=DarkGray cterm=NONE        guifg=White    guibg=DarkGray gui=NONE
-hi VisualNOS                  ctermfg=White    ctermbg=DarkGray cterm=NONE        guifg=White    guibg=DarkGray gui=NONE
-hi NonText                    ctermfg=Gray     ctermbg=NONE     cterm=NONE        guifg=Gray     guibg=Black    gui=NONE
-hi Todo                       ctermfg=Yellow   ctermbg=NONE     cterm=NONE        guifg=Yellow   guibg=Black    gui=NONE
-hi Underlined                 ctermfg=White    ctermbg=NONE     cterm=underline   guifg=White    guibg=Black    gui=underline
-hi Error                      ctermfg=Red      ctermbg=NONE     cterm=NONE        guifg=Red      guibg=Black    gui=NONE
-hi ErrorMsg                   ctermfg=Red      ctermbg=NONE     cterm=NONE        guifg=Red      guibg=Black    gui=NONE
-hi WarningMsg                 ctermfg=Yellow   ctermbg=NONE     cterm=NONE        guifg=Yellow   guibg=Black    gui=NONE
-hi Ignore                     ctermfg=Gray     ctermbg=NONE     cterm=NONE        guifg=Gray     guibg=Black    gui=NONE
-hi SpecialKey                 ctermfg=Gray     ctermbg=NONE     cterm=NONE        guifg=Gray     guibg=Black    gui=NONE
-hi WhiteSpaceChar             ctermfg=Gray     ctermbg=NONE     cterm=NONE        guifg=Gray     guibg=Black    gui=NONE
-hi WhiteSpace                 ctermfg=Gray     ctermbg=NONE     cterm=NONE        guifg=Gray     guibg=Black    gui=NONE
-hi Constant                   ctermfg=White    ctermbg=NONE     cterm=ITALIC      guifg=White    guibg=Black    gui=ITALIC
-hi String                     ctermfg=White    ctermbg=NONE     cterm=ITALIC      guifg=White    guibg=Black    gui=ITALIC
-hi StringDelimiter            ctermfg=White    ctermbg=NONE     cterm=ITALIC      guifg=White    guibg=Black    gui=ITALIC
-hi Character                  ctermfg=White    ctermbg=NONE     cterm=ITALIC      guifg=White    guibg=Black    gui=ITALIC
-hi Number                     ctermfg=White    ctermbg=NONE     cterm=ITALIC      guifg=White    guibg=Black    gui=ITALIC
-hi Boolean                    ctermfg=White    ctermbg=NONE     cterm=ITALIC      guifg=White    guibg=Black    gui=ITALIC
-hi Float                      ctermfg=White    ctermbg=NONE     cterm=ITALIC      guifg=White    guibg=Black    gui=ITALIC
-hi Identifier                 ctermfg=White    ctermbg=NONE     cterm=NONE        guifg=White    guibg=Black    gui=NONE
-hi Function                   ctermfg=White    ctermbg=NONE     cterm=NONE        guifg=White    guibg=Black    gui=NONE
-hi Statement                  ctermfg=White    ctermbg=NONE     cterm=NONE        guifg=White    guibg=Black    gui=NONE
-hi Conditional                ctermfg=White    ctermbg=NONE     cterm=NONE        guifg=White    guibg=Black    gui=NONE
-hi Repeat                     ctermfg=White    ctermbg=NONE     cterm=NONE        guifg=White    guibg=Black    gui=NONE
-hi Label                      ctermfg=White    ctermbg=NONE     cterm=NONE        guifg=White    guibg=Black    gui=NONE
-hi Operator                   ctermfg=White    ctermbg=NONE     cterm=NONE        guifg=White    guibg=Black    gui=NONE
-hi Keyword                    ctermfg=White    ctermbg=NONE     cterm=NONE        guifg=White    guibg=Black    gui=NONE
-hi Exception                  ctermfg=White    ctermbg=NONE     cterm=NONE        guifg=White    guibg=Black    gui=NONE
-hi Comment                    ctermfg=DarkGray ctermbg=NONE     cterm=NONE        guifg=DarkGray guibg=Black    gui=NONE
-hi Special                    ctermfg=White    ctermbg=NONE     cterm=NONE        guifg=White    guibg=Black    gui=NONE
-hi SpecialChar                ctermfg=White    ctermbg=NONE     cterm=NONE        guifg=White    guibg=Black    gui=NONE
-hi Tag                        ctermfg=White    ctermbg=NONE     cterm=NONE        guifg=White    guibg=Black    gui=NONE
-hi Delimiter                  ctermfg=White    ctermbg=NONE     cterm=NONE        guifg=White    guibg=Black    gui=NONE
-hi SpecialComment             ctermfg=White    ctermbg=NONE     cterm=NONE        guifg=White    guibg=Black    gui=NONE
-hi Debug                      ctermfg=White    ctermbg=NONE     cterm=NONE        guifg=White    guibg=Black    gui=NONE
-hi PreProc                    ctermfg=White    ctermbg=NONE     cterm=NONE        guifg=White    guibg=Black    gui=NONE
-hi Include                    ctermfg=White    ctermbg=NONE     cterm=NONE        guifg=White    guibg=Black    gui=NONE
-hi Define                     ctermfg=White    ctermbg=NONE     cterm=NONE        guifg=White    guibg=Black    gui=NONE
-hi Macro                      ctermfg=White    ctermbg=NONE     cterm=NONE        guifg=White    guibg=Black    gui=NONE
-hi PreCondit                  ctermfg=White    ctermbg=NONE     cterm=NONE        guifg=White    guibg=Black    gui=NONE
-hi Type                       ctermfg=White    ctermbg=NONE     cterm=NONE        guifg=White    guibg=Black    gui=NONE
-hi StorageClass               ctermfg=White    ctermbg=NONE     cterm=NONE        guifg=White    guibg=Black    gui=NONE
-hi Structure                  ctermfg=White    ctermbg=NONE     cterm=NONE        guifg=White    guibg=Black    gui=NONE
-hi Typedef                    ctermfg=White    ctermbg=NONE     cterm=NONE        guifg=White    guibg=Black    gui=NONE
-hi DiffAdd                    ctermfg=Green    ctermbg=NONE     cterm=NONE        guifg=Green    guibg=Black    gui=NONE
-hi DiffChange                 ctermfg=Yellow   ctermbg=NONE     cterm=NONE        guifg=Yellow   guibg=Black    gui=NONE
-hi DiffDelete                 ctermfg=Red      ctermbg=NONE     cterm=NONE        guifg=Red      guibg=Black    gui=NONE
-hi DiffText                   ctermfg=White    ctermbg=NONE     cterm=NONE        guifg=White    guibg=Black    gui=NONE
-hi Pmenu                      ctermfg=Gray     ctermbg=NONE     cterm=NONE        guifg=Gray     guibg=Black    gui=NONE
-hi PmenuSel                   ctermfg=Gray     ctermbg=NONE     cterm=NONE        guifg=Gray     guibg=Black    gui=NONE
-hi PmenuSbar                  ctermfg=Gray     ctermbg=NONE     cterm=NONE        guifg=Gray     guibg=Black    gui=NONE
-hi PmenuThumb                 ctermfg=Gray     ctermbg=NONE     cterm=NONE        guifg=Gray     guibg=Black    gui=NONE
-hi SpellBad                   ctermfg=Red      ctermbg=NONE     cterm=NONE        guifg=Red      guibg=Black    gui=NONE
-hi SpellCap                   ctermfg=Yellow   ctermbg=NONE     cterm=NONE        guifg=Yellow   guibg=Black    gui=NONE
-hi SpellLocal                 ctermfg=Cyan     ctermbg=NONE     cterm=NONE        guifg=Cyan     guibg=Black    gui=NONE
-hi SpellRare                  ctermfg=Cyan     ctermbg=NONE     cterm=NONE        guifg=Cyan     guibg=Black    gui=NONE
-hi markdownListMarker         ctermfg=DarkGray ctermbg=NONE     cterm=NONE        guifg=DarkGray guibg=Black    gui=NONE
-hi markdownFootnoteDefinition ctermfg=DarkGray ctermbg=NONE     cterm=NONE        guifg=DarkGray guibg=Black    gui=NONE
-hi markdownCodeDelimiter      ctermfg=Gray     ctermbg=NONE     cterm=NONE        guifg=Gray     guibg=Black    gui=NONE
-hi markdownH1                 ctermfg=Gray     ctermbg=NONE     cterm=NONE        guifg=Gray     guibg=Black    gui=NONE
-hi markdownH2                 ctermfg=Gray     ctermbg=NONE     cterm=NONE        guifg=Gray     guibg=Black    gui=NONE
-hi markdownH3                 ctermfg=Gray     ctermbg=NONE     cterm=NONE        guifg=Gray     guibg=Black    gui=NONE
-hi markdownH4                 ctermfg=Gray     ctermbg=NONE     cterm=NONE        guifg=Gray     guibg=Black    gui=NONE
-hi markdownH5                 ctermfg=Gray     ctermbg=NONE     cterm=NONE        guifg=Gray     guibg=Black    gui=NONE
-hi markdownH6                 ctermfg=Gray     ctermbg=NONE     cterm=NONE        guifg=Gray     guibg=Black    gui=NONE
-hi markdownH1Delimiter        ctermfg=Gray     ctermbg=NONE     cterm=NONE        guifg=Gray     guibg=Black    gui=NONE
-hi markdownH2Delimiter        ctermfg=Gray     ctermbg=NONE     cterm=NONE        guifg=Gray     guibg=Black    gui=NONE
-hi markdownH3Delimiter        ctermfg=Gray     ctermbg=NONE     cterm=NONE        guifg=Gray     guibg=Black    gui=NONE
-hi markdownH4Delimiter        ctermfg=Gray     ctermbg=NONE     cterm=NONE        guifg=Gray     guibg=Black    gui=NONE
-hi markdownH5Delimiter        ctermfg=Gray     ctermbg=NONE     cterm=NONE        guifg=Gray     guibg=Black    gui=NONE
-hi markdownH6Delimiter        ctermfg=Gray     ctermbg=NONE     cterm=NONE        guifg=Gray     guibg=Black    gui=NONE
-hi markdownUrl                ctermfg=Yellow   ctermbg=NONE     cterm=NONE        guifg=Yellow   guibg=Black    gui=NONE
-hi debugPC                    ctermfg=Black    ctermbg=Gray     cterm=NONE        guifg=Black    guibg=Gray     gui=NONE
-hi StatusLineTerm             ctermfg=Gray     ctermbg=NONE     cterm=NONE        guifg=Gray     guibg=Black    gui=NONE
-hi StatusLineTermNC           ctermfg=DarkGray ctermbg=NONE     cterm=NONE        guifg=DarkGray guibg=Black    gui=NONE
-hi schemeQuote                ctermfg=White    ctermbg=NONE     cterm=ITALIC      guifg=White    guibg=Black    gui=ITALIC
-hi schemeData                 ctermfg=White    ctermbg=NONE     cterm=ITALIC      guifg=White    guibg=Black    gui=ITALIC
-hi schemeQuasiQuote           ctermfg=White    ctermbg=NONE     cterm=ITALIC      guifg=White    guibg=Black    gui=ITALIC
-hi Paren                      ctermfg=DarkGray ctermbg=NONE     cterm=NONE        guifg=DarkGray guibg=Black    gui=NONE
-hi Important                  ctermfg=Yellow   ctermbg=NONE     cterm=NONE        guifg=Yellow   guibg=Black    gui=NONE
-hi Danger                     ctermfg=White    ctermbg=NONE     cterm=ITALIC,BOLD guifg=White    guibg=Black    gui=ITALIC,BOLD
-hi WildMenu                   ctermfg=Black    ctermbg=Gray     cterm=NONE        guifg=Black    guibg=Gray     gui=NONE
-hi RedundantSpaces            ctermfg=Black    ctermbg=Gray     cterm=NONE        guifg=Black    guibg=Gray     gui=NONE
-
-if (t==1)
-  syntax on
-endif
+hi Normal                     ctermfg=White  ctermbg=NONE     cterm=NONE
+"Cursor{{{
+hi Cursor                     ctermfg=White  ctermbg=NONE     cterm=NONE
+hi CursorLine                 ctermfg=NONE   ctermbg=NONE     cterm=NONE
+hi CursorLineNR               ctermfg=Gray   ctermbg=NONE     cterm=NONE
+hi CursorColumn               ctermfg=NONE   ctermbg=NONE     cterm=NONE
+"}}}
+hi LineNr                     ctermfg=Gray   ctermbg=NONE     cterm=NONE
+hi FoldColumn                 ctermfg=Gray   ctermbg=NONE     cterm=NONE
+hi SignColumn                 ctermfg=Gray   ctermbg=NONE     cterm=NONE
+hi Folded                     ctermfg=Gray   ctermbg=NONE     cterm=NONE
+hi VertSplit                  ctermfg=Gray   ctermbg=None     cterm=NONE
+hi ColorColumn                ctermfg=Red    ctermbg=NONE     cterm=NONE
+hi TabLine                    ctermfg=Gray   ctermbg=NONE     cterm=NONE
+hi TabLineFill                ctermfg=Gray   ctermbg=NONE     cterm=NONE
+hi TabLineSel                 ctermfg=Gray   ctermbg=NONE     cterm=NONE
+hi Directory                  ctermfg=Blue   ctermbg=NONE     cterm=NONE
+hi Search                     ctermfg=Yellow ctermbg=NONE     cterm=NONE
+hi IncSearch                  ctermfg=Yellow ctermbg=NONE     cterm=NONE
+"StatusLine {{{
+hi StatusLine                 ctermfg=White  ctermbg=DarkGray cterm=NONE
+hi StatusLineModified         ctermfg=Red    ctermbg=DarkGray cterm=NONE
+hi StatusLineReadOnly         ctermfg=Yellow ctermbg=DarkGray cterm=NONE
+hi StatusLineMaster           ctermfg=Yellow ctermbg=DarkGray cterm=NONE
+hi StatusLineNC               ctermfg=Gray   ctermbg=DarkGray cterm=NONE
+hi StatusLineTerm             ctermfg=Gray   ctermbg=NONE     cterm=NONE
+hi StatusLineTermNC           ctermfg=Gray   ctermbg=NONE     cterm=NONE
+"}}}
+hi WildMenu                   ctermfg=Gray   ctermbg=NONE     cterm=NONE
+hi Question                   ctermfg=Gray   ctermbg=NONE     cterm=NONE
+hi Title                      ctermfg=White  ctermbg=NONE     cterm=NONE
+hi ModeMsg                    ctermfg=Gray   ctermbg=NONE     cterm=NONE
+hi MoreMsg                    ctermfg=Cyan   ctermbg=NONE     cterm=NONE
+hi MatchParen                 ctermfg=White  ctermbg=Gray     cterm=NONE
+hi Visual                     ctermfg=White  ctermbg=Gray     cterm=NONE
+hi VisualNOS                  ctermfg=White  ctermbg=Gray     cterm=NONE
+hi NonText                    ctermfg=Gray   ctermbg=NONE     cterm=NONE
+hi Todo                       ctermfg=Yellow ctermbg=NONE     cterm=NONE
+hi Underlined                 ctermfg=White  ctermbg=NONE     cterm=UNDERLINE
+hi Error                      ctermfg=Red    ctermbg=NONE     cterm=NONE
+hi ErrorMsg                   ctermfg=Red    ctermbg=NONE     cterm=NONE
+hi WarningMsg                 ctermfg=Yellow ctermbg=NONE     cterm=NONE
+hi Ignore                     ctermfg=Gray   ctermbg=NONE     cterm=NONE
+hi SpecialKey                 ctermfg=Gray   ctermbg=NONE     cterm=NONE
+hi WhiteSpaceChar             ctermfg=Gray   ctermbg=NONE     cterm=NONE
+hi WhiteSpace                 ctermfg=Gray   ctermbg=NONE     cterm=NONE
+"Constant{{{
+hi Constant                   ctermfg=White  ctermbg=NONE     cterm=ITALIC
+hi String                     ctermfg=Green  ctermbg=NONE     cterm=ITALIC
+hi StringDelimiter            ctermfg=Green  ctermbg=NONE     cterm=ITALIC
+hi Character                  ctermfg=White  ctermbg=NONE     cterm=ITALIC
+hi Number                     ctermfg=White  ctermbg=NONE     cterm=ITALIC
+hi Boolean                    ctermfg=White  ctermbg=NONE     cterm=ITALIC
+hi Float                      ctermfg=White  ctermbg=NONE     cterm=ITALIC
+"}}}
+hi Identifier                 ctermfg=White  ctermbg=NONE     cterm=NONE
+hi Function                   ctermfg=White  ctermbg=NONE     cterm=NONE
+hi Statement                  ctermfg=White  ctermbg=NONE     cterm=NONE
+hi Conditional                ctermfg=White  ctermbg=NONE     cterm=NONE
+hi Repeat                     ctermfg=White  ctermbg=NONE     cterm=NONE
+hi Label                      ctermfg=White  ctermbg=NONE     cterm=NONE
+hi Operator                   ctermfg=White  ctermbg=NONE     cterm=NONE
+hi Keyword                    ctermfg=White  ctermbg=NONE     cterm=NONE
+hi Exception                  ctermfg=White  ctermbg=NONE     cterm=NONE
+hi Comment                    ctermfg=Gray   ctermbg=NONE     cterm=NONE
+hi Special                    ctermfg=White  ctermbg=NONE     cterm=NONE
+hi SpecialChar                ctermfg=White  ctermbg=NONE     cterm=NONE
+hi Tag                        ctermfg=White  ctermbg=NONE     cterm=NONE
+hi Delimiter                  ctermfg=White  ctermbg=NONE     cterm=NONE
+hi SpecialComment             ctermfg=White  ctermbg=NONE     cterm=NONE
+hi Debug                      ctermfg=White  ctermbg=NONE     cterm=NONE
+hi PreProc                    ctermfg=White  ctermbg=NONE     cterm=NONE
+hi Include                    ctermfg=Gray   ctermbg=NONE     cterm=NONE
+hi Define                     ctermfg=White  ctermbg=NONE     cterm=NONE
+hi Macro                      ctermfg=White  ctermbg=NONE     cterm=NONE
+hi PreCondit                  ctermfg=White  ctermbg=NONE     cterm=NONE
+hi Type                       ctermfg=White  ctermbg=NONE     cterm=NONE
+hi StorageClass               ctermfg=White  ctermbg=NONE     cterm=NONE
+hi Structure                  ctermfg=White  ctermbg=NONE     cterm=NONE
+hi Typedef                    ctermfg=White  ctermbg=NONE     cterm=NONE
+"Diff{{{
+hi DiffAdd                    ctermfg=Green  ctermbg=NONE     cterm=NONE
+hi DiffChange                 ctermfg=Yellow ctermbg=NONE     cterm=NONE
+hi DiffDelete                 ctermfg=Red    ctermbg=NONE     cterm=NONE
+hi DiffText                   ctermfg=White  ctermbg=NONE     cterm=NONE
+"}}}
+"Pmenu{{{
+hi PmenuSel                   ctermfg=Gray   ctermbg=NONE     cterm=NONE
+hi Pmenu                      ctermfg=Gray   ctermbg=NONE     cterm=NONE
+hi PmenuSbar                  ctermfg=Gray   ctermbg=NONE     cterm=NONE
+hi PmenuThumb                 ctermfg=Gray   ctermbg=NONE     cterm=NONE
+"}}}
+"Spell{{{
+hi SpellBad                   ctermfg=Red    ctermbg=NONE     cterm=NONE
+hi SpellCap                   ctermfg=Yellow ctermbg=NONE     cterm=NONE
+hi SpellLocal                 ctermfg=Cyan   ctermbg=NONE     cterm=NONE
+hi SpellRare                  ctermfg=Cyan   ctermbg=NONE     cterm=NONE
+"}}}
+"markdown{{{
+hi markdownListMarker         ctermfg=Gray   ctermbg=NONE     cterm=NONE
+hi markdownFootnoteDefinition ctermfg=Gray   ctermbg=NONE     cterm=NONE
+hi markdownCodeDelimiter      ctermfg=Gray   ctermbg=NONE     cterm=NONE
+hi markdownH1                 ctermfg=Gray   ctermbg=NONE     cterm=NONE
+hi markdownH2                 ctermfg=Gray   ctermbg=NONE     cterm=NONE
+hi markdownH3                 ctermfg=Gray   ctermbg=NONE     cterm=NONE
+hi markdownH4                 ctermfg=Gray   ctermbg=NONE     cterm=NONE
+hi markdownH5                 ctermfg=Gray   ctermbg=NONE     cterm=NONE
+hi markdownH6                 ctermfg=Gray   ctermbg=NONE     cterm=NONE
+hi markdownH1Delimiter        ctermfg=Gray   ctermbg=NONE     cterm=NONE
+hi markdownH2Delimiter        ctermfg=Gray   ctermbg=NONE     cterm=NONE
+hi markdownH3Delimiter        ctermfg=Gray   ctermbg=NONE     cterm=NONE
+hi markdownH4Delimiter        ctermfg=Gray   ctermbg=NONE     cterm=NONE
+hi markdownH5Delimiter        ctermfg=Gray   ctermbg=NONE     cterm=NONE
+hi markdownH6Delimiter        ctermfg=Gray   ctermbg=NONE     cterm=NONE
+hi markdownUrl                ctermfg=Yellow ctermbg=NONE     cterm=NONE
+"}}}
+hi debugPC                    ctermfg=Black  ctermbg=Gray     cterm=NONE
+hi Important                  ctermfg=Yellow ctermbg=NONE     cterm=NONE
+hi Danger                     ctermfg=White  ctermbg=NONE     cterm=ITALIC,BOLD
+hi WildMenu                   ctermfg=Black  ctermbg=Gray     cterm=NONE
+hi RedundantSpaces            ctermfg=Black  ctermbg=Gray     cterm=NONE
 
 match RedundantSpaces /\s\+$/
-"match Paren /[{}[\]()]/

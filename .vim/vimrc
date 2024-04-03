@@ -26,21 +26,59 @@ vnoremap P "0P
 autocmd BufWritePre *\(.html\|.css\|.java\|.h\|.c\) :%s/\s\+$//e
 "}}}
 
+"STATUSLINE {{{
+function! StatusLineMod()
+  if &modified
+    return "%#StatusLineModified#(Modified)%##"
+  endif
+  if &readonly
+    return "%#StatusLineReadOnly#(ReadOnly)%##"
+  endif
+  return ""
+endfunction
+function! StatusLineBranch()
+  :silent let branch = system("git -C " . expand("%:p:h") . " branch --show-current 2> /dev/null | tr -d '\n'")
+  if branch == ""
+    return ""
+  endif
+  let highlight = ""
+  if branch == "master" || branch == "main"
+    let highlight = "%#StatusLineMaster#"
+  endif
+  return highlight . "(" . branch . ")%##"
+endfunction
+function! StatusLineFileType()
+  if &filetype == ""
+    return ""
+  endif
+  return "(" . &filetype . ")"
+endfunction
+function! StatusLineFile()
+  let file = expand("%")
+  if file == ""
+    return ""
+  endif
+  return "(" . file . ")"
+endfunction
+set statusline=%{%StatusLineFile()%}%=
+set statusline+=%{%StatusLineMod()%}
+set statusline+=%{%StatusLineBranch()%}
+"set statusline+=%{%StatusLineFileType()%}
+"}}}
+
 "VISUAL ONLY {{{
-colo custom
 let &t_SI .= "\e[5 q"
 let &t_SR .= "\e[3 q"
 let &t_EI .= "\e[1 q"
 set guicursor=i:blinkwait0-blinkon100-blinkoff150
-set fillchars=eob:\ ,vert:│,stl:─,stlnc:─,fold:\ ,foldsep:│,foldopen:┬
+set fillchars=eob:\ ,vert:│,stl:\ ,stlnc:\ ,fold:\ ,foldsep:│,foldopen:┬
 set noruler
-set laststatus=2
-set statusline=─\ %f\ %=\ %l/%L:%c\ %=\ %m\ %{FugitiveStatusline()}\ %y\ ─
-let &colorcolumn=join(range(81,999),",")
 set nonumber
+set laststatus=2
 set signcolumn=auto
 set conceallevel=2
 au BufWinEnter quickfix let &statusline=&statusline
+colo custom
 "}}}
 
 "GVIM {{{
@@ -61,6 +99,7 @@ autocmd FileType c set cindent
 "FOLDS {{{
 set foldlevel=0
 set foldnestmax=0
+set foldcolumn=0
 function! FoldText()
   let line = substitute(substitute(
         \    substitute(substitute(
@@ -72,62 +111,50 @@ function! FoldText()
         \ '^#\s*',              '',                ''),
         \ '\s\s',               '--',              'g'),
         \ '-\s',                '--',              '')
-        let lines_count = v:foldend - v:foldstart + 1
+  let lines_count = v:foldend - v:foldstart + 1
   let lines_count_text = printf("%10s", lines_count . ' lines')
   let foldchar = matchstr(&fillchars, 'fold:\zs.')
   let foldtextstart = strpart(line, 0, 80)
   let foldtextend = lines_count_text . repeat(foldchar, 8)
+  let foldtextend = ''
   let foldtextlength = strlen(substitute(foldtextstart . foldtextend,
         \                                          '.', 'x', 'g')) + &foldcolumn
   return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
 endfunction
-function! FoldColumn()
-  if &foldnestmax == 0
-    set foldcolumn=0
-  elseif &foldnestmax == 1
-    set foldcolumn=2
-  else
-    let &foldcolumn=&foldnestmax+1
-  endif
-endfunction
 
 set foldexpr=FoldMethod(v:lnum)
 let javaScript_fold=1
-autocmd FileType c set foldmethod=syntax
-autocmd FileType c set foldnestmax=2
-autocmd FileType cpp set foldmethod=syntax
-autocmd FileType cpp set foldnestmax=2
+autocmd FileType c          set foldmethod=syntax
+autocmd FileType c          set foldnestmax=2
+autocmd FileType cpp        set foldmethod=syntax
+autocmd FileType cpp        set foldnestmax=2
 autocmd FileType javascript set foldmethod=syntax
 autocmd FileType javascript set foldnestmax=1
-autocmd FileType java set foldmethod=syntax
-autocmd FileType java set foldlevel=1
-autocmd FileType java set foldnestmax=2
-autocmd FileType css set foldmethod=marker
-autocmd FileType css set foldnestmax=1
-autocmd FileType html set foldmethod=indent
-autocmd FileType html set foldlevel=5
+autocmd FileType java       set foldmethod=syntax
+autocmd FileType java       set foldlevel=1
+autocmd FileType java       set foldnestmax=2
+autocmd FileType css        set foldmethod=marker
+autocmd FileType css        set foldnestmax=1
+autocmd FileType html       set foldmethod=indent
+autocmd FileType html       set foldlevel=5
 autocmd FileType htmldjango set foldmethod=indent
 autocmd FileType htmldjango set foldlevel=5
-autocmd FileType python set foldmethod=indent
-autocmd FileType python set foldnestmax=1
-autocmd FileType vim set foldmethod=marker
-autocmd FileType vim set foldnestmax=1
-autocmd FileType i3config set foldmethod=marker
-autocmd FileType i3config set foldnestmax=2
-autocmd FileType conf set foldmethod=marker
-autocmd FileType conf set foldnestmax=2
-autocmd FileType sh set foldmethod=indent
-autocmd FileType sh set foldnestmax=1
+autocmd FileType python     set foldmethod=indent
+autocmd FileType python     set foldnestmax=1
+autocmd FileType vim        set foldmethod=marker
+autocmd FileType vim        set foldnestmax=1
+autocmd FileType i3config   set foldmethod=marker
+autocmd FileType i3config   set foldnestmax=2
+autocmd FileType conf       set foldmethod=marker
+autocmd FileType conf       set foldnestmax=2
+autocmd FileType sh         set foldmethod=indent
+autocmd FileType sh         set foldnestmax=1
 
-autocmd FileType * call FoldColumn()
 autocmd FileType * set foldtext=FoldText()
-
-autocmd FileType htmldjango set foldcolumn=0
 "}}}
 
 "PLUGINS {{{
 call plug#begin()
-
 Plug 'https://github.com/ludovicchabant/vim-gutentags'
 Plug 'https://github.com/vim-scripts/taglist.vim'
 Plug 'https://github.com/chazy/cscope_maps'
@@ -146,8 +173,8 @@ Plug 'https://github.com/lervag/vimtex'
 Plug 'https://github.com/vhdirk/vim-cmake'
 Plug 'https://github.com/skywind3000/asyncrun.vim'
 Plug 'https://github.com/vim-scripts/a.vim'
-
 call plug#end()
+
 let g:tex_flavor='latex'
 let g:vimtex_quickfix_open_on_warning = 0
 let g:vimtex_view_method = 'mupdf'
@@ -155,6 +182,7 @@ augroup VimTeX
   autocmd!
   autocmd BufReadPre *.tex
         \ let b:vimtex_main = 'main.tex'
+augroup end
 let g:gutentags_ctags_extra_args = [
       \ '--fields=+ailmnS'
       \]
@@ -207,7 +235,7 @@ set tags=./tags;/
 set csprg=gtags-cscope
 set errorformat^=%f:%l:%c\ style:\ %m,%f:%l:%c:\ %t%*[^\ ]\ %m
 let c_gnu=1
-let c_comment_strings=1
+let c_comment_strings=0
 let c_space_errors=1
 let c_syntax_for_h=1
 set cinoptions=:0,b1,(0,c0,L0,l1
@@ -236,4 +264,17 @@ autocmd Syntax python,html,htmldjango,css,javascript
 autocmd Syntax c set path+=modules/**
 autocmd Syntax scala set path+=/*/src/main/scala/**
 autocmd CursorHold * checktime
+
+function! SetCC(val)
+  let &colorcolumn=join(range(a:val,999),",")
+endfunction
+function! ClearCC()
+  set colorcolumn=""
+endfunction
+autocmd Syntax c call SetCC(81)
+autocmd Syntax cpp call SetCC(81)
+autocmd Syntax vim call SetCC(81)
+autocmd Syntax html call ClearCC()
+autocmd Syntax htmldjango call ClearCC()
+call SetCC(101)
 "}}}
