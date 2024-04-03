@@ -101,7 +101,7 @@ set foldlevel=0
 set foldnestmax=0
 set foldcolumn=0
 function! FoldText()
-  let line = substitute(substitute(
+  let foldtext = substitute(substitute(
         \    substitute(substitute(
         \    substitute(substitute(substitute(getline(v:foldstart),
         \ '{\+',                '',                ''),
@@ -111,15 +111,10 @@ function! FoldText()
         \ '^#\s*',              '',                ''),
         \ '\s\s',               '--',              'g'),
         \ '-\s',                '--',              '')
-  let lines_count = v:foldend - v:foldstart + 1
-  let lines_count_text = printf("%10s", lines_count . ' lines')
-  let foldchar = matchstr(&fillchars, 'fold:\zs.')
-  let foldtextstart = strpart(line, 0, 80)
-  let foldtextend = lines_count_text . repeat(foldchar, 8)
-  let foldtextend = ''
-  let foldtextlength = strlen(substitute(foldtextstart . foldtextend,
-        \                                          '.', 'x', 'g')) + &foldcolumn
-  return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
+  if foldtext == ""
+    return getline(v:foldstart)
+  endif
+  return foldtext
 endfunction
 
 set foldexpr=FoldMethod(v:lnum)
