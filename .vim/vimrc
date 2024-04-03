@@ -173,6 +173,7 @@ Plug 'https://github.com/lervag/vimtex'
 Plug 'https://github.com/vhdirk/vim-cmake'
 Plug 'https://github.com/skywind3000/asyncrun.vim'
 Plug 'https://github.com/vim-scripts/a.vim'
+Plug 'https://github.com/vim-scripts/cmdalias.vim'
 call plug#end()
 
 let g:tex_flavor='latex'
@@ -245,14 +246,14 @@ let g:termdebug_wide=1
 let g:termdebug_popup = 0
 let g:termdebug_use_prompt = 1
 command -nargs=1 Javadoc execute "silent !javadocs-search <args>" | :redraw!
-cnoreabbrev f find
-cnoreabbrev m make
-cnoreabbrev ma make all
-cnoreabbrev co botright copen
-cnoreabbrev copen botright copen
-cnoreabbrev vf vert sf
-cnoreabbrev run !./Runfile
-cnoreabbrev r !./Runfile
+au VimEnter * Alias f find
+au VimEnter * Alias m make
+au VimEnter * call CmdAlias("ma", "make all")
+au VimEnter * call CmdAlias("co", "botright copen")
+au VimEnter * call CmdAlias("copen", "botright copen")
+au VimEnter * call CmdAlias("vf", "vert sf")
+au VimEnter * Alias run !./Runfile
+au VimEnter * Alias r !./Runfile
 runtime! macros/matchit.vim
 runtime ftplugin/man.vim
 autocmd Syntax c set commentstring=//%s
