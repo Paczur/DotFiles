@@ -1,8 +1,11 @@
 #!/bin/env dash
 if [ "$1" = "close" ] || [ -z "$1" ]; then
+  p="$(pwd)"
+  path="$(dirname $(realpath "$0"))"
   dir="$(hostname -s | tr '[:upper:]' '[:lower:]')"
-  cd "$dir"
-  stow -R -t ../ ./
-  cd ..
+  cd "$path"
   stow -R -t "$HOME" ./
+  cd "$dir"
+  stow -R -t "$HOME" ./
+  cd "$p"
 fi
