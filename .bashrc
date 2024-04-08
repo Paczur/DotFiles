@@ -188,6 +188,7 @@ __ps1() {
 }
 
 cd() {
+  local prev="$PWD"
   builtin cd "$@" || return
   if [ -d ".venv" ]; then
     . ./.venv/bin/activate
@@ -196,11 +197,9 @@ cd() {
   fi
   if [ -e "Runfile" ]; then
     ./Runfile open
-    RUNFILE="$PWD/Runfile"
-  elif [ -n "$RUNFILE" ]; then
-    "$RUNFILE" close &> /dev/null &
+  elif [ -e "$prev/Runfile" ]; then
+    "$prev/Runfile" close &> /dev/null &
     disown
-    RUNFILE=""
   fi
 
   ls
