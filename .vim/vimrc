@@ -265,12 +265,10 @@ function! SetCC(val)
   let &colorcolumn=join(range(a:val,999),",")
 endfunction
 function! ClearCC()
-  set colorcolumn=""
+  set colorcolumn=0
 endfunction
 autocmd Syntax c call SetCC(81)
 autocmd Syntax cpp call SetCC(81)
 autocmd Syntax vim call SetCC(81)
-autocmd Syntax html call ClearCC()
-autocmd Syntax htmldjango call ClearCC()
-call SetCC(101)
+call ClearCC()
 "}}}
