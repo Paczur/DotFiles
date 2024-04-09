@@ -10,10 +10,10 @@ xset s off &
 xinput --set-prop "SteelSeries SteelSeries Rival 110 Gaming Mouse" 'libinput Accel Profile Enabled' 0, 1 &
 
 xrdb -merge ~/.Xresources &
-feh --no-fehbg -B "#111111" --bg-center --geometry 1920x1080-1080+210 \
-  "/home/paczur/Multimedia/Pictures/Seasonal/$(season)/wallpaper.png"
+feh --no-fehbg -B "#111111" --bg-center "/home/paczur/Multimedia/Pictures/Seasonal/$(season)/wallpaper.png"
 loc="/home/paczur/Projects/C/IdkWM/bin"
 audio &
+touchpad &
 while :; do
   (exec "$loc/idkwm") &>> "$loc/out"
 done
