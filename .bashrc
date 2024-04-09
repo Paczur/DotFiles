@@ -47,7 +47,7 @@ __ps1_user() {
   fi
 }
 __ps1_git_dir() {
-  local dir="$(pwd)"
+  local dir="$(realpath "$PWD")"
   while [ "$dir" != "/" ]; do
     if [ -d "$dir/.git" ]; then
       echo "$dir"
@@ -104,7 +104,7 @@ __ps1_git_branch() {
 }
 __ps1_cwd() {
   #Takes dir to shorten as argument
-  local pwd="$(pwd)"
+  local pwd="$(realpath "$PWD")"
   local cwd="$(echo "$pwd" | sed "s/${HOME//\//\\\/}/~/")"
   if [ -z "$1" ]; then
     echo "${cwd_color}${BO}$cwd${BC}"
