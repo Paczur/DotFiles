@@ -188,16 +188,19 @@ __ps1() {
 }
 
 cd() {
-  local prev="$PWD"
+  local prev="$(realpath "$PWD")"
   builtin cd "$@" || return
-  if [ -d ".venv" ]; then
+  if [ -d ".venv" ] && [ -z "${VIRTUAL_ENV}" ]; then
     . ./.venv/bin/activate
-  elif [ -n "${VIRTUAL_ENV_PROMPT}" ]; then
+  elif [ -n "${VIRTUAL_ENV}" ] &&
+    case $(realpath "$PWD") in $(dirname ${VIRTUAL_ENV})*) false;; *) true;; esac; then
     deactivate
   fi
-  if [ -e "Runfile" ]; then
+  if [ -e "Runfile" ] &&
+    case $(realpath "$PWD") in $prev*) true;; *) false;; esac; then
     ./Runfile open
-  elif [ -e "$prev/Runfile" ]; then
+  elif [ -e "$prev/Runfile" ] &&
+    case $(realpath "$PWD") in $prev*) false;; *) true;; esac; then
     "$prev/Runfile" close &> /dev/null &
     disown
   fi
