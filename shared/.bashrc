@@ -35,6 +35,45 @@ if ! shopt -oq posix; then
   fi
 fi
 
+bits_to_color() {
+  local R='\001\e[31m\002'
+  local G='\001\e[32m\002'
+  local B='\001\e[34m\002'
+  local C='\001\e[36m\002'
+  local M='\001\e[35m\002'
+  local Y='\001\e[33m\002'
+  local W='\001\e[97m\002'
+  local D='\001\e[90m\002'
+  if [ "$1" = "1" ]; then
+    if [ "$2" = "1" ]; then
+      if [ "$3" = "1" ]; then
+        echo "$W"
+      elif [ "$3" = "0" ]; then
+        echo "$Y"
+      fi
+    elif [ "$2" = "0" ]; then
+      if [ "$3" = "1" ]; then
+        echo "$M"
+      elif [ "$3" = "0" ]; then
+        echo "$R"
+      fi
+    fi
+  elif [ "$1" = "0" ]; then
+    if [ "$2" = "1" ]; then
+      if [ "$3" = "1" ]; then
+        echo "$C"
+      elif [ "$3" = "0" ]; then
+        echo "$G"
+      fi
+    elif [ "$2" = "0" ]; then
+      if [ "$3" = "1" ]; then
+        echo "$B"
+      elif [ "$3" = "0" ]; then
+        echo "$D"
+      fi
+    fi
+  fi
+}
 __ps1_host() {
   if [ -n "$(pstree -ps $$ | grep "sshd")" ]; then
     echo "${host_color}${BO}$(hostname -s)${BC}"
@@ -115,20 +154,35 @@ __ps1_cwd() {
     fi
   fi
 }
+__ps1_project() {
+  local dir="$(realpath "$PWD")"
+  while [ "$dir" != "/" ]; do
+    if [ -d "$dir/.git" ] || [ -d "$dir/.venv" ] ||
+       [ -d "$dir/.renv" ]; then
+           echo "$(basename "$dir")"
+      return
+    fi
+    dir="$(dirname "$dir")"
+  done
+}
 __ps1_venv() {
   if [ -n "${VIRTUAL_ENV}" ]; then
-    echo "${venv_color}${BO}$(basename ${VIRTUAL_ENV})${BC}"
+    echo "1"
+  else
+    echo "0"
   fi
 }
 __ps1_renv() {
   if [ -n "${RUN_ENV}" ]; then
-    echo "${renv_color}${BO}$(basename ${RUN_ENV})${BC}"
+    echo "1"
+  else
+    echo "0"
   fi
 }
 __ps1_jobs() {
-  local job_colorount="$(jobs -r | wc -l)"
-  if [ "${job_colorount}" -ne 0 ]; then
-    echo "${jobs_color}${BO}${job_colorount}${BC}"
+  local job_count="$(jobs -r | wc -l)"
+  if [ "${job_count}" -ne 0 ]; then
+    echo "${jobs_color}${BO}${job_count}${BC}"
   fi
 }
 
@@ -142,9 +196,11 @@ RESET='\001\e[00m\002'
 BO='('
 BC=')'
 
+venv_color="${B}"
+renv_color="${R}"
+vrenv_color="${M}"
+
 jobs_color="${M}"
-venv_color="${RESET}"
-renv_color="${Y}"
 cwd_color="${B}"
 host_color="${G}"
 user_color="${R}"
@@ -160,6 +216,7 @@ gahead_color="${G}"
 gbehind_color="${R}"
 cursor="\001\e[5 q\002"
 
+env_char="."
 gunstaged_char='*'
 guntracked_char='%'
 gstash_char='≡'
@@ -169,6 +226,7 @@ gbehind_char='↓'
 
 __ps1() {
   local st="$?"
+  local git_present="0"
   if [[ "$st" != 0 ]]; then
     local x="${R}${BO}$st${BC}"
   fi
@@ -176,18 +234,21 @@ __ps1() {
   local jobs="$(__ps1_jobs)"
   local host="$(__ps1_host)"
   local user="$(__ps1_user)"
-  local venv="$(__ps1_venv)"
-  local renv="$(__ps1_renv)"
 
   local git="$(__ps1_git_dir)"
+  local project_dir="$(__ps1_project)"
   if [ -n "$git" ]; then
-    local project="${project_color}${BO}$(basename "$git")${BC}"
     local branch="$(__ps1_git_branch "$git")"
     local state="$(__ps1_git_status "$git")"
+    local git_present="1"
+  fi
+  if [ -n "${project_dir}" ]; then
+    local project_color="$(bits_to_color "$(__ps1_renv)" "${git_present}" "$(__ps1_venv)")"
+    local project="${project_color}${BO}${project_dir}${BC}"
   fi
   local cwd="$(__ps1_cwd "$git")"
 
-  PS1="${x}${jobs}${host}${user}${project}${branch}${state}${venv}${renv}${cwd}${RESET}${cursor} "
+  PS1="${x}${jobs}${host}${user}${project}${branch}${state}${cwd}${RESET}${cursor} "
 
   local PS1_CLEAN="$(echo "$PS1" |\
     sed 's/\\001\\e\[[0-9]\+m\\002//g;s/\[[0-9]*m//g')"
