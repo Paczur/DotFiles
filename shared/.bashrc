@@ -208,7 +208,7 @@ cd() {
 
   if [ -n "${RUN_ENV}" ] &&
     case $(realpath "$PWD") in $(dirname ${RUN_ENV})*) false;; *) true;; esac; then
-    close
+    close >/dev/null
   fi
 
   if [ -z "${RUN_ENV}" ]; then
