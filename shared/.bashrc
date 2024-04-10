@@ -116,8 +116,13 @@ __ps1_cwd() {
   fi
 }
 __ps1_venv() {
-  if [ -n "${VIRTUAL_ENV_PROMPT}" ]; then
+  if [ -n "${VIRTUAL_ENV}" ]; then
     echo "${venv_color}${BO}$(basename ${VIRTUAL_ENV})${BC}"
+  fi
+}
+__ps1_renv() {
+  if [ -n "${RUN_ENV}" ]; then
+    echo "${renv_color}${BO}$(basename ${RUN_ENV})${BC}"
   fi
 }
 __ps1_jobs() {
@@ -139,17 +144,20 @@ BC=')'
 
 jobs_color="${M}"
 venv_color="${RESET}"
+renv_color="${Y}"
 cwd_color="${B}"
+host_color="${G}"
+user_color="${R}"
+project_color="${C}"
 gbranch_color="${G}"
 gstatus_color="${G}"
+
 gunstaged_color="${R}"
 guntracked_color="${R}"
 gstash_color="${B}"
 gstaged_color="${G}"
 gahead_color="${G}"
 gbehind_color="${R}"
-host_color="${G}"
-user_color="${R}"
 cursor="\001\e[5 q\002"
 
 gunstaged_char='*'
@@ -169,16 +177,17 @@ __ps1() {
   local host="$(__ps1_host)"
   local user="$(__ps1_user)"
   local venv="$(__ps1_venv)"
+  local renv="$(__ps1_renv)"
 
   local git="$(__ps1_git_dir)"
   if [ -n "$git" ]; then
-    local project="${C}${BO}$(basename "$git")${BC}"
+    local project="${project_color}${BO}$(basename "$git")${BC}"
     local branch="$(__ps1_git_branch "$git")"
     local state="$(__ps1_git_status "$git")"
   fi
   local cwd="$(__ps1_cwd "$git")"
 
-  PS1="${x}${jobs}${host}${user}${project}${branch}${state}${venv}${cwd}${RESET}${cursor} "
+  PS1="${x}${jobs}${host}${user}${project}${branch}${state}${venv}${renv}${cwd}${RESET}${cursor} "
 
   local PS1_CLEAN="$(echo "$PS1" |\
     sed 's/\\001\\e\[[0-9]\+m\\002//g;s/\[[0-9]*m//g')"
@@ -192,6 +201,26 @@ cd() {
   local path
   builtin cd "$@" || return
 
+  if [ -n "${VIRTUAL_ENV}" ] &&
+    case $(realpath "$PWD") in $(dirname ${VIRTUAL_ENV})*) false;; *) true;; esac; then
+    deactivate
+  fi
+
+  if [ -n "${RUN_ENV}" ] &&
+    case $(realpath "$PWD") in $(dirname ${RUN_ENV})*) false;; *) true;; esac; then
+    close
+  fi
+
+  if [ -z "${RUN_ENV}" ]; then
+    path=".renv"
+    while [ ! -d "$path" ] && [ "$(realpath "$path")" != "/.renv" ]; do
+      path="../$path"
+    done
+    if [ -e "$path/open" ]; then
+      . "$path/open"
+    fi
+  fi
+
   if [ -z "${VIRTUAL_ENV}" ]; then
     path=".venv"
     while [ ! -d "$path" ] && [ "$(realpath "$path")" != "/.venv" ]; do
@@ -200,28 +229,6 @@ cd() {
     if [ -d "$path" ]; then
       . "$path/bin/activate"
     fi
-  fi
-
-  if [ -z "$RUNFILE" ]; then
-    path="Runfile"
-    while [ ! -e "$path" ] && [ "$(realpath "$path")" != "/Runfile" ]; do
-      path="../$path"
-    done
-    if [ -e "$path" ]; then
-      "$path" open
-      RUNFILE="$path"
-    fi
-  fi
-
-  if [ -n "$RUNFILE" ] &&
-    case $(realpath "$PWD") in $RUNFILE*) false;; *) true;; esac; then
-    "$prev/Runfile" close &> /dev/null &
-    disown
-  fi
-
-  if [ -n "${VIRTUAL_ENV}" ] &&
-    case $(realpath "$PWD") in $(dirname ${VIRTUAL_ENV})*) false;; *) true;; esac; then
-    deactivate
   fi
 
   ls

@@ -1,0 +1,11 @@
+#!/bin/env dash
+if [ -n "${RUN_ENV}" ]; then
+    pwd="$PWD"
+    path="$(dirname "${RUN_ENV}")"
+    dir="$(hostname -s | tr '[:upper:]' '[:lower:]')"
+    cd "$path"
+    stow -R -t "$HOME" "shared" "$dir"
+    cd "${pwd}"
+else
+  echo "Runenv not active"
+fi
