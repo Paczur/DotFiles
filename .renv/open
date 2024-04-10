@@ -7,9 +7,9 @@ close() {
     local pwd="$PWD"
     local path="$(dirname "${RUN_ENV}")"
     local dir="$(hostname -s | tr '[:upper:]' '[:lower:]')"
-    cd "$path"
+    builtin cd "$path"
     stow -R -t "$HOME" "shared" "$dir"
-    cd "${pwd}"
+    builtin cd "${pwd}"
     export PATH="$(echo "$PATH" | sed "s/$(echo ":${RUN_ENV}" | sed 's/\//\\\//g')//g")"
     export RUN_ENV=""
   fi
