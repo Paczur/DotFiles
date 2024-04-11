@@ -246,7 +246,7 @@ __ps1() {
     local project_color="$(bits_to_color "$(__ps1_renv)" "${git_present}" "$(__ps1_venv)")"
     local project="${project_color}${BO}${project_dir}${BC}"
   fi
-  local cwd="$(__ps1_cwd "$git")"
+  local cwd="$(__ps1_cwd "$project")"
 
   PS1="${x}${jobs}${host}${user}${project}${branch}${state}${cwd}${RESET}${cursor} "
 
