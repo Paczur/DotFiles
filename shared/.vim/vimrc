@@ -247,8 +247,8 @@ au VimEnter * call CmdAlias("ma", "make all")
 au VimEnter * call CmdAlias("co", "botright copen")
 au VimEnter * call CmdAlias("copen", "botright copen")
 au VimEnter * call CmdAlias("vf", "vert sf")
-au VimEnter * Alias run !./Runfile
-au VimEnter * Alias r !./Runfile
+au VimEnter * Alias run !run
+au VimEnter * Alias r !run
 runtime! macros/matchit.vim
 runtime ftplugin/man.vim
 autocmd Syntax c set commentstring=//%s
