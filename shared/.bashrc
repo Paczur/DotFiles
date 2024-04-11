@@ -159,7 +159,7 @@ __ps1_project() {
   while [ "$dir" != "/" ]; do
     if [ -d "$dir/.git" ] || [ -d "$dir/.venv" ] ||
        [ -d "$dir/.renv" ]; then
-           echo "$(basename "$dir")"
+           echo "$dir"
       return
     fi
     dir="$(dirname "$dir")"
@@ -244,9 +244,9 @@ __ps1() {
   fi
   if [ -n "${project_dir}" ]; then
     local project_color="$(bits_to_color "$(__ps1_renv)" "${git_present}" "$(__ps1_venv)")"
-    local project="${project_color}${BO}${project_dir}${BC}"
+    local project="${project_color}${BO}$(basename "${project_dir}")${BC}"
   fi
-  local cwd="$(__ps1_cwd "$project")"
+  local cwd="$(__ps1_cwd "$project_dir")"
 
   PS1="${x}${jobs}${host}${user}${project}${branch}${state}${cwd}${RESET}${cursor} "
 
