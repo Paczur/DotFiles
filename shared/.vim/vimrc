@@ -157,7 +157,6 @@ Plug 'https://github.com/airblade/vim-gitgutter'
 Plug 'https://github.com/tpope/vim-fugitive'
 Plug 'https://github.com/mikelue/vim-maven-plugin'
 Plug 'https://github.com/powerman/vim-plugin-AnsiEsc'
-Plug 'https://github.com/mattn/emmet-vim'
 Plug 'https://github.com/gregsexton/matchtag'
 Plug 'https://github.com/matze/vim-move'
 Plug 'https://github.com/bfrg/vim-qf-diagnostics'
@@ -169,8 +168,14 @@ Plug 'https://github.com/vhdirk/vim-cmake'
 Plug 'https://github.com/skywind3000/asyncrun.vim'
 Plug 'https://github.com/vim-scripts/a.vim'
 Plug 'https://github.com/vim-scripts/cmdalias.vim'
+Plug 'https://github.com/rhysd/vim-clang-format'
 call plug#end()
 
+let g:clang_format#detect_style_file = 1
+let g:clang_format#auto_format = 1
+let g:clang_format#auto_format_on_insert_leave = 1
+let g:clang_format#auto_formatexpr = 1
+let g:clang_format#enable_fallback_style = 0
 let g:tex_flavor='latex'
 let g:vimtex_quickfix_open_on_warning = 0
 let g:vimtex_view_method = 'mupdf'
