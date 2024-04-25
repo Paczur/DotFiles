@@ -195,6 +195,7 @@ Y='\001\e[33m\002'
 RESET='\001\e[00m\002'
 BO='('
 BC=')'
+BELL='\001\a\002'
 
 venv_color="${B}"
 renv_color="${R}"
@@ -248,7 +249,7 @@ __ps1() {
   fi
   local cwd="$(__ps1_cwd "$project_dir")"
 
-  PS1="${x}${jobs}${host}${user}${project}${branch}${state}${cwd}${RESET}${cursor} "
+  PS1="${BELL}${x}${jobs}${host}${user}${project}${branch}${state}${cwd}${RESET}${cursor} "
 
   local PS1_CLEAN="$(echo "$PS1" |\
     sed 's/\\001\\e\[[0-9]\+m\\002//g;s/\[[0-9]*m//g')"
