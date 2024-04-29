@@ -1,0 +1,11 @@
+if [ -z "${RUN_ENV}" ]; then
+  export RUN_ENV="/home/paczur/System/DotFiles/.renv"
+  export PATH="${PATH}:${RUN_ENV}"
+fi
+close() {
+  if [ -n "${RUN_ENV}" ]; then
+    export PATH="$(echo "$PATH" | sed "s/$(echo ":${RUN_ENV}" | sed 's/\//\\\//g')//g")"
+    export RUN_ENV=""
+  fi
+  unset -f close
+}
