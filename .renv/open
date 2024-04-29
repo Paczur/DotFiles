@@ -4,6 +4,7 @@ if [ -z "${RUN_ENV}" ]; then
 fi
 close() {
   if [ -n "${RUN_ENV}" ]; then
+    run
     export PATH="$(echo "$PATH" | sed "s/$(echo ":${RUN_ENV}" | sed 's/\//\\\//g')//g")"
     export RUN_ENV=""
   fi
