@@ -192,8 +192,7 @@ let g:gutentags_generate_on_new = 1
 let g:gutentags_generate_on_missing = 1
 let g:gutentags_generate_on_write = 1
 let g:gutentags_generate_on_empty_buffer = 0
-let g:gutentags_project_root = ['Makefile','GTAGS','GPATH','GRTAGS'
-      \,'README.md','.gitignore','LICENSE']
+let g:gutentags_project_root = ['Makefile','README.md','pom.xml','LICENSE']
 let g:gutentags_add_default_project_roots = 0
 let g:qfdiagnostics = {
       \  'texthl': 0,
@@ -259,7 +258,6 @@ runtime ftplugin/man.vim
 autocmd Syntax c set commentstring=//%s
 autocmd Syntax cpp set commentstring=//%s
 autocmd Syntax java set keywordprg=:Javadoc
-autocmd Syntax java set path+=/*/src/main/java/**
 autocmd Syntax python,html,htmldjango,css,javascript
       \ set path+=*/templates/*,*/static/**,static/**,templates/**
 autocmd Syntax c set path+=modules/**
