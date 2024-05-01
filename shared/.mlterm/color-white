@@ -1,7 +1,7 @@
 black      = #f3f3f3
 hl_black   = #eeeeee
-red        = #b32d2e
-hl_red     = #b32d2e
+red        = #b32e2e
+hl_red     = #b32e2e
 green      = #0e930e
 hl_green   = #0e930e
 blue       = #3e3ed3
@@ -12,5 +12,5 @@ magenta    = #b32eb3
 hl_magenta = #b32eb3
 cyan       = #1ea3a3
 hl_cyan    = #1ea3a3
-white      = #cccccc
+white      = #aaaaaa
 hl_white   = #000000
