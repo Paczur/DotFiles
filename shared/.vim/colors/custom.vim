@@ -37,8 +37,8 @@ hi Title                      ctermfg=White   ctermbg=NONE     cterm=NONE
 hi ModeMsg                    ctermfg=Gray    ctermbg=NONE     cterm=NONE
 hi MoreMsg                    ctermfg=Cyan    ctermbg=NONE     cterm=NONE
 hi MatchParen                 ctermfg=White   ctermbg=Gray     cterm=NONE
-hi Visual                     ctermfg=White   ctermbg=Gray     cterm=NONE
-hi VisualNOS                  ctermfg=White   ctermbg=Gray     cterm=NONE
+hi Visual                     ctermfg=Black   ctermbg=Gray     cterm=NONE
+hi VisualNOS                  ctermfg=Black   ctermbg=Gray     cterm=NONE
 hi NonText                    ctermfg=Gray    ctermbg=NONE     cterm=NONE
 hi Todo                       ctermfg=Yellow  ctermbg=NONE     cterm=NONE
 hi Underlined                 ctermfg=White   ctermbg=NONE     cterm=UNDERLINE
