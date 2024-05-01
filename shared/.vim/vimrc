@@ -103,14 +103,13 @@ set foldcolumn=0
 function! FoldText()
   let foldtext = substitute(substitute(
         \    substitute(substitute(
-        \    substitute(substitute(substitute(getline(v:foldstart),
-        \ '{\s*$',                '',                ''),
-        \ '^"\s*',              '',                ''),
-        \ '/\*\s*\(.*\)\s*\*/', '\=submatch(1)',   ''),
-        \ '^\s*//\s*',          '',                ''),
-        \ '^#\s*',              '',                ''),
-        \ '\s\s',               '--',              'g'),
-        \ '-\s',                '--',              '')
+        \    substitute(substitute(getline(v:foldstart),
+        \ '{\s*$',              '',                                  ''),
+        \ '^"\s*',              '',                                  ''),
+        \ '/\*\s*\(.*\)\s*\*/', '\=submatch(1)',                     ''),
+        \ '^\s*//\s*',          '',                                  ''),
+        \ '^#\s*',              '',                                  ''),
+        \ '^\s\+',              '\=repeat("-",strlen(submatch(0)))', '')
   if foldtext == ""
     return getline(v:foldstart)
   endif
