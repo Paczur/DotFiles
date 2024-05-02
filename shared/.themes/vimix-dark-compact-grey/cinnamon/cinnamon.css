@@ -323,18 +323,18 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 .cinnamon-link {
   border-radius: 2px;
-  color: #666666;
+  color: #7a7a7a;
   text-decoration: underline;
 }
 
 .cinnamon-link:hover {
-  color: #666666;
-  background-color: rgba(102, 102, 102, 0.12);
+  color: #7a7a7a;
+  background-color: rgba(122, 122, 122, 0.12);
 }
 
 .cinnamon-link:active {
-  color: #666666;
-  background-color: rgba(102, 102, 102, 0.25);
+  color: #7a7a7a;
+  background-color: rgba(122, 122, 122, 0.25);
 }
 
 #Tooltip {
@@ -532,8 +532,8 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 #panelRight:dnd,
 .panelRight:dnd {
   background-gradient-direction: vertical;
-  background-gradient-start: rgba(102, 102, 102, 0.4);
-  background-gradient-end: rgba(102, 102, 102, 0.4);
+  background-gradient-start: rgba(122, 122, 122, 0.4);
+  background-gradient-end: rgba(122, 122, 122, 0.4);
 }
 
 #panelRight:ltr,
@@ -710,7 +710,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.28);
 }
 
-#selected.window-caption {
+.window-caption#selected {
   spacing: 25px;
   color: white;
   background-color: white;
@@ -938,7 +938,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 .calendar-day-with-events {
   background-image: none;
-  color: #666666;
+  color: #7a7a7a;
   font-weight: 400;
   text-decoration: underline;
 }
@@ -2592,7 +2592,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   box-shadow: inset 0 -2px #666666;
 }
 
-#selected.expo-workspaces-name-entry {
+.expo-workspaces-name-entry#selected {
   color: white;
   caret-color: white;
   background-color: rgba(255, 255, 255, 0.05);
@@ -2604,7 +2604,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   background-color: transparent;
 }
 
-#active.expo-workspace-thumbnail-frame {
+.expo-workspace-thumbnail-frame#active {
   border-radius: 2px;
   border: 2px solid #666666;
 }
