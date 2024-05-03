@@ -178,7 +178,7 @@ let g:clang_format#style_options = {
             \ "BasedOnStyle": "Google",
             \ "SpaceBeforeParens": "Never",
             \ "IndentCaseLabels": "false",
-            \ "ContinuationIndentWidth": 0
+            \ "ContinuationIndentWidth": 2
             \}
 autocmd FileType c,cpp,java,js noremap = :ClangFormat<CR>
 let g:tex_flavor='latex'
