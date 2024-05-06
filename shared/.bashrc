@@ -272,23 +272,29 @@ cd() {
     close >/dev/null
   fi
 
-  if [ -z "${RUN_ENV}" ]; then
-    path=".renv"
-    while [ ! -d "$path" ] && [ "$(realpath "$path")" != "/.renv" ]; do
-      path="../$path"
-    done
-    if [ -e "$path/open" ]; then
+  path=".renv"
+  while [ ! -d "$path" ] && [ "$(realpath "$path")" != "/.renv" ]; do
+    path="../$path"
+  done
+  if [ -d "$path" ]; then
+    if [ -z "${RUN_ENV}" ]; then
+      . "$path/open"
+    elif case $(realpath $(dirname "$path")) in $(dirname ${RUN_ENV})*) true;; *)false;; esac; then
+      close
       . "$path/open"
     fi
   fi
 
-  if [ -z "${VIRTUAL_ENV}" ]; then
-    path=".venv"
-    while [ ! -d "$path" ] && [ "$(realpath "$path")" != "/.venv" ]; do
-      path="../$path"
-    done
-    if [ -d "$path" ]; then
+  path=".venv"
+  while [ ! -d "$path" ] && [ "$(realpath "$path")" != "/.venv" ]; do
+    path="../$path"
+  done
+  if [ -d "$path" ]; then
+    if [ -z "${VIRTUAL_ENV}" ]; then
       . "$path/bin/activate"
+    elif case $(realpath $(dirname "$path")) in $(dirname ${VIRTUAL_ENV})*) true;; *)false;; esac; then
+      deactivate
+      . "$path/bin/actiavte"
     fi
   fi
 
