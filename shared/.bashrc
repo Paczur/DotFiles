@@ -294,7 +294,7 @@ cd() {
       . "$path/bin/activate"
     elif case $(realpath $(dirname "$path")) in $(dirname ${VIRTUAL_ENV})*) true;; *)false;; esac; then
       deactivate
-      . "$path/bin/actiavte"
+      . "$path/bin/activate"
     fi
   fi
 
