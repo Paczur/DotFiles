@@ -174,7 +174,6 @@ let g:clang_format#detect_style_file = 1
 let g:clang_format#auto_format = 1
 let g:clang_format#auto_formatexpr = 1
 let g:clang_format#enable_fallback_style = 0
-autocmd FileType c,cpp noremap = :ClangFormat<CR>
 let g:tex_flavor='latex'
 let g:vimtex_quickfix_open_on_warning = 0
 let g:vimtex_view_method = 'mupdf'
