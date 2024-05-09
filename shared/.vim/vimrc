@@ -163,7 +163,6 @@ Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/machakann/vim-sandwich'
 Plug 'https://github.com/sheerun/vim-polyglot'
 Plug 'https://github.com/lervag/vimtex'
-Plug 'https://github.com/vhdirk/vim-cmake'
 Plug 'https://github.com/skywind3000/asyncrun.vim'
 Plug 'https://github.com/vim-scripts/a.vim'
 Plug 'https://github.com/vim-scripts/cmdalias.vim'
@@ -256,10 +255,6 @@ runtime ftplugin/man.vim
 autocmd Syntax c set commentstring=//%s
 autocmd Syntax cpp set commentstring=//%s
 autocmd Syntax java set keywordprg=:Javadoc
-autocmd Syntax python,html,htmldjango,css,javascript
-      \ set path+=*/templates/*,*/static/**,static/**,templates/**
-autocmd Syntax c set path+=modules/**
-autocmd Syntax scala set path+=/*/src/main/scala/**
 autocmd CursorHold * checktime
 
 function! SetCC(val)
