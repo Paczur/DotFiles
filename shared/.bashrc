@@ -308,17 +308,34 @@ cdu() {
   while ! [[ "$(basename "$path")" =~ .*$1.* ]] && [ "$path" != "/" ]; do
     path="$(dirname "$path")"
   done
-  cd "$path"
+  if [ "$path" != "/" ]; then
+    cd "$path"
+  fi
 }
 
 cdd() {
   dest=""
   i=0
   while [ -z "$dest" ] || [ "$i" = "50" ]; do
-    dest="$(find -mindepth "$i" -maxdepth "$i" -name "*$1*" -print -quit 2>/dev/null)"
+    dest="$(find -mindepth "$i" -maxdepth "$i" -iname "*$1*" -print -quit 2>/dev/null)"
     i=$(($i+1))
   done
-  cd "$dest"
+  if [ -n "$dest" ]; then
+    cd "$dest"
+  fi
+}
+
+cdud() {
+  path="$PWD"
+  shopt -s nocasematch
+  while ! [[ "$(basename "$path")" =~ .*$1.* ]] && [ "$path" != "/" ]; do
+    path="$(dirname "$path")"
+  done
+  shopt -u nocasematch
+  if [ "$path" != "/" ]; then
+    builtin cd "$path"
+  fi
+  cdd "$2"
 }
 
 cd.() {
