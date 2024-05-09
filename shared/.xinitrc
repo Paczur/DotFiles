@@ -1,19 +1,11 @@
 #!/bin/env bash
 
-# /home/paczur/Scripts/system/startup/afterX
+/home/paczur/Scripts/system/startup/afterX
+
 # (exec i3) &> ~/System/Logs/i3
 
-setxkbmap pl -option caps:swapescape &
-xsetroot -cursor_name left_ptr &
-xset -dpms &
-xset s off &
-xinput --set-prop "SteelSeries SteelSeries Rival 110 Gaming Mouse" 'libinput Accel Profile Enabled' 0, 1 &
-
-xrdb -merge ~/.Xresources &
-feh --no-fehbg -B "#111111" --bg-center "/home/paczur/Multimedia/Pictures/Seasonal/$(season)/wallpaper.png"
-loc="/home/paczur/Projects/C/IdkWM/bin"
-audio &
-touchpad &
+dir="/home/paczur/Projects/C/awm"
+mkdir "$dir/log"
 while :; do
-  (exec "$loc/idkwm") &>> "$loc/out"
+  (exec "$dir/bin/awm") &>> "$dir/log/$(date "+%d-%m-%y.%H:%M:%S").log"
 done
