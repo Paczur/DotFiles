@@ -303,6 +303,40 @@ cd() {
   ls
 }
 
+cdu() {
+  path="$PWD"
+  while ! [[ "$(basename "$path")" =~ .*$1.* ]] && [ "$path" != "/" ]; do
+    path="$(dirname "$path")"
+  done
+  cd "$path"
+}
+
+cdd() {
+  dest=""
+  i=0
+  while [ -z "$dest" ] || [ "$i" = "50" ]; do
+    dest="$(find -mindepth "$i" -maxdepth "$i" -name "*$1*" -print -quit 2>/dev/null)"
+    i=$(($i+1))
+  done
+  cd "$dest"
+}
+
+cd.() {
+  cd "../$1"
+}
+
+cd..() {
+  cd "../../$1"
+}
+
+cd...() {
+  cd "../../../$1"
+}
+
+cd....() {
+  cd "../../../../$1"
+}
+
 clean_ps1() {
   export PROMPT_COMMAND=''
   PS1='$ '
