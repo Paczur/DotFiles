@@ -262,42 +262,33 @@ cd() {
   local path
   builtin cd "$@" || return
 
-  if [ -n "${VIRTUAL_ENV}" ] &&
-    case $(realpath "$PWD") in $(dirname ${VIRTUAL_ENV})*) false;; *) true;; esac; then
-    deactivate
-  fi
+  rpath=".renv"
+  while [ ! -d "$rpath" ] && [ "$(realpath "$rpath")" != "/.renv" ]; do
+    rpath="../$rpath"
+  done
+  vpath=".venv"
+  while [ ! -d "$vpath" ] && [ "$(realpath "$vpath")" != "/.venv" ]; do
+    vpath="../$vpath"
+  done
 
   if [ -n "${RUN_ENV}" ] &&
-    case $(realpath "$PWD") in $(dirname ${RUN_ENV})*) false;; *) true;; esac; then
-    close >/dev/null
+     [ "$(realpath "$rpath")" != "$(realpath "${RUN_ENV}")" ] &&
+     case $(realpath $(dirname "$rpath")) in $(dirname ${RUN_ENV})*) true;; *)false;; esac; then
+       close >/dev/null
   fi
 
-  path=".renv"
-  while [ ! -d "$path" ] && [ "$(realpath "$path")" != "/.renv" ]; do
-    path="../$path"
-  done
-  if [ -d "$path" ]; then
-    if [ -z "${RUN_ENV}" ]; then
-      . "$path/open"
-    elif [ "$(realpath "$path")" != "$(realpath "${RUN_ENV}")" ] && 
-      case $(realpath $(dirname "$path")) in $(dirname ${RUN_ENV})*) true;; *)false;; esac; then
-      close
-      . "$path/open"
-    fi
+  if [ -n "${VIRTUAL_ENV}" ] &&
+     [ "$(realpath "$vpath")" != "$(realpath "${VIRTUAL_ENV}")" ] &&
+     case $(realpath $(dirname "$vpath")) in $(dirname ${VIRTUAL_ENV})*) true;; *)false;; esac; then
+       deactivate
   fi
 
-  path=".venv"
-  while [ ! -d "$path" ] && [ "$(realpath "$path")" != "/.venv" ]; do
-    path="../$path"
-  done
-  if [ -d "$path" ]; then
-    if [ -z "${VIRTUAL_ENV}" ]; then
-      . "$path/bin/activate"
-    elif [ "$(realpath "$path")" != "$(realpath "${VIRUTAL_ENV}")" ] && 
-      case $(realpath $(dirname "$path")) in $(dirname ${VIRUTAL_ENV})*) true;; *)false;; esac; then
-      deactivate
-      . "$path/bin/activate"
-    fi
+  if [ -z "${VIRTUAL_ENV}" ] && [ -d "$vpath" ]; then
+    . "$vpath/bin/activate"
+  fi
+
+  if [ -z "${RUN_ENV}" ] && [ -d "$rpath" ]; then
+    . "$rpath/open"
   fi
 
   ls
