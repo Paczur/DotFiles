@@ -272,14 +272,12 @@ cd() {
   done
 
   if [ -n "${RUN_ENV}" ] &&
-     [ "$(realpath "$rpath")" != "$(realpath "${RUN_ENV}")" ] &&
-     case $(realpath $(dirname "$rpath")) in $(dirname ${RUN_ENV})*) true;; *)false;; esac; then
+     [ "$(realpath "$rpath")" != "$(realpath "${RUN_ENV}")" ]; then
        close >/dev/null
   fi
 
   if [ -n "${VIRTUAL_ENV}" ] &&
-     [ "$(realpath "$vpath")" != "$(realpath "${VIRTUAL_ENV}")" ] &&
-     case $(realpath $(dirname "$vpath")) in $(dirname ${VIRTUAL_ENV})*) true;; *)false;; esac; then
+     [ "$(realpath "$vpath")" != "$(realpath "${VIRTUAL_ENV}")" ]; then
        deactivate
   fi
 
