@@ -279,7 +279,7 @@ cd() {
   if [ -d "$path" ]; then
     if [ -z "${RUN_ENV}" ]; then
       . "$path/open"
-    elif [ "$(realpath "$path")" != "$(realpath "${RUN_ENV}")" ] && 
+    elif ([ -z "${RUN_ENV}" ] || [ "$(realpath "$path")" != "$(realpath "${RUN_ENV}")" ]) && 
       case $(realpath $(dirname "$path")) in $(dirname ${RUN_ENV})*) true;; *)false;; esac; then
       close
       . "$path/open"
@@ -293,7 +293,7 @@ cd() {
   if [ -d "$path" ]; then
     if [ -z "${VIRTUAL_ENV}" ]; then
       . "$path/bin/activate"
-    elif [ "$(realpath "$path")" != "$(realpath "${VIRUTAL_ENV}")" ] && 
+    elif ([ -z "${VIRTUAL_ENV}" ] || [ "$(realpath "$path")" != "$(realpath "${VIRUTAL_ENV}")" ]) && 
       case $(realpath $(dirname "$path")) in $(dirname ${VIRUTAL_ENV})*) true;; *)false;; esac; then
       deactivate
       . "$path/bin/activate"
