@@ -307,7 +307,7 @@ cdd() {
     dest=""
     i=0
     while [ -z "$dest" ] || [ "$i" = "50" ]; do
-      dest="$(find -mindepth "$i" -maxdepth "$i" -name "*$1*" -print -quit 2>/dev/null)"
+      dest="$(find -type d -mindepth "$i" -maxdepth "$i" -name "*$1*" -print -quit 2>/dev/null)"
       i=$(($i+1))
     done
     if [ -n "$dest" ]; then
@@ -318,7 +318,7 @@ cdd() {
   dest=""
   i=0
   while [ -z "$dest" ] || [ "$i" = "50" ]; do
-    dest="$(find -mindepth "$i" -maxdepth "$i" -name "*$1*" -print -quit 2>/dev/null)"
+    dest="$(find -type d -mindepth "$i" -maxdepth "$i" -name "*$1*" -print -quit 2>/dev/null)"
     i=$(($i+1))
   done
   if [ -n "$dest" ]; then
