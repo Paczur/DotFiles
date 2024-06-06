@@ -1,7 +1,6 @@
 "USABILITY {{{
 set encoding=UTF-8
-set path-=/usr/include
-set path+=src/**
+set path=src/**
 set nocompatible
 set backspace=2
 set wildmenu

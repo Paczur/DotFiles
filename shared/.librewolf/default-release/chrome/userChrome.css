@@ -1,14 +1,11 @@
 #TabsToolbar {
   visibility: collapse !important;
 }
-#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
-  display: none;
-}
 /*Collapse in default state and add transition*/
 #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] {
   overflow: hidden;
-  min-width: 50px !important;
-  max-width: 50px !important;
+  min-width: 0px !important;
+  max-width: 0px !important;
   border-right: 1px solid #0c0c0d;
   z-index: 2;
 }
@@ -16,7 +13,15 @@
 /*Expand to 260px on hover*/
 #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"]:hover,
 #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar {
-  min-width: 400px !important;
-  max-width: 400px !important;
+  min-width: 300px !important;
+  max-width: 300px !important;
   z-index: 1;
+}
+
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] + #sidebar-splitter {
+    display: none !important;
+}
+
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
+    visibility: collapse;
 }
