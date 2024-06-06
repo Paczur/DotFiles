@@ -225,6 +225,7 @@ autocmd Syntax * syn match comment "\v(^import.*\n)+" fold
 autocmd Syntax * syn region CommentBlock start="/\*" end="\*/" transparent keepend extend fold
 autocmd Syntax * syn match comment "\v(^\s*//.*\n)+" fold
 autocmd Syntax * set formatoptions=rqn2jc
+au BufRead,BufNewFile *.ejs set filetype=html
 "}}}
 
 "PROGRAMMING {{{
