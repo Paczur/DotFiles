@@ -225,6 +225,7 @@ autocmd Syntax * syn region CommentBlock start="/\*" end="\*/" transparent keepe
 autocmd Syntax * syn match comment "\v(^\s*//.*\n)+" fold
 autocmd Syntax * set formatoptions=rqn2jc
 au BufRead,BufNewFile *.ejs set filetype=html
+au BufRead,BufNewFile *.cu set filetype=cpp
 "}}}
 
 "PROGRAMMING {{{
