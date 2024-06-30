@@ -6,3 +6,4 @@ GRTAGS
 .renv
 .vimrc
 **/.vimrc
+.mailmap

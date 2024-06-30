@@ -1,0 +1,9 @@
+pcm.!default {
+    type plug
+    slave { pcm "jack" }
+}
+#pcm.!default {
+#    type plug
+#    slave.pcm "jack"
+#    hint.description "Jack Audio"
+#}
