@@ -1,4 +1,3 @@
-DEFAULT = CodeNewRoman Nerd Font Mono
-UNICODE = CodeNewRoman Nerd Font Mono
-ISO10646_UCS4_1 = IPAexGothic
-ISO10646_UCS4_1_FULLWIDTH = IPAexGothic
+DEFAULT = Maple Mono NF
+UNICODE = Maple Mono NF
+CodeNewRoman Nerd Font Mono
