@@ -303,30 +303,14 @@ cdu() {
 }
 
 cdd() {
-  while [ -n "$2" ]; do
-    dest=""
-    i=0
-    while [ -z "$dest" ] || [ "$i" = "50" ]; do
-      dest="$(find -L -type d -mindepth "$i" -maxdepth "$i" -name "*$1*" -print -quit 2>/dev/null)"
-      i=$(($i+1))
-    done
-    if [ -n "$dest" ]; then
-      builtin cd "$dest"
-    fi
-    shift
-  done
-  dest=""
-  i=0
-  while [ -z "$dest" ] || [ "$i" = "50" ]; do
-    dest="$(find -L -type d -mindepth "$i" -maxdepth "$i" -name "*$1*" -print -quit 2>/dev/null)"
-    i=$(($i+1))
-  done
-  if [ -n "$dest" ]; then
-    cd "$dest"
+  local d="$(pf "$1")"
+  if [ -n "$d" ]; then
+    cd "$d"
   fi
 }
 
 cdud() {
+  orig="$PWD"
   path="$PWD"
   while ! [[ "$(basename "$path")" =~ .*$1.* ]] && [ "$path" != "/" ]; do
     path="$(dirname "$path")"
