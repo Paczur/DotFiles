@@ -207,11 +207,11 @@ let g:gutentags_project_root = ['Makefile','README.md','pom.xml','LICENSE']
 let g:gutentags_add_default_project_roots = 0
 let g:qfdiagnostics = {
       \  'texthl': 0,
-      \  'sign_error': { 'text': '●', 'priority': 14, 'texthl': 'SignError'},
-      \  'sign_warning': { 'text': '●', 'priority': 13, 'texthl': 'SignWarning'},
-      \  'sign_info': { 'text': '●', 'priority': 12, 'texthl': 'SignInfo'},
-      \  'sign_note': { 'text': '●', 'priority': 11, 'texthl': 'SignNote'},
-      \  'sign_other': { 'text': '●', 'priority': 10, 'texthl': 'SignOther'},
+      \  'sign_error': { 'text': '*', 'priority': 14, 'texthl': 'SignError'},
+      \  'sign_warning': { 'text': '*', 'priority': 13, 'texthl': 'SignWarning'},
+      \  'sign_info': { 'text': '*', 'priority': 12, 'texthl': 'SignInfo'},
+      \  'sign_note': { 'text': '*', 'priority': 11, 'texthl': 'SignNote'},
+      \  'sign_other': { 'text': '*', 'priority': 10, 'texthl': 'SignOther'},
       \}
 let g:move_key_modifier = 'C'
 let g:move_key_modifier_visualmode = 'C'
@@ -235,7 +235,6 @@ syntax on
 autocmd Syntax * syn region Important start="[^ ]*TODO" end="\n" containedin=.*omment.*
 autocmd Syntax * syn region Important start="!:" end=":!\|\n" containedin=.*omment.*
 autocmd Syntax * syn match comment "\v(^import.*\n)+" fold
-autocmd Syntax * syn region CommentBlock start="/\*" end="\*/" transparent keepend fold
 autocmd Syntax * syn match comment "\v(^\s*//.*\n)+" fold
 autocmd Syntax * set formatoptions=rqn2jc
 au BufRead,BufNewFile *.ejs set filetype=html
