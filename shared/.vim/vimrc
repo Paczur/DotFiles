@@ -18,6 +18,8 @@ set ttyfast
 set ttimeout
 set ttimeoutlen=1
 set nohidden
+set splitbelow
+set splitright
 let mapleader='-'
 
 vnoremap p "0p
@@ -133,7 +135,7 @@ endfunction
 set foldexpr=FoldMethod(v:lnum)
 let javaScript_fold=1
 autocmd FileType c          set foldmethod=syntax
-autocmd FileType c          set foldnestmax=2
+autocmd FileType c          set foldnestmax=3
 autocmd FileType cpp        set foldmethod=syntax
 autocmd FileType cpp        set foldnestmax=2
 autocmd FileType javascript set foldmethod=syntax
@@ -178,7 +180,6 @@ Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/machakann/vim-sandwich'
 Plug 'https://github.com/lervag/vimtex'
 Plug 'https://github.com/skywind3000/asyncrun.vim'
-Plug 'https://github.com/vim-scripts/a.vim'
 Plug 'https://github.com/vim-scripts/cmdalias.vim'
 Plug 'https://github.com/rhysd/vim-clang-format'
 call plug#end()
@@ -270,6 +271,16 @@ autocmd Syntax c set commentstring=//%s
 autocmd Syntax cpp set commentstring=//%s
 autocmd Syntax java set keywordprg=:Javadoc
 autocmd CursorHold * checktime
+
+command VH vert split %:r:r.h
+command VC vert split %:r:r.c
+command VT vert split %:r:r.test.c
+command HH split %:r:r.h
+command HC split %:r:r.c
+command HT split %:r:r.test.c
+command H edit %:r:r.h
+command C edit %:r:r.c
+command T edit %:r:r.test.c
 
 function! SetCC(val)
   let &colorcolumn=join(range(a:val,999),",")
