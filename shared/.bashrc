@@ -303,7 +303,7 @@ cdu() {
 }
 
 cdd() {
-  local d="$(pf "$1")"
+  local d="$(pf -t dD $@)"
   if [ -n "$d" ]; then
     cd "$d"
   fi
