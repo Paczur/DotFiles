@@ -4,8 +4,8 @@
 
 # (exec i3) &> ~/System/Logs/i3
 
-dir="/home/paczur/Projects/C/awm"
-mkdir "$dir/log"
+log_dir="/home/paczur/Projects/C/awm/log"
+mkdir "$log_dir"
 while :; do
-  (exec "$dir/bin/awm") &>> "$dir/log/$(date "+%d-%m-%y.%H:%M:%S").log"
+  (exec "/usr/bin/awm") &>> "$log_dir/$(date "+%d-%m-%y.%H:%M:%S").log"
 done
