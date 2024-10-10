@@ -303,7 +303,7 @@ cdu() {
 }
 
 cdd() {
-  local d="$(pf -t dD $@)"
+  local d="$(pf -t dD "$@")"
   if [ -n "$d" ]; then
     cd "$d"
   fi
@@ -319,7 +319,7 @@ cdud() {
     builtin cd "$path"
   fi
   shift
-  cdd $@
+  cdd "$@"
 }
 
 cd.() {
