@@ -20,7 +20,7 @@ set ttimeoutlen=1
 set nohidden
 set splitbelow
 set splitright
-let mapleader='-'
+let mapleader=' '
 
 vnoremap p "0p
 vnoremap P "0P
@@ -182,6 +182,8 @@ Plug 'https://github.com/lervag/vimtex'
 Plug 'https://github.com/skywind3000/asyncrun.vim'
 Plug 'https://github.com/vim-scripts/cmdalias.vim'
 Plug 'https://github.com/rhysd/vim-clang-format'
+Plug 'aymericbeaumet/vim-symlink'
+Plug 'moll/vim-bbye'
 call plug#end()
 
 let g:clang_format#detect_style_file = 1
