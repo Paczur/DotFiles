@@ -1,0 +1,45 @@
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintfull
+Xft.autohint:   false
+Xft.lcdfilter:  lcddefault
+
+*geometry: 400x400
+*font: xft:CodeNewRoman Nerd Font Mono:size=14
+*savelines: 16384
+*ScrollBar: false
+*scrollBar: false
+*termName: xterm-256color
+*BellIsUrgent: true
+*cursorBlink: true
+
+*.cursorColor: #f3f3f3
+*.pointerColor: #f3f3f3
+*.foreground: #f3f3f3
+*.background: #111111
+!black
+*.color0:  #000000
+*.color8:  #111111
+!red
+*.color1:  #f36e6e
+*.color9:  #f36e6e
+!green
+*.color2:  #6ef36e
+*.color10: #6ef36e
+!yellow
+*.color3:  #f3f36e
+*.color11: #f3f36e
+!blue
+*.color4:  #6e6ef3
+*.color12: #6e6ef3
+!cyan
+*.color5:  #f36ef3
+*.color13: #f36ef3
+!magenta
+*.color6:  #6ef3f3
+*.color14: #6ef3f3
+!white
+*.color7:  #333333
+*.color15: #f3f3f3

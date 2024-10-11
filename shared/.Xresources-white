@@ -15,31 +15,31 @@ Xft.lcdfilter:  lcddefault
 *BellIsUrgent: true
 *cursorBlink: true
 
-*.cursorColor: #f3f3f3
-*.pointerColor: #f3f3f3
-*.foreground: #f3f3f3
-*.background: #111111
+*.cursorColor: #000000
+*.pointerColor: #000000
+*.foreground: #000000
+*.background: #eeeeee
 !black
-*.color0:  #111111
-*.color1:  #f36e6e
+*.color0:  #f3f3f3
+*.color8:  #eeeeee
 !red
-*.color2:  #6ef36e
-*.color3:  #f3f36e
+*.color1:  #b32e2e
+*.color9:  #b32e2e
 !green
-*.color4:  #6e6ef3
-*.color5:  #f36ef3
+*.color2:  #0e930e
+*.color10: #0e930e
 !yellow
-*.color6:  #6ef3f3
-*.color7:  #aaaaaa
+*.color3:  #93930e
+*.color11: #93930e
 !blue
-*.color8:  #333333
-*.color9:  #f36e6e
+*.color4:  #3e3ed3
+*.color12: #3e3ed3
 !cyan
-*.color10: #6ef36e
-*.color11: #f3f36e
+*.color5:  #1ea3a3
+*.color13: #1ea3a3
 !magenta
-*.color12: #6e6ef3
-*.color13: #f36ef3
+*.color6:  #b32eb3
+*.color14: #b32eb3
 !white
-*.color14: #6ef3f3
-*.color15: #f3f3f3
+*.color7:  #aaaaaa
+*.color15: #000000
