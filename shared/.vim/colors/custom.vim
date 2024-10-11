@@ -21,7 +21,7 @@ hi ColorColumn                ctermfg=Red    ctermbg=NONE cterm=NONE
 hi TabLine                    ctermfg=Gray   ctermbg=NONE cterm=NONE
 hi TabLineFill                ctermfg=Gray   ctermbg=NONE cterm=NONE
 hi TabLineSel                 ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi Directory                  ctermfg=Blue   ctermbg=NONE cterm=NONE
+hi Directory                  ctermfg=White  ctermbg=NONE cterm=NONE
 hi Search                     ctermfg=Yellow ctermbg=NONE cterm=NONE
 hi IncSearch                  ctermfg=Yellow ctermbg=NONE cterm=NONE
 hi StatusLine                 ctermfg=NONE   ctermbg=NONE cterm=NONE
@@ -35,7 +35,7 @@ hi WildMenu                   ctermfg=Gray   ctermbg=NONE cterm=NONE
 hi Question                   ctermfg=Gray   ctermbg=NONE cterm=NONE
 hi Title                      ctermfg=NONE   ctermbg=NONE cterm=NONE
 hi ModeMsg                    ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi MoreMsg                    ctermfg=Cyan   ctermbg=NONE cterm=NONE
+hi MoreMsg                    ctermfg=Gray   ctermbg=NONE cterm=NONE
 hi MatchParen                 ctermfg=NONE   ctermbg=Gray cterm=NONE
 hi Visual                     ctermfg=NONE   ctermbg=Gray cterm=NONE
 hi VisualNOS                  ctermfg=NONE   ctermbg=Gray cterm=NONE
@@ -85,10 +85,10 @@ hi DiffAdd                    ctermfg=Green  ctermbg=NONE cterm=NONE
 hi DiffChange                 ctermfg=Yellow ctermbg=NONE cterm=NONE
 hi DiffDelete                 ctermfg=Red    ctermbg=NONE cterm=NONE
 hi DiffText                   ctermfg=NONE   ctermbg=NONE cterm=NONE
-hi diffAdded                    ctermfg=Green  ctermbg=NONE cterm=NONE
-hi diffRemoved                 ctermfg=Red    ctermbg=NONE cterm=NONE
-hi diffLine                   ctermfg=Gray    ctermbg=NONE cterm=NONE
-hi diffSubName                   ctermfg=Gray   ctermbg=NONE cterm=NONE
+hi diffAdded                  ctermfg=Green  ctermbg=NONE cterm=NONE
+hi diffRemoved                ctermfg=Red    ctermbg=NONE cterm=NONE
+hi diffLine                   ctermfg=Gray   ctermbg=NONE cterm=NONE
+hi diffSubName                ctermfg=Gray   ctermbg=NONE cterm=NONE
 hi PmenuSel                   ctermfg=Gray   ctermbg=NONE cterm=NONE
 hi Pmenu                      ctermfg=Gray   ctermbg=NONE cterm=NONE
 hi PmenuSbar                  ctermfg=Gray   ctermbg=NONE cterm=NONE
