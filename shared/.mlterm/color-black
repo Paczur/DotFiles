@@ -1,5 +1,5 @@
-black      = #000000
-hl_black   = #111111
+black      = #111111
+hl_black   = #333333
 red        = #f36e6e
 hl_red     = #f36e6e
 green      = #6ef36e

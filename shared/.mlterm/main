@@ -1,7 +1,7 @@
 use_transbg = false
 alpha = 127
 fg_color = hl_white
-bg_color = hl_black
+bg_color = black
 scrollbar_mode = none
 borderless = false
 fontsize = 19
