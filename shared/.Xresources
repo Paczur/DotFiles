@@ -1,41 +1,39 @@
-*selectToClipboard: true
-*faceName: DejaVu Sans Mono
-*faceSize: 9
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintfull
+Xft.autohint:   false
+Xft.lcdfilter:  lcddefault
+
+*geometry: 400x400
+*font: xft:CodeNewRoman Nerd Font Mono:size=14
 *savelines: 16384
 *ScrollBar: false
-*Background: black
-*Foreground: white
-*pointerColor: white
+*scrollBar: false
 *termName: xterm-256color
 *BellIsUrgent: true
+*cursorBlink: true
 
-!Rxvt.background:black
-Rxvt.font: xft:DejaVu Sans Mono:size=10
-Rxvt.saveLines: 16384
-Rxvt.scrollBar: false
-Rxvt.foreground: white
-Rxvt.background: black
-Rxvt.cursorBlink: true
-Rxvt.cursorColor: white
-Rxvt.cursorUnderline: true
-Rxvt.pointerColor: white
-!Rxvt.color1: #cdd800000000
-!Rxvt.color2: #0000cdd80000
-!Rxvt.color3: #cdd8cdd80000
-!Rxvt.color4: #00000000eefc
-!Rxvt.color5: #cdd80000cdd8
-!Rxvt.color6: #0000cdd8e5fb
-!Rxvt.color7: #e5fbe5fbe5fb
-!Rxvt.color8: #7f6f7f6f7f6f
-!Rxvt.color9: #ffff00000000
-!Rxvt.color10: #0000ffff0000
-!Rxvt.color11: #ffffffff0000
-!Rxvt.color12: #5c4b5c4bffff
-!Rxvt.color13: #ffff0000ffff
-!Rxvt.color14: #0000ffffffff
-!Rxvt.color15: #ffffffffffff
-Rxvt.termName: screen-256color
-Rxvt.transparent: false
-RXvt.depth: 32
-Rxvt.shading: 50
-Rxvt.inheritPixmap: true
+*cursorColor: #f3f3f3
+*pointerColor: #f3f3f3
+*Background: #333333
+*Foreground: #f3f3f3
+*background: #333333
+*foreground: #f3f3f3
+*color0:  #111111
+*color1:  #f36e6e
+*color2:  #6ef36e
+*color3:  #f3f36e
+*color4:  #6e6ef3
+*color5:  #f36ef3
+*color6:  #6ef3f3
+*color7:  #aaaaaa
+*color8:  #333333
+*color9:  #f36e6e
+*color10: #6ef36e
+*color11: #f3f36e
+*color12: #6e6ef3
+*color13: #f36ef3
+*color14: #6ef3f3
+*color15: #f3f3f3
