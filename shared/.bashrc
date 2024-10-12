@@ -100,7 +100,12 @@ __ps1_git_status() {
 }
 __ps1_git_branch() {
   #Takes git_dir as argument
-  echo "${gbranch_color}${gbranch_bo}$(sed 's/.*\///g' "$1/.git/HEAD")${gbranch_bc}"
+  local branch="$(sed 's/.*\///g' "$1/.git/HEAD")"
+  if [ "$branch" = "master" ] || [ "$branch" = "main" ]; then
+    echo "${gmaster_color}${gmaster_bo}${branch}${gmaster_bc}"
+  else
+    echo "${gbranch_color}${gbranch_bo}${branch}${gbranch_bc}"
+  fi
 }
 __ps1_cwd() {
   #Takes dir to shorten as argument
@@ -160,6 +165,9 @@ project_color="${Gray}"
 gbranch_bo='['
 gbranch_bc=']'
 gbranch_color="${Gray}"
+gmaster_bo='['
+gmaster_bc=']'
+gmaster_color="${Yellow}"
 gstatus_bo='['
 gstatus_bc=']'
 gstatus_color="${Gray}"
