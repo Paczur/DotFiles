@@ -35,54 +35,15 @@ if ! shopt -oq posix; then
   fi
 fi
 
-bits_to_color() {
-  local R='\001\e[31m\002'
-  local G='\001\e[32m\002'
-  local B='\001\e[34m\002'
-  local C='\001\e[36m\002'
-  local M='\001\e[35m\002'
-  local Y='\001\e[33m\002'
-  local W='\001\e[97m\002'
-  local D='\001\e[90m\002'
-  if [ "$1" = "1" ]; then
-    if [ "$2" = "1" ]; then
-      if [ "$3" = "1" ]; then
-        echo "$W"
-      elif [ "$3" = "0" ]; then
-        echo "$Y"
-      fi
-    elif [ "$2" = "0" ]; then
-      if [ "$3" = "1" ]; then
-        echo "$M"
-      elif [ "$3" = "0" ]; then
-        echo "$R"
-      fi
-    fi
-  elif [ "$1" = "0" ]; then
-    if [ "$2" = "1" ]; then
-      if [ "$3" = "1" ]; then
-        echo "$C"
-      elif [ "$3" = "0" ]; then
-        echo "$G"
-      fi
-    elif [ "$2" = "0" ]; then
-      if [ "$3" = "1" ]; then
-        echo "$B"
-      elif [ "$3" = "0" ]; then
-        echo "$D"
-      fi
-    fi
-  fi
-}
 __ps1_host() {
   if [ -n "$(pstree -ps $$ | grep "sshd")" ]; then
-    echo "${host_color}${BO}$(hostname -s)${BC}"
+    echo "${host_color}${host_bo}$(hostname -s)${host_bc}"
   fi
 }
 __ps1_user() {
   local user="$(whoami)"
   if [ "$user" != "paczur" ]; then
-    echo "${user_color}${BO}${user}${BC}"
+    echo "${user_color}${user_bo}${user}${user_bc}"
   fi
 }
 __ps1_git_dir() {
@@ -133,28 +94,28 @@ __ps1_git_status() {
     fi
 
     if [ -n "$state" ]; then
-      echo "${gstatus_color}${BO}$state${gstatus_color}${BC}"
+      echo "${gstatus_color}${gstatus_bo}$state${gstatus_color}${gstatus_bc}"
     fi
   fi
 }
 __ps1_git_branch() {
   #Takes git_dir as argument
-  echo "${gbranch_color}${BO}$(sed 's/.*\///g' "$1/.git/HEAD")${BC}"
+  echo "${gbranch_color}${gbranch_bo}$(sed 's/.*\///g' "$1/.git/HEAD")${gbranch_bc}"
 }
 __ps1_cwd() {
   #Takes dir to shorten as argument
   local pwd="$(realpath "$PWD")"
   local cwd="$(echo "$pwd" | sed "s/${HOME//\//\\\/}/~/")"
   if [ -z "$1" ]; then
-    echo "${cwd_color}${BO}$cwd${BC}"
+    echo "${cwd_color}${cwd_bo}$cwd${cwd_bc}"
   else
     cwd="$(echo "$pwd" | sed "s/${1//\//\\\/}//")"
     if [ -n "$cwd" ]; then
-      echo "${cwd_color}${BO}.$cwd${BC}"
+      echo "${cwd_color}${cwd_bo}.$cwd${cwd_bc}"
     fi
   fi
 }
-__ps1_project() {
+__ps1_project_dir() {
   local dir="$(realpath "$PWD")"
   while [ "$dir" != "/" ]; do
     if [ -d "$dir/.git" ] || [ -d "$dir/.venv" ] ||
@@ -165,55 +126,50 @@ __ps1_project() {
     dir="$(dirname "$dir")"
   done
 }
-__ps1_venv() {
-  if [ -n "${VIRTUAL_ENV}" ]; then
-    echo "1"
-  else
-    echo "0"
-  fi
-}
-__ps1_renv() {
-  if [ -n "${RUN_ENV}" ]; then
-    echo "1"
-  else
-    echo "0"
-  fi
-}
 __ps1_jobs() {
   local job_count="$(jobs -r | wc -l)"
   if [ "${job_count}" -ne 0 ]; then
-    echo "${jobs_color}${BO}${job_count}${BC}"
+    echo "${jobs_color}${jobs_bo}${job_count}${jobs_bc}"
   fi
 }
 
-R='\001\e[31m\002'
-G='\001\e[32m\002'
-B='\001\e[34m\002'
-C='\001\e[36m\002'
-M='\001\e[35m\002'
-Y='\001\e[33m\002'
+Red='\001\e[31m\002'
+Green='\001\e[32m\002'
+Yellow='\001\e[33m\002'
+Gray='\001\e[37m\002'
 RESET='\001\e[00m\002'
-BO='('
-BC=')'
 
-venv_color="${B}"
-renv_color="${R}"
-vrenv_color="${M}"
+err_bo='['
+err_bc=']'
+err_color="${Red}"
+jobs_bo='{'
+jobs_bc='}'
+jobs_color="${Yellow}"
+cwd_bo='('
+cwd_bc=')'
+cwd_color="${Gray}"
+host_bo='('
+host_bc=')'
+host_color="${Green}"
+user_bo='('
+user_bc=')'
+user_color="${Red}"
+project_bo='['
+project_bc=']'
+project_color="${Gray}"
+gbranch_bo='['
+gbranch_bc=']'
+gbranch_color="${Gray}"
+gstatus_bo='['
+gstatus_bc=']'
+gstatus_color="${Gray}"
 
-jobs_color="${M}"
-cwd_color="${B}"
-host_color="${G}"
-user_color="${R}"
-project_color="${C}"
-gbranch_color="${G}"
-gstatus_color="${G}"
-
-gunstaged_color="${R}"
-guntracked_color="${R}"
-gstash_color="${B}"
-gstaged_color="${G}"
-gahead_color="${G}"
-gbehind_color="${R}"
+gunstaged_color="${Red}"
+guntracked_color="${Red}"
+gstash_color="${Yellow}"
+gstaged_color="${Green}"
+gahead_color="${Green}"
+gbehind_color="${Red}"
 cursor="\001\e[5 q\002"
 
 env_char="."
@@ -228,7 +184,7 @@ __ps1() {
   local st="$?"
   local git_present="0"
   if [[ "$st" != 0 ]]; then
-    local x="${R}${BO}$st${BC}"
+    local x="${err_color}${err_bo}$st${err_bc}"
   fi
 
   local jobs="$(__ps1_jobs)"
@@ -236,15 +192,14 @@ __ps1() {
   local user="$(__ps1_user)"
 
   local git="$(__ps1_git_dir)"
-  local project_dir="$(__ps1_project)"
+  local project_dir="$(__ps1_project_dir)"
   if [ -n "$git" ]; then
     local branch="$(__ps1_git_branch "$git")"
     local state="$(__ps1_git_status "$git")"
     local git_present="1"
   fi
   if [ -n "${project_dir}" ]; then
-    local project_color="$(bits_to_color "$(__ps1_renv)" "${git_present}" "$(__ps1_venv)")"
-    local project="${project_color}${BO}$(basename "${project_dir}")${BC}"
+    local project="${project_color}${project_bo}$(basename "${project_dir}")${project_bc}"
   fi
   local cwd="$(__ps1_cwd "$project_dir")"
 
