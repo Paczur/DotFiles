@@ -182,6 +182,7 @@ Plug 'https://github.com/lervag/vimtex'
 Plug 'https://github.com/skywind3000/asyncrun.vim'
 Plug 'https://github.com/vim-scripts/cmdalias.vim'
 Plug 'https://github.com/rhysd/vim-clang-format'
+Plug 'https://github.com/Konfekt/FastFold'
 Plug 'aymericbeaumet/vim-symlink'
 Plug 'moll/vim-bbye'
 call plug#end()
@@ -227,11 +228,6 @@ function! s:syntax_query() abort
     echo synIDattr(id, "name")
   endfor
 endfunction
-function! Format()
-  syntax off
-  ClangFormat
-  syntax on
-endfunction
 command! SyntaxQuery call s:syntax_query()
 au! Syntax markdown source syntax/markdown.vim
 au! Syntax html source syntax/html.vim
@@ -239,11 +235,8 @@ filetype on
 filetype plugin on
 filetype indent on
 syntax on
-" autocmd BufWritePre * :call Format()
-autocmd Syntax * syn region Important start="[^ ]*TODO" end="\n" containedin=.*omment.*
-autocmd Syntax * syn region Important start="!:" end=":!\|\n" containedin=.*omment.*
-autocmd Syntax * syn match comment "\v(^import.*\n)+" fold
-autocmd Syntax * syn match comment "\v(^\s*//.*\n)+" fold
+autocmd Syntax * syn match Important /.TODO.*/hs=s+1 containedin=.*Comment.*
+autocmd Syntax * syn region Important start="!:" end=":!\|\n" containedin=.*Comment.*
 autocmd Syntax * set formatoptions=rqn2jc
 au BufRead,BufNewFile *.ejs set filetype=html
 au BufRead,BufNewFile *.cu set filetype=cpp
