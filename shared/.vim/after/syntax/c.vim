@@ -1,4 +1,5 @@
 syn keyword Danger free malloc calloc realloc reallocarray
 syn clear cStorageClass cStatement cOperator cType cNumber
-syn match include "\v(^#include.*\n)+" fold
-syn match define "\v#define(([^\\]*\\)+\n)+[^\n]*\n" fold
+syn region include start="^#include" end="^\%(#include\)\@!" fold
+syn region define start="^#define" end="[^\\]$" fold
+syn region PreCondit start="^#if" end="^#endif" fold

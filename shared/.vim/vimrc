@@ -185,10 +185,9 @@ Plug 'https://github.com/rhysd/vim-clang-format'
 Plug 'aymericbeaumet/vim-symlink'
 Plug 'moll/vim-bbye'
 call plug#end()
-
-let g:clang_format#detect_style_file = 1
 let g:clang_format#auto_format = 1
 let g:clang_format#auto_formatexpr = 1
+let g:clang_format#detect_style_file = 1
 let g:clang_format#enable_fallback_style = 0
 let g:tex_flavor='latex'
 let g:vimtex_quickfix_open_on_warning = 0
@@ -228,6 +227,11 @@ function! s:syntax_query() abort
     echo synIDattr(id, "name")
   endfor
 endfunction
+function! Format()
+  syntax off
+  ClangFormat
+  syntax on
+endfunction
 command! SyntaxQuery call s:syntax_query()
 au! Syntax markdown source syntax/markdown.vim
 au! Syntax html source syntax/html.vim
@@ -235,6 +239,7 @@ filetype on
 filetype plugin on
 filetype indent on
 syntax on
+" autocmd BufWritePre * :call Format()
 autocmd Syntax * syn region Important start="[^ ]*TODO" end="\n" containedin=.*omment.*
 autocmd Syntax * syn region Important start="!:" end=":!\|\n" containedin=.*omment.*
 autocmd Syntax * syn match comment "\v(^import.*\n)+" fold
@@ -247,7 +252,7 @@ au BufRead,BufNewFile *.cu set filetype=cpp
 "PROGRAMMING {{{
 set tags=./tags;/
 set csprg=gtags-cscope
-set errorformat^=%f:%l:%c\ style:\ %m,%f:%l:%c:\ %t%*[^\ ]\ %m
+set errorformat^=%f:%l:%c\ style:\ %m,%f:%l:%c:\ %t%*[^\ ]\ %m,%.%#[%f\|%l\|%t]\ %m,
 let c_gnu=1
 let c_comment_strings=0
 let c_space_errors=1
