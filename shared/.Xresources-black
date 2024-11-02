@@ -7,7 +7,7 @@ Xft.autohint:   false
 Xft.lcdfilter:  lcddefault
 
 *geometry: 400x400
-*font: xft:CodeNewRoman Nerd Font Mono:size=14
+*font: xft:CodeNewRoman Nerd Font Mono:size=14, xft:DejaVu Sans Mono:size=14
 *savelines: 16384
 *ScrollBar: false
 *scrollBar: false
