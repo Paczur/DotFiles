@@ -100,7 +100,7 @@ __ps1_git_status() {
 }
 __ps1_git_branch() {
   #Takes git_dir as argument
-  local branch="$(sed 's/.*\///g' "$1/.git/HEAD")"
+  local branch="$(sed 's/ref: refs\/heads\///g' "$1/.git/HEAD")"
   if [ "$branch" = "master" ] || [ "$branch" = "main" ]; then
     echo "${gmaster_color}${gmaster_bo}${branch}${gmaster_bc}"
   else
