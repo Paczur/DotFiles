@@ -235,6 +235,7 @@ filetype on
 filetype plugin on
 filetype indent on
 syntax on
+autocmd Syntax * syn sync fromstart
 autocmd Syntax * syn match Important /.TODO.*/hs=s+1 containedin=.*Comment.*
 autocmd Syntax * syn region Important start="!:" end=":!\|\n" containedin=.*Comment.*
 autocmd Syntax * set formatoptions=rqn2jc
