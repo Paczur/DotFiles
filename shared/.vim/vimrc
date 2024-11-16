@@ -101,31 +101,32 @@ autocmd FileType c set cindent
 set foldlevel=0
 set foldnestmax=0
 set foldcolumn=0
-function! C_FoldText()
-  let foldtext = substitute(substitute(
-        \    substitute(substitute(
+function! Common_FoldText()
+  let foldtext = substitute(
+        \    substitute(substitute(substitute(
         \    substitute(substitute(getline(v:foldstart),
-        \ '{\+\s*$',              '',                                ''),
-        \ '^"\s*',              '',                                  ''),
-        \ '/\*\s*\(.*\)\s*\*/', '\=submatch(1)',                     ''),
-        \ '^\s*//\s*',          '',                                  ''),
-        \ '\s*\\$',             '',                                  ''),
-        \ '^\s\+',              '\=repeat("-",strlen(submatch(0)))', '')
+        \    '{\+\s*\(\*/\)\?\s*$', '',                                  ''),
+        \    '^"\s*',                '',                                  ''),
+        \    '\s*/\*\s*',   '',                     ''),
+        \    '\s*\*/\s*',   '',                     ''),
+        \    '^\s*//\s*',            '',                                  ''),
+        \    '^\s\+',                '\=repeat("-",strlen(submatch(0)))', '')
+  if foldtext == ""
+    return getline(v:foldstart)
+  endif
+  return foldtext
+endfunction
+function! C_FoldText()
+  let foldtext = substitute(Common_FoldText(),
+        \ '\s*\\$',             '',                                  '')
   if foldtext == ""
     return getline(v:foldstart)
   endif
   return foldtext
 endfunction
 function! FoldText()
-  let foldtext = substitute(substitute(
-        \    substitute(substitute(
-        \    substitute(substitute(getline(v:foldstart),
-        \ '{\+\s*$',              '',                                ''),
-        \ '^"\s*',              '',                                  ''),
-        \ '/\*\s*\(.*\)\s*\*/', '\=submatch(1)',                     ''),
-        \ '^\s*//\s*',          '',                                  ''),
-        \ '^#\s*',              '',                                  ''),
-        \ '^\s\+',              '\=repeat("-",strlen(submatch(0)))', '')
+  let foldtext = substitute(Common_FoldText(),
+        \ '^#\s*',              '',                                  '')
   if foldtext == ""
     return getline(v:foldstart)
   endif
@@ -184,6 +185,7 @@ Plug 'https://github.com/vim-scripts/cmdalias.vim'
 Plug 'https://github.com/rhysd/vim-clang-format'
 Plug 'https://github.com/Konfekt/FastFold'
 Plug 'aymericbeaumet/vim-symlink'
+Plug 'Jorengarenar/vim-syntaxMarkerFold'
 Plug 'moll/vim-bbye'
 call plug#end()
 let g:clang_format#auto_format = 1
