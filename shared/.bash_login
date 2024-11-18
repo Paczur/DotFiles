@@ -2,20 +2,18 @@
 . /home/paczur/Scripts/system/path
 . ~/.bashrc
 export PATH
-tty="$(tty | cut -c9-)"
-wm=""
-case "$tty" in
+t="$(tty | sed 's/.*\/tty//g')"
+case "$t" in
   "1")
-    wm="i3"
-    ;;
+  wm="/usr/bin/awm"
+  ;;
   *)
-    wm=""
-    ;;
+  wm=""
+  ;;
 esac
-if [ "$wm" != "" ]
-then
-  exec startx ~/.xinitrc "$wm" -- "vt$tty"
-else
-  set bell_style none
-  clear
+set bell_style none
+echo "$wm" > /home/paczur/Build/send
+if [ -n "$wm" ]; then
+  exec startx ~/.xinitrc "$wm" -- "vt$t"
 fi
+clear

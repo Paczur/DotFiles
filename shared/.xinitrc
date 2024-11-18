@@ -1,11 +1,14 @@
 #!/bin/env bash
 
-/home/paczur/Scripts/system/startup/afterX
+if [ "$1" = "/usr/bin/awm" ]; then
+  /home/paczur/Scripts/system/startup/afterX
+fi
 
 # (exec i3) &> ~/System/Logs/i3
+echo "$1" > /home/paczur/Build/option
 
 log_dir="/home/paczur/Projects/C/awm/log"
 mkdir "$log_dir"
 while :; do
-  exec "/usr/bin/awm"
+  exec "$1"
 done
