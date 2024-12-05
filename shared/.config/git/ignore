@@ -1,8 +1,4 @@
-tags
-cscope.out
-GPATH
-GTAGS
-GRTAGS
+.gtags
 .renv
 .vimrc
 **/.vimrc
