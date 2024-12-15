@@ -28,43 +28,73 @@ autocmd BufWritePre *\(.html\|.css\|.java\|.h\|.c\) :%s/\s\+$//e
 "}}}
 
 "STATUSLINE {{{
-function! StatusLineMod()
-  if &modified
-    return "%#StatusLineModified#(Modified)%##"
+function! StatusLineMod(winid)
+  let buf = winbufnr(a:winid)
+  let modified =  getbufvar(buf, '&modified')
+  let readonly =  getbufvar(buf, '&readonly')
+  if a:winid != win_getid()
+    return ""
   endif
-  if &readonly
-    return "%#StatusLineReadOnly#(ReadOnly)%##"
+  if l:modified
+    if a:winid == win_getid()
+      return "%#StatusLineModified#[Modified]%##"
+    else
+      return "%#StatusLineModifiedNC#[Modified]%##"
+    endif
+  endif
+  if l:readonly
+    if a:winid == win_getid()
+      return "%#StatusLineReadOnly#[ReadOnly]%##"
+    else
+      return "%#StatusLineReadOnlyNC#[ReadOnly]%##"
+    endif
   endif
   return ""
 endfunction
-function! StatusLineBranch()
-  :silent let branch = system("git -C " . expand("%:p:h") . " branch --show-current 2> /dev/null | tr -d '\n'")
+function! StatusLineBranch(winid)
+  let buf = winbufnr(a:winid)
+  let file = bufname(l:buf)
+  if a:winid != win_getid()
+    return ""
+  endif
+  :silent let branch = system("git -C " . fnamemodify(l:file, ":p:h") . " branch --show-current 2> /dev/null | tr -d '\n'")
   if branch == ""
     return ""
   endif
   let highlight = ""
   if branch == "master" || branch == "main"
-    let highlight = "%#StatusLineMaster#"
+    if a:winid == win_getid()
+      let highlight = "%#StatusLineMaster#"
+    else
+      let highlight = "%#StatusLineMasterNC#"
+    endif
   endif
-  return highlight . "(" . branch . ")%##"
+  return highlight . "[" . branch . "]%##"
 endfunction
-function! StatusLineFileType()
+function! StatusLineFileType(winid)
   if &filetype == ""
     return ""
   endif
-  return "(" . &filetype . ")"
+  return "[" . &filetype . "]"
 endfunction
-function! StatusLineFile()
-  let file = expand("%")
+function! StatusLineFile(winid)
+  let buf = winbufnr(a:winid)
+  let file = bufname(l:buf)
+  if a:winid != win_getid()
+    return ""
+  endif
   if file == ""
     return ""
   endif
-  return "(" . file . ")"
+  return "[" . file . "]"
 endfunction
-set statusline=%{%StatusLineFile()%}%=
-set statusline+=%{%StatusLineMod()%}
-set statusline+=%{%StatusLineBranch()%}
-"set statusline+=%{%StatusLineFileType()%}
+function! StatusLine()
+  let file = StatusLineFile(g:statusline_winid)
+  let mod = StatusLineMod(g:statusline_winid)
+  let branch = StatusLineBranch(g:statusline_winid)
+  return file . "%=" . mod . branch
+endfunction
+set statusline=%!StatusLine()
 "}}}
 
 "VISUAL ONLY {{{
@@ -72,13 +102,21 @@ let &t_SI .= "\e[5 q"
 let &t_SR .= "\e[3 q"
 let &t_EI .= "\e[1 q"
 set guicursor=i:blinkwait0-blinkon100-blinkoff150
-set fillchars=eob:\ ,vert:│,stl:\ ,stlnc:\ ,fold:\ ,foldsep:│,foldopen:┬
+set fillchars=eob:\ ,vert:│,stl:─,stlnc:─,fold:\ ,foldsep:│,foldopen:┬
 set noruler
 set nonumber
 set laststatus=2
-set signcolumn=number
+set signcolumn=yes
 set conceallevel=2
-au BufWinEnter quickfix let &statusline=&statusline
+
+augroup CursorLine
+    au!
+    au WinNew * setlocal nocursorline
+    au VimEnter * setlocal cursorline
+    au WinEnter * setlocal cursorline
+    au BufWinEnter * setlocal cursorline
+    au WinLeave * setlocal nocursorline
+augroup END
 colo custom
 "}}}
 
@@ -110,7 +148,7 @@ function! Common_FoldText()
         \    '\s*/\*\s*',   '',                     ''),
         \    '\s*\*/\s*',   '',                     ''),
         \    '^\s*//\s*',            '',                                  ''),
-        \    '^\s\+',                '\=repeat("-",strlen(submatch(0)))', '')
+        \    '^\s\+',                '\=repeat("─",strlen(submatch(0)))', '')
   if foldtext == ""
     return getline(v:foldstart)
   endif
@@ -223,6 +261,7 @@ let g:qfdiagnostics = {
 let g:move_key_modifier = 'C'
 let g:move_key_modifier_visualmode = 'C'
 autocmd QuickfixCmdPost  make  DiagnosticsPlace
+autocmd User AsyncRunStop DiagnosticsPlace
 autocmd BufWritePost * :GitGutter
 "}}}
 
@@ -242,7 +281,9 @@ syntax on
 autocmd Syntax * syn sync fromstart
 autocmd Syntax * syn match Important /.TODO.*/hs=s+1 containedin=.*Comment.*
 autocmd Syntax * syn region Important start="!:" end=":!\|\n" containedin=.*Comment.*
-autocmd Syntax * set formatoptions=rqn2jc
+autocmd Syntax * set formatoptions=rqn2jct]
+autocmd Syntax * set textwidth=80
+
 au BufRead,BufNewFile *.c.m4 set filetype=c
 au BufRead,BufNewFile *.h.m4 set filetype=c
 au BufRead,BufNewFile *.ejs set filetype=html
@@ -272,6 +313,7 @@ au VimEnter * call CmdAlias("copen", "botright copen")
 au VimEnter * call CmdAlias("vf", "vert sf")
 au VimEnter * Alias run !run
 au VimEnter * Alias r !run
+au BufWritePost *.c,*.h AsyncRun! -strip -program=make
 runtime! macros/matchit.vim
 runtime ftplugin/man.vim
 autocmd Syntax c set commentstring=//%s

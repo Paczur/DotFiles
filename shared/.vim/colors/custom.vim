@@ -4,11 +4,11 @@ let g:colors_name="custom"
 
 hi Normal                     ctermfg=White  ctermbg=NONE cterm=NONE
 hi Cursor                     ctermfg=White  ctermbg=NONE cterm=NONE
-hi CursorLine                 ctermfg=NONE   ctermbg=NONE cterm=NONE
+hi CursorLine                 ctermfg=NONE   ctermbg=DarkGray cterm=NONE
 hi CursorLineNR               ctermfg=Gray   ctermbg=NONE cterm=NONE
 hi CursorColumn               ctermfg=NONE   ctermbg=NONE cterm=NONE
 hi LineNr                     ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi FoldColumn                 ctermfg=Gray   ctermbg=NONE cterm=NONE
+hi FoldColumn                 ctermfg=Black  ctermbg=NONE cterm=NONE
 hi SignColumn                 ctermfg=Gray   ctermbg=NONE cterm=NONE
 hi SignError                  ctermfg=Red    ctermbg=NONE cterm=NONE
 hi SignWarning                ctermfg=Yellow ctermbg=NONE cterm=NONE
@@ -29,6 +29,9 @@ hi StatusLineModified         ctermfg=Red    ctermbg=NONE cterm=NONE
 hi StatusLineReadOnly         ctermfg=Yellow ctermbg=NONE cterm=NONE
 hi StatusLineMaster           ctermfg=Yellow ctermbg=NONE cterm=NONE
 hi StatusLineNC               ctermfg=Gray   ctermbg=NONE cterm=NONE
+hi StatusLineModifiedNC       ctermfg=Gray   ctermbg=NONE cterm=NONE
+hi StatusLineReadOnlyNC       ctermfg=Gray   ctermbg=NONE cterm=NONE
+hi StatusLineMasterNC         ctermfg=Gray   ctermbg=NONE cterm=NONE
 hi StatusLineTerm             ctermfg=Gray   ctermbg=NONE cterm=NONE
 hi StatusLineTermNC           ctermfg=Gray   ctermbg=NONE cterm=NONE
 hi WildMenu                   ctermfg=Gray   ctermbg=NONE cterm=NONE
