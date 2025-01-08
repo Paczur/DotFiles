@@ -281,8 +281,9 @@ syntax on
 autocmd Syntax * syn sync fromstart
 autocmd Syntax * syn match Important /.TODO.*/hs=s+1 containedin=.*Comment.*
 autocmd Syntax * syn region Important start="!:" end=":!\|\n" containedin=.*Comment.*
-autocmd Syntax * set formatoptions=rqn2jct]
-autocmd Syntax * set textwidth=80
+autocmd Syntax * set formatoptions=rqn2jc
+autocmd Syntax tex,markdown set formatoptions+=t]
+autocmd Syntax tex,markdown set textwidth=80
 
 au BufRead,BufNewFile *.c.m4 set filetype=c
 au BufRead,BufNewFile *.h.m4 set filetype=c
