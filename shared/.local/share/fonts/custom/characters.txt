@@ -7,6 +7,8 @@ abcdefghijklmnopqrstuvwxyz
 ─│┌┐└┘
 ↑↓
 ▶▸
+⚑
+✓
 
 
 #include <stdio.h>
