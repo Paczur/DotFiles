@@ -53,9 +53,9 @@ hi SpecialKey                 ctermfg=Gray   ctermbg=NONE cterm=NONE
 hi WhiteSpaceChar             ctermfg=Gray   ctermbg=NONE cterm=NONE
 hi WhiteSpace                 ctermfg=Gray   ctermbg=NONE cterm=NONE
 hi Constant                   ctermfg=NONE   ctermbg=NONE cterm=NONE
-hi String                     ctermfg=Green  ctermbg=NONE cterm=ITALIC
-hi StringDelimiter            ctermfg=Green  ctermbg=NONE cterm=ITALIC
-hi Character                  ctermfg=NONE   ctermbg=NONE cterm=ITALIC
+hi String                     ctermfg=Green  ctermbg=NONE cterm=NONE
+hi StringDelimiter            ctermfg=Green  ctermbg=NONE cterm=NONE
+hi Character                  ctermfg=NONE   ctermbg=NONE cterm=NONE
 hi Number                     ctermfg=NONE   ctermbg=NONE cterm=NONE
 hi Boolean                    ctermfg=NONE   ctermbg=NONE cterm=NONE
 hi Float                      ctermfg=NONE   ctermbg=NONE cterm=NONE
@@ -68,7 +68,7 @@ hi Label                      ctermfg=NONE   ctermbg=NONE cterm=NONE
 hi Operator                   ctermfg=NONE   ctermbg=NONE cterm=NONE
 hi Keyword                    ctermfg=NONE   ctermbg=NONE cterm=NONE
 hi Exception                  ctermfg=NONE   ctermbg=NONE cterm=NONE
-hi Comment                    ctermfg=Gray   ctermbg=NONE cterm=ITALIC
+hi Comment                    ctermfg=Gray   ctermbg=NONE cterm=NONE
 hi Special                    ctermfg=NONE   ctermbg=NONE cterm=NONE
 hi SpecialChar                ctermfg=NONE   ctermbg=NONE cterm=NONE
 hi Tag                        ctermfg=NONE   ctermbg=NONE cterm=NONE
@@ -118,7 +118,7 @@ hi markdownH6Delimiter        ctermfg=Gray   ctermbg=NONE cterm=NONE
 hi markdownUrl                ctermfg=Yellow ctermbg=NONE cterm=NONE
 hi debugPC                    ctermfg=Black  ctermbg=Gray cterm=NONE
 hi Important                  ctermfg=Yellow ctermbg=NONE cterm=NONE
-hi Danger                     ctermfg=NONE   ctermbg=NONE cterm=ITALIC,BOLD
+hi Danger                     ctermfg=NONE   ctermbg=NONE cterm=BOLD
 hi WildMenu                   ctermfg=Black  ctermbg=Gray cterm=NONE
 hi GitGutterAdd               ctermfg=Gray   ctermbg=NONE cterm=NONE
 hi GitGutterChange            ctermfg=Gray   ctermbg=NONE cterm=NONE

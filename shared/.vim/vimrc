@@ -174,7 +174,7 @@ endfunction
 set foldexpr=FoldMethod(v:lnum)
 let javaScript_fold=1
 autocmd FileType c          set foldmethod=syntax
-autocmd FileType c          set foldnestmax=3
+autocmd FileType c          set foldnestmax=5
 autocmd FileType cpp        set foldmethod=syntax
 autocmd FileType cpp        set foldnestmax=2
 autocmd FileType javascript set foldmethod=syntax
@@ -314,7 +314,7 @@ au VimEnter * call CmdAlias("copen", "botright copen")
 au VimEnter * call CmdAlias("vf", "vert sf")
 au VimEnter * Alias run !run
 au VimEnter * Alias r !run
-au BufWritePost *.c,*.h AsyncRun! -strip -program=make
+au BufWritePost *.c,*.h,*.ino AsyncRun! -strip -program=make
 runtime! macros/matchit.vim
 runtime ftplugin/man.vim
 autocmd Syntax c set commentstring=//%s

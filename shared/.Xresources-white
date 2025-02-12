@@ -1,4 +1,5 @@
 Xft.dpi:        96
+
 Xft.antialias:  true
 Xft.rgba:       rgb
 Xft.hinting:    true
@@ -7,7 +8,9 @@ Xft.autohint:   false
 Xft.lcdfilter:  lcddefault
 
 *geometry: 400x400
-*font: xft:CodeNewRoman Nerd Font Mono:size=14
+*font: -misc-custom-medium-r-normal--14-200-72-72-c-100-iso10646-1
+*boldFont:
+*italicFont:
 *savelines: 16384
 *ScrollBar: false
 *scrollBar: false
