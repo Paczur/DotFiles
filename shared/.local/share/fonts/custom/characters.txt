@@ -2,8 +2,8 @@
 0123456789
 ABCDEFGHIJKLMNOPQRSTUVWXYZ
 abcdefghijklmnopqrstuvwxyz
-ĄĆĘŁŃÓŹŻ
-ąćęłńóźż
+ĄĆĘŁŃÓŚŹŻ
+ąćęłńóśźż
 ─│┌┐└┘
 ↑↓
 ▶▸○●
