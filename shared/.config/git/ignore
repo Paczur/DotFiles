@@ -1,5 +1,6 @@
 .gtags
 .renv
 .vimrc
+.venv
 **/.vimrc
 .mailmap

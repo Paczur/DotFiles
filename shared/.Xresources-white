@@ -16,6 +16,7 @@ Xft.lcdfilter:  lcddefault
 *scrollBar: false
 *termName: xterm-256color
 *BellIsUrgent: true
+*urgentOnBell: true
 *cursorBlink: true
 
 *.cursorColor: #000000
