@@ -8,7 +8,7 @@ Xft.autohint:   false
 Xft.lcdfilter:  lcddefault
 
 *geometry: 400x400
-*font: -misc-custom-medium-r-normal--14-200-72-72-c-100-iso10646-1
+*font: -misc-custom-medium-r-normal--24-240-72-72-c-100-iso10646-1
 *boldFont:
 *italicFont:
 *savelines: 16384
