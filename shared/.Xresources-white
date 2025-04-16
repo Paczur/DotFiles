@@ -25,25 +25,25 @@ Xft.lcdfilter:  lcddefault
 *.background: #eeeeee
 !black
 *.color0:  #f3f3f3
-*.color8:  #eeeeee
+*.color8:  #d3d3d3
 !red
 *.color1:  #b32e2e
 *.color9:  #b32e2e
 !green
-*.color2:  #0e930e
-*.color10: #0e930e
+*.color2:  #2eb32e
+*.color10: #2eb32e
 !yellow
-*.color3:  #e4bc04
-*.color11: #e4bc04
+*.color3:  #6e6ef3
+*.color11: #6e6ef3
 !blue
-*.color4:  #e4bc04
-*.color12: #e4bc04
+*.color4:  #6e6ef3
+*.color12: #6e6ef3
 !cyan
-*.color5:  #0e930e
-*.color13: #0e930e
+*.color5:  #2eb32e
+*.color13: #2eb32e
 !magenta
-*.color6:  #0e930e
-*.color14: #0e930e
+*.color6:  #2eb32e
+*.color14: #2eb32e
 !white
-*.color7:  #aaaaaa
-*.color15: #000000
+*.color7:  #999999
+*.color15: #111111
