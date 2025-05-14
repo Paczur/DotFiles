@@ -18,6 +18,9 @@ Xft.lcdfilter:  lcddefault
 *BellIsUrgent: true
 *urgentOnBell: true
 *cursorBlink: true
+*scrollTtyOutput: false
+*scrollWithBuffer: true
+*scrollTtyKeypress: true
 
 *.cursorColor: #f3f3f3
 *.pointerColor: #f3f3f3
