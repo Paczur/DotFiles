@@ -1,5 +1,5 @@
 if [ -z "${RUN_ENV}" ]; then
-  export RUN_ENV="/home/paczur/System/DotFiles/.renv"
+  export RUN_ENV="/home/paczur/Git/DotFiles/.renv"
   export PATH="${PATH}:${RUN_ENV}"
 fi
 close() {
