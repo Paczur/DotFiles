@@ -1,4 +1,4 @@
-#!/bin/env/bash
+#!/bin/env bash
 . /home/paczur/Scripts/system/path
 . ~/.bashrc
 export PATH
@@ -12,7 +12,6 @@ case "$t" in
   ;;
 esac
 set bell_style none
-echo "$wm" > /home/paczur/Build/send
 if [ -n "$wm" ]; then
   exec startx ~/.xinitrc "$wm" -- "vt$t"
 fi

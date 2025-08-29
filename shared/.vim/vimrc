@@ -179,6 +179,8 @@ autocmd FileType cpp        set foldmethod=syntax
 autocmd FileType cpp        set foldnestmax=2
 autocmd FileType javascript set foldmethod=syntax
 autocmd FileType javascript set foldnestmax=1
+autocmd FileType alang      set foldmethod=syntax
+autocmd FileType alang      set foldnestmax=5
 autocmd FileType java       set foldmethod=syntax
 autocmd FileType java       set foldlevel=1
 autocmd FileType java       set foldnestmax=2
@@ -243,15 +245,18 @@ let g:gutentags_ctags_extra_args = [
       \ '--fields=+ailmnS',
       \]
 let g:gutentags_modules = ['gtags_cscope']
-let g:gutentags_generate_on_new = 1
-let g:gutentags_generate_on_missing = 1
-let g:gutentags_generate_on_write = 1
+
+"TODO: Change
+let g:gutentags_generate_on_new = 0
+let g:gutentags_generate_on_missing = 0
+let g:gutentags_generate_on_write = 0
+
 let g:gutentags_generate_on_empty_buffer = 0
 let g:gutentags_project_root = ['Makefile','README.md','pom.xml','LICENSE']
 let g:gutentags_cache_dir = '.gtags'
 let g:gutentags_add_default_project_roots = 0
 let g:qfdiagnostics = {
-      \  'texthl': 0,
+      \  'texthl': 1,
       \  'sign_error': { 'text': '*', 'priority': 14, 'texthl': 'SignError'},
       \  'sign_warning': { 'text': '*', 'priority': 13, 'texthl': 'SignWarning'},
       \  'sign_info': { 'text': '*', 'priority': 12, 'texthl': 'SignInfo'},
@@ -274,6 +279,7 @@ endfunction
 command! SyntaxQuery call s:syntax_query()
 au! Syntax markdown source syntax/markdown.vim
 au! Syntax html source syntax/html.vim
+au! Syntax alang source syntax/alang.vim
 filetype on
 filetype plugin on
 filetype indent on
@@ -285,8 +291,10 @@ autocmd Syntax * set formatoptions=rqn2jc
 autocmd Syntax tex,markdown set formatoptions+=t]
 autocmd Syntax tex,markdown set textwidth=80
 
-au BufRead,BufNewFile *.c.m4 set filetype=c
-au BufRead,BufNewFile *.h.m4 set filetype=c
+au BufRead,BufNewFile *.c,*.h set syntax=custom-c
+au BufRead,BufNewFile *.alang set filetype=custom-alang
+au BufRead,BufNewFile Makefile set syntax=custom-make
+au BufRead,BufNewFile *.py set syntax=custom-python
 au BufRead,BufNewFile *.ejs set filetype=html
 au BufRead,BufNewFile *.cu set filetype=cpp
 "}}}
@@ -294,7 +302,7 @@ au BufRead,BufNewFile *.cu set filetype=cpp
 "PROGRAMMING {{{
 set tags=./tags;/
 set csprg=gtags-cscope
-set errorformat^=%f:%l:%c\ style:\ %m,%f:%l:%c:\ %t%*[^\ ]\ %m,%.%#[%f\|%l\|%t]\ %m,
+set errorformat^=%f:%l-%e:%c-%k\ [%t%*[a-z]]\ %m,%f:%l-%e:%c-%k\ [%t%n]\ %m,%f:%l:%c\ style:\ %m,%f:%l:%c:\ %t%*[^\ ]\ %m,%.%#[%f\|%l\|%t]\ %m,
 let c_gnu=1
 let c_comment_strings=0
 let c_space_errors=1

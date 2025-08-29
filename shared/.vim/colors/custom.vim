@@ -2,41 +2,200 @@ set background=dark
 set t_Co=16
 let g:colors_name="custom"
 
-hi Normal                     ctermfg=White  ctermbg=NONE cterm=NONE
-hi Cursor                     ctermfg=White  ctermbg=NONE cterm=NONE
-hi CursorLine                 ctermfg=NONE   ctermbg=DarkGray cterm=NONE
-hi CursorLineNR               ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi CursorColumn               ctermfg=NONE   ctermbg=NONE cterm=NONE
-hi LineNr                     ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi FoldColumn                 ctermfg=Black  ctermbg=NONE cterm=NONE
-hi SignColumn                 ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi SignError                  ctermfg=Red    ctermbg=NONE cterm=NONE
-hi SignWarning                ctermfg=Yellow ctermbg=NONE cterm=NONE
-hi SignInfo                   ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi SignNote                   ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi SignOther                  ctermfg=Red    ctermbg=NONE cterm=NONE
-hi Folded                     ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi VertSplit                  ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi ColorColumn                ctermfg=Red    ctermbg=NONE cterm=NONE
-hi TabLine                    ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi TabLineFill                ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi TabLineSel                 ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi Directory                  ctermfg=White  ctermbg=NONE cterm=NONE
-hi Search                     ctermfg=Yellow ctermbg=NONE cterm=NONE
-hi IncSearch                  ctermfg=Yellow ctermbg=NONE cterm=NONE
-hi StatusLine                 ctermfg=NONE   ctermbg=NONE cterm=NONE
-hi StatusLineModified         ctermfg=Red    ctermbg=NONE cterm=NONE
-hi StatusLineReadOnly         ctermfg=Yellow ctermbg=NONE cterm=NONE
-hi StatusLineMaster           ctermfg=Yellow ctermbg=NONE cterm=NONE
-hi StatusLineNC               ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi StatusLineModifiedNC       ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi StatusLineReadOnlyNC       ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi StatusLineMasterNC         ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi StatusLineTerm             ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi StatusLineTermNC           ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi WildMenu                   ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi Question                   ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi Title                      ctermfg=NONE   ctermbg=NONE cterm=NONE
+" PALETTE {{{
+
+let g:base = ["#ffffff", "White", "#000000", "Black"]
+let g:gray = ["#cfcfcf", "Gray"]
+let g:bg_gray = ["NONE", "NONE", "#333333", "DarkGray"]
+let g:transparent = ["NONE", "NONE", "NONE", "NONE"]
+let g:red = ["#ffbaba", "Red"]
+let g:green = ["#6efa6e", "Green"]
+let g:blue = ["#8cd6ff", "Blue"]
+let g:cyan = ["#57ffc3", "Cyan"]
+let g:magenta = ["#ffb3f6", "Magenta"]
+let g:yellow = ["#FCF289", "Yellow"]
+
+let g:normal = g:base
+let g:grayed_out = g:gray
+let g:hiregion = g:bg_gray
+let g:error = g:red
+let g:warning = g:yellow
+let g:search = g:yellow
+let g:modified = g:red
+let g:folded = g:gray
+
+let g:url = g:yellow
+let g:list_marker = g:gray
+
+let g:string = g:green
+let g:char = g:green
+let g:num = g:transparent
+let g:bool = g:transparent
+let g:identifier = g:magenta
+let g:function = g:blue
+let g:statement = g:cyan
+let g:conditional = g:transparent
+let g:loop = g:transparent
+let g:label = g:transparent
+let g:operator = g:transparent
+let g:keyword = g:transparent
+let g:exception = g:transparent
+let g:comment = g:gray
+let g:macro = g:gray
+let g:debug = g:gray
+let g:type = g:transparent
+let g:structure = g:cyan
+"}}}
+" FUNCTION {{{
+function! s:HL(group, ...)
+  if a:0 >= 1
+    if len(a:1) >= 2
+      let gfg = a:1[0]
+      let cfg = a:1[1]
+    else
+      let gfg = "NONE"
+      let cfg = "NONE"
+    endif
+
+    if len(a:1) >= 4
+      let gbg = a:1[2]
+      let cbg = a:1[3]
+    else
+      let gbg = "NONE"
+      let cbg = "NONE"
+    endif
+
+    if len(a:1) >= 6
+      let g = a:1[4]
+      let c = a:1[5]
+    else
+      let g = "NONE"
+      let c = "NONE"
+    endif
+
+  let histring = [ 'hi', a:group, 'guifg=' . gfg, 'ctermfg=' . cfg,
+                 \ 'guibg=' . gbg, 'ctermbg=' . cbg, 'gui=' . g, 'cterm=' . c]
+  execute join(histring, ' ')
+  endif
+endfunction
+"}}}
+
+"BASIC {{{
+call s:HL("Normal", g:normal)
+call s:HL("Cursor", g:normal)
+call s:HL("CursorLine", g:transparent)
+call s:HL("CursorLineNR", g:transparent)
+call s:HL("CursorColumn")
+call s:HL("LineNr", g:grayed_out)
+call s:HL("VertSplit", g:grayed_out)
+call s:HL("ColorColumn", g:error)
+call s:HL("TabLine", g:grayed_out)
+call s:HL("TabLineFill", g:grayed_out)
+call s:HL("TabLineSel", g:grayed_out)
+call s:HL("Directory", g:normal)
+call s:HL("Search", g:search)
+call s:HL("IncSearch", g:search)
+call s:HL("FoldColumn")
+call s:HL("Folded", g:folded)
+call s:HL("WildMenu", g:grayed_out)
+call s:HL("Question", g:warning)
+call s:HL("Title")
+call s:HL("RedundantSpaces", g:hiregion)
+"}}}
+"SIGNS {{{
+call s:HL("SignColumn", g:grayed_out)
+call s:HL("SignError", g:error)
+call s:HL("SignWarning", g:warning)
+call s:HL("SignInfo", g:grayed_out)
+call s:HL("SignNote", g:grayed_out)
+call s:HL("SignOther", g:error)
+"}}}
+"STATUSLINE {{{
+call s:HL("StatusLine", g:base)
+call s:HL("StatusLineModified", g:modified)
+call s:HL("StatusLineReadOnly", g:warning)
+call s:HL("StatusLineMaster", g:warning)
+call s:HL("StatusLineNC", g:grayed_out)
+call s:HL("StatusLineModifiedNC", g:grayed_out)
+call s:HL("StatusLineReadOnlyNC", g:grayed_out)
+call s:HL("StatusLineMasterNC", g:grayed_out)
+call s:HL("StatusLineTerm", g:grayed_out)
+call s:HL("StatusLineTermNC", g:grayed_out)
+"}}}
+"CODE {{{
+call s:HL("WhiteSpaceChar", g:grayed_out)
+call s:HL("WhiteSpace", g:grayed_out)
+call s:HL("Constant")
+call s:HL("String", g:string)
+call s:HL("StringDelimiter", g:string)
+call s:HL("Character", g:char)
+call s:HL("Number", g:num)
+call s:HL("Boolean", g:bool)
+call s:HL("Float", g:num)
+call s:HL("Identifier", g:identifier)
+call s:HL("Function", g:function)
+call s:HL("Statement", g:statement)
+call s:HL("Conditional", g:conditional)
+call s:HL("Repeat", g:loop)
+call s:HL("Label", g:label)
+call s:HL("Operator", g:operator)
+call s:HL("Keyword", g:keyword)
+call s:HL("Exception", g:exception)
+call s:HL("Comment", g:comment)
+call s:HL("Special", g:normal)
+call s:HL("SpecialChar", g:normal)
+call s:HL("Tag")
+call s:HL("Delimiter")
+call s:HL("SpecialComment", g:normal)
+call s:HL("Debug", g:debug)
+call s:HL("PreProc", g:macro)
+call s:HL("Include", g:macro)
+call s:HL("Define", g:macro)
+call s:HL("Macro", g:macro)
+call s:HL("PreCondit", g:macro)
+call s:HL("Type", g:type)
+call s:HL("StorageClass", g:type)
+call s:HL("Structure", g:structure)
+call s:HL("Typedef", g:type)
+"}}}
+"DIFF {{{
+call s:HL("DiffAdd", g:green)
+call s:HL("DiffChange", g:warning)
+call s:HL("DiffDelete", g:error)
+call s:HL("DiffText")
+call s:HL("diffAdded", g:green)
+call s:HL("diffRemoved", g:error)
+call s:HL("diffLine", g:grayed_out)
+call s:HL("diffSubName", g:grayed_out)
+call s:HL("GitGutterAdd", g:green)
+call s:HL("GitGutterChange", g:warning)
+call s:HL("GitGutterDelete", g:error)
+"}}}
+"MARKDOWN {{{
+call s:HL("markdownListMarker", g:list_marker)
+call s:HL("markdownFootnoteDefinition", g:grayed_out)
+call s:HL("markdownCodeDelimiter", g:grayed_out)
+call s:HL("markdownH1", g:grayed_out)
+call s:HL("markdownH2", g:grayed_out)
+call s:HL("markdownH3", g:grayed_out)
+call s:HL("markdownH4", g:grayed_out)
+call s:HL("markdownH5", g:grayed_out)
+call s:HL("markdownH6", g:grayed_out)
+call s:HL("markdownH1Delimiter", g:grayed_out)
+call s:HL("markdownH2Delimiter", g:grayed_out)
+call s:HL("markdownH3Delimiter", g:grayed_out)
+call s:HL("markdownH4Delimiter", g:grayed_out)
+call s:HL("markdownH5Delimiter", g:grayed_out)
+call s:HL("markdownH6Delimiter", g:grayed_out)
+call s:HL("markdownUrl", g:url)
+"}}}
+"SPELL {{{
+call s:HL("SpellBad", g:error)
+call s:HL("SpellCap", g:warning)
+call s:HL("SpellLocal", g:grayed_out)
+call s:HL("SpellRare", g:grayed_out)
+"}}}
+
 hi ModeMsg                    ctermfg=Gray   ctermbg=NONE cterm=NONE
 hi MoreMsg                    ctermfg=Gray   ctermbg=NONE cterm=NONE
 hi MatchParen                 ctermfg=NONE   ctermbg=Gray cterm=NONE
@@ -50,80 +209,13 @@ hi ErrorMsg                   ctermfg=Red    ctermbg=NONE cterm=NONE
 hi WarningMsg                 ctermfg=Yellow ctermbg=NONE cterm=NONE
 hi Ignore                     ctermfg=Gray   ctermbg=NONE cterm=NONE
 hi SpecialKey                 ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi WhiteSpaceChar             ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi WhiteSpace                 ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi Constant                   ctermfg=NONE   ctermbg=NONE cterm=NONE
-hi String                     ctermfg=Green  ctermbg=NONE cterm=NONE
-hi StringDelimiter            ctermfg=Green  ctermbg=NONE cterm=NONE
-hi Character                  ctermfg=NONE   ctermbg=NONE cterm=NONE
-hi Number                     ctermfg=NONE   ctermbg=NONE cterm=NONE
-hi Boolean                    ctermfg=NONE   ctermbg=NONE cterm=NONE
-hi Float                      ctermfg=NONE   ctermbg=NONE cterm=NONE
-hi Identifier                 ctermfg=NONE   ctermbg=NONE cterm=NONE
-hi Function                   ctermfg=NONE   ctermbg=NONE cterm=NONE
-hi Statement                  ctermfg=NONE   ctermbg=NONE cterm=NONE
-hi Conditional                ctermfg=NONE   ctermbg=NONE cterm=NONE
-hi Repeat                     ctermfg=NONE   ctermbg=NONE cterm=NONE
-hi Label                      ctermfg=NONE   ctermbg=NONE cterm=NONE
-hi Operator                   ctermfg=NONE   ctermbg=NONE cterm=NONE
-hi Keyword                    ctermfg=NONE   ctermbg=NONE cterm=NONE
-hi Exception                  ctermfg=NONE   ctermbg=NONE cterm=NONE
-hi Comment                    ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi Special                    ctermfg=NONE   ctermbg=NONE cterm=NONE
-hi SpecialChar                ctermfg=NONE   ctermbg=NONE cterm=NONE
-hi Tag                        ctermfg=NONE   ctermbg=NONE cterm=NONE
-hi Delimiter                  ctermfg=NONE   ctermbg=NONE cterm=NONE
-hi SpecialComment             ctermfg=NONE   ctermbg=NONE cterm=NONE
-hi Debug                      ctermfg=NONE   ctermbg=NONE cterm=NONE
-hi PreProc                    ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi Include                    ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi Define                     ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi Macro                      ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi PreCondit                  ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi Type                       ctermfg=NONE   ctermbg=NONE cterm=NONE
-hi StorageClass               ctermfg=NONE   ctermbg=NONE cterm=NONE
-hi Structure                  ctermfg=NONE   ctermbg=NONE cterm=NONE
-hi Typedef                    ctermfg=NONE   ctermbg=NONE cterm=NONE
-hi DiffAdd                    ctermfg=Green  ctermbg=NONE cterm=NONE
-hi DiffChange                 ctermfg=Yellow ctermbg=NONE cterm=NONE
-hi DiffDelete                 ctermfg=Red    ctermbg=NONE cterm=NONE
-hi DiffText                   ctermfg=NONE   ctermbg=NONE cterm=NONE
-hi diffAdded                  ctermfg=Green  ctermbg=NONE cterm=NONE
-hi diffRemoved                ctermfg=Red    ctermbg=NONE cterm=NONE
-hi diffLine                   ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi diffSubName                ctermfg=Gray   ctermbg=NONE cterm=NONE
+
 hi PmenuSel                   ctermfg=Gray   ctermbg=NONE cterm=NONE
 hi Pmenu                      ctermfg=Gray   ctermbg=NONE cterm=NONE
 hi PmenuSbar                  ctermfg=Gray   ctermbg=NONE cterm=NONE
 hi PmenuThumb                 ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi SpellBad                   ctermfg=Red    ctermbg=NONE cterm=NONE
-hi SpellCap                   ctermfg=Yellow ctermbg=NONE cterm=NONE
-hi SpellLocal                 ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi SpellRare                  ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi markdownListMarker         ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi markdownFootnoteDefinition ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi markdownCodeDelimiter      ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi markdownH1                 ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi markdownH2                 ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi markdownH3                 ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi markdownH4                 ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi markdownH5                 ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi markdownH6                 ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi markdownH1Delimiter        ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi markdownH2Delimiter        ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi markdownH3Delimiter        ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi markdownH4Delimiter        ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi markdownH5Delimiter        ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi markdownH6Delimiter        ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi markdownUrl                ctermfg=Yellow ctermbg=NONE cterm=NONE
-hi debugPC                    ctermfg=Black  ctermbg=Gray cterm=NONE
 hi Important                  ctermfg=Yellow ctermbg=NONE cterm=NONE
 hi Danger                     ctermfg=NONE   ctermbg=NONE cterm=BOLD
 hi WildMenu                   ctermfg=Black  ctermbg=Gray cterm=NONE
-hi GitGutterAdd               ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi GitGutterChange            ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi GitGutterDelete            ctermfg=Gray   ctermbg=NONE cterm=NONE
-
-hi RedundantSpaces            ctermfg=NONE  ctermbg=Gray cterm=NONE
 
 match RedundantSpaces /\s\+$/
