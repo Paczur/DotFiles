@@ -207,9 +207,9 @@ autocmd FileType c,cpp,h,hpp set foldtext=C_FoldText()
 
 "PLUGINS {{{
 call plug#begin()
-Plug 'https://github.com/ludovicchabant/vim-gutentags'
+"Plug 'https://github.com/ludovicchabant/vim-gutentags'
 Plug 'https://github.com/vim-scripts/taglist.vim'
-Plug 'https://github.com/chazy/cscope_maps'
+"Plug 'https://github.com/chazy/cscope_maps'
 Plug 'https://github.com/airblade/vim-gitgutter'
 Plug 'https://github.com/tpope/vim-fugitive'
 Plug 'https://github.com/mikelue/vim-maven-plugin'
@@ -241,20 +241,20 @@ augroup VimTeX
   autocmd BufReadPre *.tex
         \ let b:vimtex_main = 'main.tex'
 augroup end
-let g:gutentags_ctags_extra_args = [
-      \ '--fields=+ailmnS',
-      \]
-let g:gutentags_modules = ['gtags_cscope']
+"let g:gutentags_ctags_extra_args = [
+"      \ '--fields=+ailmnS',
+"      \]
+"let g:gutentags_modules = ['gtags_cscope']
 
 "TODO: Change
-let g:gutentags_generate_on_new = 0
-let g:gutentags_generate_on_missing = 0
-let g:gutentags_generate_on_write = 0
-
-let g:gutentags_generate_on_empty_buffer = 0
-let g:gutentags_project_root = ['Makefile','README.md','pom.xml','LICENSE']
-let g:gutentags_cache_dir = '.gtags'
-let g:gutentags_add_default_project_roots = 0
+"let g:gutentags_generate_on_new = 0
+"let g:gutentags_generate_on_missing = 0
+"let g:gutentags_generate_on_write = 0
+"
+"let g:gutentags_generate_on_empty_buffer = 0
+"let g:gutentags_project_root = ['Makefile','README.md','pom.xml','LICENSE']
+"let g:gutentags_cache_dir = '.gtags'
+"let g:gutentags_add_default_project_roots = 0
 let g:qfdiagnostics = {
       \  'texthl': 1,
       \  'sign_error': { 'text': '*', 'priority': 14, 'texthl': 'SignError'},
@@ -301,7 +301,7 @@ au BufRead,BufNewFile *.cu set filetype=cpp
 
 "PROGRAMMING {{{
 set tags=./tags;/
-set csprg=gtags-cscope
+"set csprg=gtags-cscope
 set errorformat^=%f:%l-%e:%c-%k\ [%t%*[a-z]]\ %m,%f:%l-%e:%c-%k\ [%t%n]\ %m,%f:%l:%c\ style:\ %m,%f:%l:%c:\ %t%*[^\ ]\ %m,%.%#[%f\|%l\|%t]\ %m,
 let c_gnu=1
 let c_comment_strings=0
