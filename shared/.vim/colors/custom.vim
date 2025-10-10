@@ -31,20 +31,20 @@ let g:string = g:green
 let g:char = g:green
 let g:num = g:transparent
 let g:bool = g:transparent
-let g:identifier = g:magenta
+let g:identifier = g:transparent
 let g:function = g:blue
 let g:statement = g:cyan
-let g:conditional = g:transparent
-let g:loop = g:transparent
+let g:conditional = g:magenta
+let g:loop = g:magenta
 let g:label = g:transparent
 let g:operator = g:transparent
-let g:keyword = g:transparent
+let g:keyword = g:blue
 let g:exception = g:transparent
 let g:comment = g:gray
 let g:macro = g:gray
 let g:debug = g:gray
 let g:type = g:transparent
-let g:structure = g:cyan
+let g:structure = g:blue
 "}}}
 " FUNCTION {{{
 function! s:HL(group, ...)
