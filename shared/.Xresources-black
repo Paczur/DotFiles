@@ -41,12 +41,12 @@ Xft.lcdfilter:  lcddefault
 !blue
 *.color4:  #8cd6ff
 *.color12: #8cd6ff
-!cyan
-*.color5:  #57ffc3
-*.color13: #57ffc3
 !magenta
-*.color6:  #ffb3f6
-*.color14: #ffb3f6
+*.color5:  #ffb3f6
+*.color13: #ffb3f6
+!cyan
+*.color6:  #57ffc3
+*.color14: #57ffc3
 !white
 *.color7:  #cfcfcf
 *.color15: #ffffff
