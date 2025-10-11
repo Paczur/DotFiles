@@ -9,19 +9,24 @@ let g:gray = ["#cfcfcf", "Gray"]
 let g:bg_gray = ["NONE", "NONE", "#333333", "DarkGray"]
 let g:transparent = ["NONE", "NONE", "NONE", "NONE"]
 let g:red = ["#ffbaba", "Red"]
+let g:bg_red = ["NONE", "NONE", "#ffbaba", "Red"]
+let g:under_red = ["#ffbaba", "Red", "NONE", "NONE", "UNDERLINE", "UNDERLINE"]
 let g:green = ["#6efa6e", "Green"]
 let g:blue = ["#8cd6ff", "Blue"]
 let g:cyan = ["#57ffc3", "Cyan"]
 let g:magenta = ["#ffb3f6", "Magenta"]
 let g:yellow = ["#FCF289", "Yellow"]
+let g:bg_yellow = ["#000000", "Black", "#FCF289", "Yellow"]
+let g:under_yellow = ["#FCF289", "Yellow", "NONE", "NONE", "UNDERLINE", "UNDERLINE"]
 
 let g:normal = g:base
 let g:grayed_out = g:gray
 let g:hiregion = g:bg_gray
-let g:error = g:red
-let g:warning = g:yellow
-let g:search = g:yellow
-let g:modified = g:red
+let g:error = g:under_red
+let g:error_sign = g:red
+let g:warning = g:under_yellow
+let g:warning_sign = g:yellow
+let g:search = g:bg_yellow
 let g:folded = g:gray
 
 let g:url = g:yellow
@@ -32,19 +37,19 @@ let g:char = g:green
 let g:num = g:transparent
 let g:bool = g:transparent
 let g:identifier = g:transparent
-let g:function = g:blue
-let g:statement = g:cyan
-let g:conditional = g:magenta
-let g:loop = g:magenta
+let g:function = g:transparent
+let g:statement = g:transparent
+let g:conditional = g:transparent
+let g:loop = g:transparent
 let g:label = g:transparent
 let g:operator = g:transparent
-let g:keyword = g:blue
+let g:keyword = g:transparent
 let g:exception = g:transparent
 let g:comment = g:gray
 let g:macro = g:gray
 let g:debug = g:gray
 let g:type = g:transparent
-let g:structure = g:blue
+let g:structure = g:transparent
 "}}}
 " FUNCTION {{{
 function! s:HL(group, ...)
@@ -88,7 +93,7 @@ call s:HL("CursorLineNR", g:transparent)
 call s:HL("CursorColumn")
 call s:HL("LineNr", g:grayed_out)
 call s:HL("VertSplit", g:grayed_out)
-call s:HL("ColorColumn", g:error)
+call s:HL("ColorColumn", g:error_sign)
 call s:HL("TabLine", g:grayed_out)
 call s:HL("TabLineFill", g:grayed_out)
 call s:HL("TabLineSel", g:grayed_out)
@@ -104,17 +109,17 @@ call s:HL("RedundantSpaces", g:hiregion)
 "}}}
 "SIGNS {{{
 call s:HL("SignColumn", g:grayed_out)
-call s:HL("SignError", g:error)
-call s:HL("SignWarning", g:warning)
+call s:HL("SignError", g:error_sign)
+call s:HL("SignWarning", g:warning_sign)
 call s:HL("SignInfo", g:grayed_out)
 call s:HL("SignNote", g:grayed_out)
-call s:HL("SignOther", g:error)
+call s:HL("SignOther", g:error_sign)
 "}}}
 "STATUSLINE {{{
 call s:HL("StatusLine", g:base)
-call s:HL("StatusLineModified", g:modified)
-call s:HL("StatusLineReadOnly", g:warning)
-call s:HL("StatusLineMaster", g:warning)
+call s:HL("StatusLineModified", g:error_sign)
+call s:HL("StatusLineReadOnly", g:warning_sign)
+call s:HL("StatusLineMaster", g:warning_sign)
 call s:HL("StatusLineNC", g:grayed_out)
 call s:HL("StatusLineModifiedNC", g:grayed_out)
 call s:HL("StatusLineReadOnlyNC", g:grayed_out)
@@ -160,16 +165,16 @@ call s:HL("Typedef", g:type)
 "}}}
 "DIFF {{{
 call s:HL("DiffAdd", g:green)
-call s:HL("DiffChange", g:warning)
-call s:HL("DiffDelete", g:error)
+call s:HL("DiffChange", g:warning_sign)
+call s:HL("DiffDelete", g:error_sign)
 call s:HL("DiffText")
 call s:HL("diffAdded", g:green)
-call s:HL("diffRemoved", g:error)
+call s:HL("diffRemoved", g:error_sign)
 call s:HL("diffLine", g:grayed_out)
 call s:HL("diffSubName", g:grayed_out)
 call s:HL("GitGutterAdd", g:green)
-call s:HL("GitGutterChange", g:warning)
-call s:HL("GitGutterDelete", g:error)
+call s:HL("GitGutterChange", g:warning_sign)
+call s:HL("GitGutterDelete", g:error_sign)
 "}}}
 "MARKDOWN {{{
 call s:HL("markdownListMarker", g:list_marker)
@@ -198,7 +203,7 @@ call s:HL("SpellRare", g:grayed_out)
 
 hi ModeMsg                    ctermfg=Gray   ctermbg=NONE cterm=NONE
 hi MoreMsg                    ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi MatchParen                 ctermfg=NONE   ctermbg=Gray cterm=NONE
+hi MatchParen                 ctermfg=Yellow   ctermbg=NONE cterm=NONE
 hi Visual                     ctermfg=NONE   ctermbg=Gray cterm=NONE
 hi VisualNOS                  ctermfg=NONE   ctermbg=Gray cterm=NONE
 hi NonText                    ctermfg=Gray   ctermbg=NONE cterm=NONE
