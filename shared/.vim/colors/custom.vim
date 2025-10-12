@@ -26,7 +26,7 @@ let g:error = g:under_red
 let g:error_sign = g:red
 let g:warning = g:under_yellow
 let g:warning_sign = g:yellow
-let g:search = g:bg_yellow
+let g:search = g:yellow
 let g:folded = g:gray
 
 let g:url = g:yellow
@@ -203,7 +203,7 @@ call s:HL("SpellRare", g:grayed_out)
 
 hi ModeMsg                    ctermfg=Gray   ctermbg=NONE cterm=NONE
 hi MoreMsg                    ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi MatchParen                 ctermfg=Yellow   ctermbg=NONE cterm=NONE
+hi MatchParen                 ctermfg=Black   ctermbg=Gray cterm=NONE
 hi Visual                     ctermfg=NONE   ctermbg=Gray cterm=NONE
 hi VisualNOS                  ctermfg=NONE   ctermbg=Gray cterm=NONE
 hi NonText                    ctermfg=Gray   ctermbg=NONE cterm=NONE
