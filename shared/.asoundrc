@@ -1,7 +1,7 @@
-pcm.!default {
-    type plug
-    slave { pcm "jack" }
-}
+#pcm.!default {
+#    type plug
+#    slave { pcm "jack" }
+#}
 #pcm.!default {
 #    type plug
 #    slave.pcm "jack"

@@ -15,23 +15,23 @@ syn match alangCharacter /'\([^\\']\|\\.\)*'/
 "syn match alangVarIdentifier /\w\+\(::\w\+\)*\ze\s*:/ contained containedin=alangVarDecl
 "syn match alangVarType /:\s*\zs[!?]*\(\[\w*\]\|\*\)*!\?\w*\(::\w\+\)*\(<\(\w\+\s*\(:\s*\w*\)\?,\?\)\+>\)*\ze\s*/ contained containedin=alangVarDecl
 "syn match alangOperator /\([+=\-*|&^!?><.]\|=>\)/
-syn match alangIdentifier /\w\+\(:\w\+\)*/
+"syn match alangIdentifier /\w\+\(:\w\+\)*/
 syn region alangAttribute start="^\[" end="\]"
-syn match alangVarDeclaration /\(\**!*\(\[[0-9]*\]\)*\(<\w\+>\)*\)*\w\+\(:\w\+\)*\s\+\w\+\(:\w\+\)*/
-syn match alangVarIdentifier /\s\w\+\(:\w\+\)*/ contained containedin=alangVarDeclaration
-syn match alangVarType /\(\**!*\(\[[0-9]*\]\)*\(<\w\+>\)*\)*\w\+\(:\w\+\)*/ contained containedin=alangVarDeclaration
-syn match alangFunDeclaration /\(\(\**!*\(\[[0-9]*\]\)*\(<\w\+>\)*\)*\w\+\(:\w\+\)*\s\+\)\?\w\+\(:\w\+\)*\ze(/
-syn match alangFunIdentifier /\w\+\(:\w\+\)*\ze(/ contained containedin=alangFunDeclaration
-syn match alangFunReturnType /\(\**!*\(\[[0-9]*\]\)*\(<\w\+>\)*\)*\w\+\(:\w\+\)*\ze\s/ contained containedin=alangFunDeclaration
-syn match alangStructureDeclaration /\(struct\|union\|enum\)\s\+\(\**!*\(\[[0-9]*\]\)*\(<\w\+>\)*\)*\w\+\(:\w\+\)*/
-syn match alangStructureKeyword /\(struct\|union\|enum\)/ contained containedin=alangStructureDeclaration
-syn match alangStructureType /\s\zs\(\**!*\(\[[0-9]*\]\)*\(<\w\+>\)*\)*\w\+\(:\w\+\)*/ contained containedin=alangStructureDeclaration
-syn match alangDefineDeclaration /def \w\+\(:\w\+\)*/
-syn match alangDefineKeyword /def/ contained containedin=alangDefineDeclaration
-syn match alangDefineIdentifier /\s\w\+\(:\w\+\)*/ contained containedin=alangDefineDeclaration
-syn match alangCast /=>\s*\zs\(\**!*\(\[[0-9]*\]\)*\(<\w\+>\)*\)*\w\+\(:\w\+\)*/
-syn match alangNumber /[0-9]\+/
-syn match alangFloat /[0-9]\+\(\.[0-9]\+\)\?/
+"syn match alangVarDeclaration /\(\**!*\(\[[0-9]*\]\)*\(<\w\+>\)*\)*\w\+\(:\w\+\)*\s\+\w\+\(:\w\+\)*/
+"syn match alangVarIdentifier /\s\w\+\(:\w\+\)*/ contained containedin=alangVarDeclaration
+"syn match alangVarType /\(\**!*\(\[[0-9]*\]\)*\(<\w\+>\)*\)*\w\+\(:\w\+\)*/ contained containedin=alangVarDeclaration
+"syn match alangFunDeclaration /\(\(\**!*\(\[[0-9]*\]\)*\(<\w\+>\)*\)*\w\+\(:\w\+\)*\s\+\)\?\w\+\(:\w\+\)*\ze(/
+"syn match alangFunIdentifier /\w\+\(:\w\+\)*\ze(/ contained containedin=alangFunDeclaration
+"syn match alangFunReturnType /\(\**!*\(\[[0-9]*\]\)*\(<\w\+>\)*\)*\w\+\(:\w\+\)*\ze\s/ contained containedin=alangFunDeclaration
+"syn match alangStructureDeclaration /\(struct\|union\|enum\)\s\+\(\**!*\(\[[0-9]*\]\)*\(<\w\+>\)*\)*\w\+\(:\w\+\)*/
+"syn match alangStructureKeyword /\(struct\|union\|enum\)/ contained containedin=alangStructureDeclaration
+"syn match alangStructureType /\s\zs\(\**!*\(\[[0-9]*\]\)*\(<\w\+>\)*\)*\w\+\(:\w\+\)*/ contained containedin=alangStructureDeclaration
+"syn match alangDefineDeclaration /def \w\+\(:\w\+\)*/
+"syn match alangDefineKeyword /def/ contained containedin=alangDefineDeclaration
+"syn match alangDefineIdentifier /\s\w\+\(:\w\+\)*/ contained containedin=alangDefineDeclaration
+"syn match alangCast /=>\s*\zs\(\**!*\(\[[0-9]*\]\)*\(<\w\+>\)*\)*\w\+\(:\w\+\)*/
+"syn match alangNumber /[0-9]\+/
+"syn match alangFloat /[0-9]\+\(\.[0-9]\+\)\?/
 
 syn keyword alangConditional if else elif
 syn keyword alangRepeat for while loop
@@ -39,11 +39,13 @@ syn keyword alangStatement goto break return continue
 syn keyword alangBoolean true false
 "syn keyword alangStructure struct union type
 syn keyword alangKeyword sizeof typeof alignof offsetof lengthof
+syn keyword alangIntroducer def defn fn var struct enum union
 
 
 hi def link alangAttribute Define
 hi def link alangDefineIdentifier Define
 hi def link alangDefineKeyword Define
+hi def link alangIntroducer Define
 hi def link alangIdentifier Identifier
 hi def link alangComment Comment
 hi def link alangVarIdentifier Identifier

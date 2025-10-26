@@ -3,6 +3,7 @@ set encoding=UTF-8
 set path=src/**
 set nocompatible
 set backspace=2
+set mouse=n
 set wildmenu
 set wildmode=longest:full,full
 set exrc
@@ -201,6 +202,10 @@ autocmd FileType conf       set foldmethod=marker
 autocmd FileType conf       set foldnestmax=2
 autocmd FileType sh         set foldmethod=indent
 autocmd FileType sh         set foldnestmax=1
+autocmd FileType custom-alang      set foldmethod=syntax
+autocmd FileType custom-alang      set foldnestmax=5
+autocmd FileType custom-c      set foldmethod=syntax
+autocmd FileType custom-c      set foldnestmax=5
 
 autocmd FileType * set foldtext=FoldText()
 autocmd FileType c,cpp,h,hpp set foldtext=C_FoldText()
