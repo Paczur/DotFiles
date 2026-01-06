@@ -14,7 +14,7 @@ Xft.lcdfilter:  lcddefault
 *savelines: 16384
 *ScrollBar: false
 *scrollBar: false
-*termName: xterm-256color
+*termName: rxvt-unicode
 *BellIsUrgent: true
 *urgentOnBell: true
 *cursorBlink: true
