@@ -1,5 +1,5 @@
 #!/bin/env bash
-. /home/paczur/Scripts/system/path
+. /home/paczur/System/Scripts/system/path
 . ~/.bashrc
 export PATH
 t="$(tty | sed 's/.*\/tty//g')"

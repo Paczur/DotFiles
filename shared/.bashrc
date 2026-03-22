@@ -225,18 +225,15 @@ cd() {
   local path
   builtin cd "$@" || return
 
-  rpath=".renv"
-  while [ ! -d "$rpath" ] && [ "$(realpath "$rpath")" != "/.renv" ]; do
-    rpath="../$rpath"
-  done
+  ppath="$(project_env find)"
+
   vpath=".venv"
   while [ ! -d "$vpath" ] && [ "$(realpath "$vpath")" != "/.venv" ]; do
     vpath="../$vpath"
   done
 
-  if [ -n "${RUN_ENV}" ] &&
-     [ "$(realpath "$rpath")" != "$(realpath "${RUN_ENV}")" ]; then
-       close >/dev/null
+  if [ -n "${PROJECT_ENV}" ] && [ -n "$ppath" ]; then
+     close >/dev/null
   fi
 
   if [ -n "${VIRTUAL_ENV}" ] &&
@@ -248,8 +245,8 @@ cd() {
     . "$vpath/bin/activate"
   fi
 
-  if [ -z "${RUN_ENV}" ] && [ -d "$rpath" ]; then
-    . "$rpath/open"
+  if [ -z "${PROJECT_ENV}" ] && [ -d "$ppath" ]; then
+    . "$ppath/open"
   fi
 
   ls
