@@ -1,6 +1,0 @@
-(defun scratch ()
-	(interactive)
-	(switch-to-buffer "*scratch*"))
-(defun scheme ()
-  (interactive)
-  (run-scheme "gsc"))
