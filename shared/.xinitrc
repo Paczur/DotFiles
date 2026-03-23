@@ -1,3 +1,3 @@
 #!/bin/env bash
-/home/paczur/System/Scripts/system/startup/afterX
+/usr/local/bin/system/startup/afterX
 exec xinit-loop "$1"

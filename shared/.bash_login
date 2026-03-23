@@ -1,11 +1,11 @@
 #!/bin/env bash
-. /home/paczur/System/Scripts/system/path
+. /usr/local/bin/system/path
 . ~/.bashrc
 export PATH
 t="$(tty | sed 's/.*\/tty//g')"
 case "$t" in
   "1")
-  wm="/usr/bin/awm"
+  wm="/usr/bin/i3"
   ;;
   *)
   wm=""
@@ -13,6 +13,7 @@ case "$t" in
 esac
 set bell_style none
 if [ -n "$wm" ]; then
+  cat ~/.config/i3/* > ~/.config/i3/config
   exec startx ~/.xinitrc "$wm" -- "vt$t"
 fi
 clear

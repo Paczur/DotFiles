@@ -1,0 +1,4 @@
+# i3 config file (v4)
+
+set $m1 "DP-0"
+set $m2 "DVI-D-0"

@@ -5,8 +5,8 @@ border_left=10
 border_right=10
 border_top=0
 border_bottom=0
-background=#333333
-border=#333333
+background=#000000
+border=#000000
 color=#f3f3f3
 markup=cairo
 interval=-1
@@ -16,18 +16,6 @@ interval=-1
 #Clickables - 4
 #Signalled  - 2
 #Timed      - 1
-
-[emerge-update]
-background=#f3f36e
-border=#f3f36e
-color=#111111
-signal=14
-command=[ -f "/home/paczur/System/Tmp/update" ] && echo "󰳡" || echo ""
-interval=-1
-
-[mpv-volume]
-label= 
-signal=10
 
 [net]
 interval=60

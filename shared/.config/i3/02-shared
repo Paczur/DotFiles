@@ -1,0 +1,186 @@
+# VARIABLES {{{
+  set $mod Mod4
+  set $y #f3f36e
+  set $g #333333
+  set $d #000000
+  set $w #f3f3f3
+  set $ws1 "1:1"
+  set $ws2 "2:2"
+  set $ws3 "3:3"
+  set $ws4 "4:4"
+  set $ws5 "5:5"
+  set $ws6 "6:6"
+  set $ws7 "7:7"
+  set $ws8 "8:8"
+  set $ws9 "9:9"
+  set $ws10 "10:10"
+  set $window ""
+  set $scrot_path "/home/paczur/Multimedia/Pictures/Screenshots/Scrot/%d-%m-%Y_%H-%M-%S_$wx$h.png"
+#}}}
+
+# WORKSPACES {{{
+    workspace $ws1 output $m1
+    workspace $ws2 output $m1
+    workspace $ws3 output $m1
+    workspace $ws4 output $m1
+    workspace $ws5 output $m1
+    workspace $ws6 output $m1
+    workspace $ws7 output $m2
+    workspace $ws8 output $m2
+    workspace $ws9 output $m2
+    workspace $ws10 output $m1
+
+    assign [class="^TelegramDesktop$"] $ws7
+    assign [class="^firefox$"] $ws1
+    assign [class="^KeePassXC$"] $ws6
+#}}}
+
+# KEYBINDS {{{
+  bindsym $mod+1 workspace $ws1
+  bindsym $mod+2 workspace $ws2
+  bindsym $mod+3 workspace $ws3
+  bindsym $mod+4 workspace $ws4
+  bindsym $mod+5 workspace $ws5
+  bindsym $mod+6 workspace $ws6
+  bindsym $mod+7 workspace $ws7
+  bindsym $mod+8 workspace $ws8
+  bindsym $mod+9 workspace $ws9
+  bindsym $mod+0 workspace $ws10
+  bindsym $mod+i mode $window
+  bindsym $mod+Shift+1 move container to workspace $ws1
+  bindsym $mod+Shift+2 move container to workspace $ws2
+  bindsym $mod+Shift+3 move container to workspace $ws3
+  bindsym $mod+Shift+4 move container to workspace $ws4
+  bindsym $mod+Shift+5 move container to workspace $ws5
+  bindsym $mod+Shift+6 move container to workspace $ws6
+  bindsym $mod+Shift+7 move container to workspace $ws7
+  bindsym $mod+Shift+8 move container to workspace $ws8
+  bindsym $mod+Shift+9 move container to workspace $ws9
+  bindsym $mod+Shift+0 move container to workspace $ws10
+  bindsym $mod+q kill
+  bindsym $mod+f fullscreen toggle
+  bindsym $mod+g floating toggle
+  bindsym $mod+a focus parent
+  bindsym $mod+z focus child
+  bindsym $mod+b split h
+  bindsym $mod+v split v
+  bindsym $mod+x layout toggle stacking split
+  bindsym $mod+h focus left
+  bindsym $mod+j focus down
+  bindsym $mod+k focus up
+  bindsym $mod+l focus right
+  bindsym $mod+Shift+h move left
+  bindsym $mod+Shift+j move down
+  bindsym $mod+Shift+k move up
+  bindsym $mod+Shift+l move right
+  bindsym --release $mod+p exec scrot -s -q 100 -e "xclip -selection clipboard -t image/png -i $scrot_path" $scrot_path
+  bindsym --release $mod+Shift+p exec scrot -q 100 -e "xclip -selection clipboard -t image/png -i $scrot_path" $scrot_path
+  bindsym $mod+r exec dmenu_run -f -i -fn "Code New Roman 14" -nb '#111111' -nf '#ffffff' -sb '#333333' -sf '#ffffff' -w "$(xwininfo -name "i3bar for output $m1" | grep -o '0x[0123456789abcdef]\+' | head -n1)"
+  bindsym $mod+Return exec "urxvt"
+
+  bindsym XF86MonBrightnessDown exec xbacklight -dec 2 && pkill -SIGRTMIN+11 i3blocks
+  bindsym XF86MonBrightnessUp exec xbacklight -inc 2 && pkill -SIGRTMIN+11 i3blocks
+  bindsym XF86AudioMute exec volume m && pkill -SIGRTMIN+13 i3blocks
+  bindsym XF86AudioLowerVolume exec volume - && pkill -SIGRTMIN+13 i3blocks
+  bindsym XF86AudioRaiseVolume exec volume + && pkill -SIGRTMIN+13 i3blocks
+  bindsym XF86WLAN exec wpa_cli scan && sleep 2 && pkill -SIGRTMIN+12 i3blocks
+
+  mode $window {
+    bindsym Shift+s exec "sudo shutdown"
+    bindsym 1 workspace $ws1
+    bindsym 2 workspace $ws2
+    bindsym 3 workspace $ws3
+    bindsym 4 workspace $ws4
+    bindsym 5 workspace $ws5
+    bindsym 6 workspace $ws6
+    bindsym 7 workspace $ws7
+    bindsym 8 workspace $ws8
+    bindsym 9 workspace $ws9
+    bindsym 0 workspace $ws10
+    bindsym Shift+1 move container to workspace $ws1
+    bindsym Shift+2 move container to workspace $ws2
+    bindsym Shift+3 move container to workspace $ws3
+    bindsym Shift+4 move container to workspace $ws4
+    bindsym Shift+5 move container to workspace $ws5
+    bindsym Shift+6 move container to workspace $ws6
+    bindsym Shift+7 move container to workspace $ws7
+    bindsym Shift+8 move container to workspace $ws8
+    bindsym Shift+9 move container to workspace $ws9
+    bindsym Shift+0 move container to workspace $ws10
+    bindsym q kill
+    bindsym f fullscreen toggle
+    bindsym g floating toggle
+    bindsym a focus parent
+    bindsym z focus child
+    bindsym b split h
+    bindsym v split v
+    bindsym x layout toggle stacking split
+    bindsym h focus left
+    bindsym j focus down
+    bindsym k focus up
+    bindsym l focus right
+    bindsym Shift+h move left
+    bindsym Shift+j move down
+    bindsym Shift+k move up
+    bindsym Shift+l move right
+    bindsym --release p exec scrot -s -q 100 -e "xclip -selection clipboard -t image/png -i $scrot_path" $scrot_path
+    bindsym --release Shift+p exec scrot -q 100 -e "xclip -selection clipboard -t image/png -i $scrot_path" $scrot_path
+    bindsym r exec dmenu_run -f -i -fn "Code New Roman 14" -nb '#111111' -nf '#ffffff' -sb '#333333' -sf '#ffffff' -w "$(xwininfo -name "i3bar for output $m1" | grep -o '0x[0123456789abcdef]\+' | head -n1)"
+    bindsym Return exec "urxvt"
+
+    bindsym Escape mode "default"
+    bindsym i mode "default"
+  }
+#}}}
+
+# BAR {{{
+  bar {
+    output $m1
+    output $m2
+    tray_output none
+    position top
+    separator_symbol " "
+    status_command i3blocks
+    workspace_buttons yes
+    strip_workspace_numbers yes
+    padding 3 0
+    workspace_min_width 40
+    i3bar_command i3bar
+# COLORS {{{
+  colors {
+    #class             border background text
+    active_workspace   $g     $g         $w
+    focused_workspace  $w     $w         $d
+    inactive_workspace $g     $g         $w
+    urgent_workspace   $y     $y         $d
+    binding_mode       $w     $d         $w
+    background $d
+    statusline $d
+  }
+}
+#}}}
+#}}}
+
+# COLORS {{{
+#class                  title_border bg text indicator border
+  client.focused          $w           $d $w   $w        $w
+  client.focused_inactive $g           $d $w   $g        $g
+  client.unfocused        $g           $d $w   $g        $g
+  client.urgent           $y           $d $d   $y        $y
+  client.background $g
+#}}}
+
+# USABILITY {{{
+  font pango: CodeNewRoman Nerd Font Propo, IPAexGothic 14
+
+  default_floating_border pixel 4
+  default_border pixel 2
+  for_window [floating_from="user"] border pixel 4
+  for_window [tiling_from="user"] border pixel 2
+  popup_during_fullscreen leave_fullscreen
+  focus_on_window_activation none
+  no_focus [tiling]
+  mouse_warping none
+  focus_follows_mouse no
+  floating_modifier $mod
+#}}}
