@@ -216,7 +216,7 @@ __ps1() {
   local PS1_CLEAN="$(echo "$PS1" |\
     sed 's/\\001\\e\[[0-9]\+m\\002//g;s/\[[0-9]*m//g')"
   if (( "${#PS1_CLEAN}>${COLUMNS}/2" )); then
-    PS1="┌${PS1}\n└▶ "
+    PS1="┌${PS1}\n└"
   fi
 }
 
