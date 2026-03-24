@@ -1,13 +1,22 @@
 #!/bin/env bash
 
-if [ -n "$button" ]; then
+if [ "$button" = "1" ]; then
   volume m
+elif [ "$button" = "4" ]; then
+  volume +
+elif [ "$button" = "5" ]; then
+  volume -
 fi
 
-old="${full_text}"
+old="$full_text"
+
 value="$(volume g)"
-echo "$value"
-if [ -n "$old" ] && [ "$old" != "$label$value" ]; then
-  nohup < <(sleep 2 && pkill -SIGRTMIN+13 i3blocks)
-  exit 33
+set -- $value
+if [ $1 = muted ]; then
+  label=""
+  value="$2"
+else
+  label=""
 fi
+echo "$label $value"
+

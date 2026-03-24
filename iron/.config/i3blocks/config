@@ -24,8 +24,6 @@ signal=12
 [volume]
 signal=13
 
-[dnd]
-
 [gpu]
 label= 
 interval=5
@@ -37,7 +35,7 @@ interval=5
 [date]
 label=󰃶 
 interval=3600
-command=date '+%a %d'
+command=date '+%d.%m'
 
 [time]
 label= 
