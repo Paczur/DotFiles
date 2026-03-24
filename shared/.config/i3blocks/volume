@@ -19,4 +19,3 @@ else
   label=""
 fi
 echo "$label $value"
-

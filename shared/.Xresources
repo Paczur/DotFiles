@@ -8,7 +8,7 @@ Xft.autohint:   false
 Xft.lcdfilter:  lcddefault
 
 *geometry: 400x400
-*font: xft:Code New Roman:size=14:style=Regular
+*font: xft:CodeNewRoman Nerd Font Propo:size=14:style=Regular
 *savelines: 16384
 *ScrollBar: false
 *scrollBar: false
@@ -19,7 +19,7 @@ Xft.lcdfilter:  lcddefault
 *scrollTtyOutput: false
 *scrollWithBuffer: true
 *scrollTtyKeypress: true
-*letterSpace: -2
+*letterSpace: -1
 
 *.cursorColor: #f3f3f3
 *.pointerColor: #f3f3f3
