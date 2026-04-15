@@ -1,4 +1,4 @@
-set background=dark
+set background=light
 set t_Co=16
 let g:colors_name="custom"
 
@@ -26,10 +26,10 @@ let g:error = g:under_red
 let g:error_sign = g:red
 let g:warning = g:under_yellow
 let g:warning_sign = g:yellow
-let g:search = g:yellow
+let g:highlight = g:magenta
 let g:folded = g:gray
 
-let g:url = g:yellow
+let g:url = g:blue
 let g:list_marker = g:gray
 
 let g:string = g:green
@@ -98,8 +98,8 @@ call s:HL("TabLine", g:grayed_out)
 call s:HL("TabLineFill", g:grayed_out)
 call s:HL("TabLineSel", g:grayed_out)
 call s:HL("Directory", g:normal)
-call s:HL("Search", g:search)
-call s:HL("IncSearch", g:search)
+call s:HL("Search", g:highlight)
+call s:HL("IncSearch", g:highlight)
 call s:HL("FoldColumn")
 call s:HL("Folded", g:folded)
 call s:HL("WildMenu", g:grayed_out)
@@ -201,26 +201,26 @@ call s:HL("SpellLocal", g:grayed_out)
 call s:HL("SpellRare", g:grayed_out)
 "}}}
 
-hi ModeMsg                    ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi MoreMsg                    ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi MatchParen                 ctermfg=Black   ctermbg=Gray cterm=NONE
-hi Visual                     ctermfg=NONE   ctermbg=Gray cterm=NONE
-hi VisualNOS                  ctermfg=NONE   ctermbg=Gray cterm=NONE
-hi NonText                    ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi Todo                       ctermfg=Yellow ctermbg=NONE cterm=NONE
+call s:HL("ModeMsg", g:grayed_out)
+call s:HL("MoreMsg", g:grayed_out)
+call s:HL("MatchParen", g:bg_gray)
+call s:HL("Visual", g:bg_gray)
+call s:HL("VisualNOS", g:bg_gray)
+call s:HL("NonText", g:grayed_out)
+call s:HL("Todo", g:highlight)
 hi Underlined                 ctermfg=NONE   ctermbg=NONE cterm=UNDERLINE
-hi Error                      ctermfg=Red    ctermbg=NONE cterm=NONE
-hi ErrorMsg                   ctermfg=Red    ctermbg=NONE cterm=NONE
-hi WarningMsg                 ctermfg=Yellow ctermbg=NONE cterm=NONE
-hi Ignore                     ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi SpecialKey                 ctermfg=Gray   ctermbg=NONE cterm=NONE
+call s:HL("Error", g:error)
+call s:HL("ErrorMsg", g:error_sign)
+call s:HL("WarningMsg", g:warning_sign)
+call s:HL("Ignore", g:grayed_out)
+call s:HL("SpecialKey", g:grayed_out)
 
-hi PmenuSel                   ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi Pmenu                      ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi PmenuSbar                  ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi PmenuThumb                 ctermfg=Gray   ctermbg=NONE cterm=NONE
-hi Important                  ctermfg=Yellow ctermbg=NONE cterm=NONE
+call s:HL("PmenuSel", g:grayed_out)
+call s:HL("Pmenu", g:grayed_out)
+call s:HL("PmenuSbar", g:grayed_out)
+call s:HL("PmenuThumb", g:grayed_out)
+call s:HL("Important", g:highlight)
 hi Danger                     ctermfg=NONE   ctermbg=NONE cterm=BOLD
-hi WildMenu                   ctermfg=Black  ctermbg=Gray cterm=NONE
+call s:HL("WildMenu", g:bg_gray)
 
 match RedundantSpaces /\s\+$/

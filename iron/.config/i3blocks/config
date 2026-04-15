@@ -5,9 +5,9 @@ border_left=10
 border_right=10
 border_top=0
 border_bottom=0
-background=#000000
-border=#000000
-color=#f3f3f3
+background=#ffffff
+border=#ffffff
+color=#000000
 markup=cairo
 interval=-1
 

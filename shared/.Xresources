@@ -21,31 +21,60 @@ Xft.lcdfilter:  lcddefault
 *scrollTtyKeypress: true
 *letterSpace: -1
 
-*.cursorColor: #f3f3f3
-*.pointerColor: #f3f3f3
-*.foreground: #ffffff
-*.background: #000000
+!*.cursorColor: #f3f3f3
+!*.pointerColor: #f3f3f3
+!*.foreground: #ffffff
+!*.background: #000000
+!!black
+!*.color0:  #000000
+!*.color8:  #333333
+!!red
+!*.color1:  #ffbda1
+!*.color9:  #ffbda1
+!!green
+!*.color2:  #6efa6e
+!*.color10: #6efa6e
+!!yellow
+!*.color3:  #FCF289
+!*.color11: #FCF289
+!!blue
+!*.color4:  #8cd6ff
+!*.color12: #8cd6ff
+!!magenta
+!*.color5:  #ffb3f6
+!*.color13: #ffb3f6
+!!cyan
+!*.color6:  #57ffc3
+!*.color14: #57ffc3
+!!white
+!*.color7:  #cfcfcf
+!*.color15: #ffffff
+
+*.cursorColor: #000000
+*.pointerColor: #000000
+*.foreground: #000000
+*.background: #ffffff
 !black
-*.color0:  #000000
-*.color8:  #333333
+*.color0:  #ffffff
+*.color8:  #757575
 !red
-*.color1:  #ffbda1
-*.color9:  #ffbda1
+*.color1:  #d24141
+*.color9:  #d24141
 !green
-*.color2:  #6efa6e
-*.color10: #6efa6e
+*.color2:  #2e870d
+*.color10: #2e870d
 !yellow
-*.color3:  #FCF289
-*.color11: #FCF289
+*.color3:  #787a00
+*.color11: #787a00
 !blue
-*.color4:  #8cd6ff
-*.color12: #8cd6ff
+*.color4:  #626dcb
+*.color12: #626dcb
 !magenta
-*.color5:  #ffb3f6
-*.color13: #ffb3f6
+*.color5:  #cd16d0
+*.color13: #cd16d0
 !cyan
-*.color6:  #57ffc3
-*.color14: #57ffc3
+*.color6:  #10847e
+*.color14: #10847e
 !white
-*.color7:  #cfcfcf
-*.color15: #ffffff
+*.color7:  #757575
+*.color15: #000000
