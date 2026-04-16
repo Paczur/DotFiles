@@ -29,6 +29,7 @@ signal=13
 label= 
 interval=-1
 signal=11
+command=sudo backlight g
 
 [battery]
 interval=60

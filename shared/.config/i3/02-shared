@@ -78,8 +78,8 @@
   bindsym $mod+r exec dmenu_run -f -i -fn "CodeNewRoman Nerd Font Propo:size=14" -nb "$d" -nf "$w" -sb "$g" -sf "$w" -w "$(xwininfo -name "i3bar for output $m1" | grep -o '0x[0123456789abcdef]\+' | head -n1)"
   bindsym $mod+Return exec "urxvt"
 
-  bindsym XF86MonBrightnessDown exec xbacklight -dec 2 && pkill -SIGRTMIN+11 i3blocks
-  bindsym XF86MonBrightnessUp exec xbacklight -inc 2 && pkill -SIGRTMIN+11 i3blocks
+  bindsym XF86MonBrightnessDown exec sudo backlight - && pkill -SIGRTMIN+11 i3blocks
+  bindsym XF86MonBrightnessUp exec sudo backlight + && pkill -SIGRTMIN+11 i3blocks
   bindsym XF86AudioMute exec volume m && pkill -SIGRTMIN+13 i3blocks
   bindsym XF86AudioLowerVolume exec volume - && pkill -SIGRTMIN+13 i3blocks
   bindsym XF86AudioRaiseVolume exec volume + && pkill -SIGRTMIN+13 i3blocks

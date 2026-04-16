@@ -1,10 +1,10 @@
 #!/bin/env dash
 
-charge_now="$(cat /sys/class/power_supply/BAT1/charge_now)"
-charge_full="$(cat /sys/class/power_supply/BAT1/charge_full)"
+charge_now="$(cat /sys/class/power_supply/BAT0/energy_now)"
+charge_full="$(cat /sys/class/power_supply/BAT0/energy_full)"
 percent="$(($charge_now*100/$charge_full))"
 
-if [ "$(cat /sys/class/power_supply/BAT1/status)" != "Discharging" ]; then
+if [ "$(cat /sys/class/power_supply/BAT0/status)" != "Discharging" ]; then
   status=""
 elif [ $percent -le 13 ]; then
   echo " $percent%" #full_text
