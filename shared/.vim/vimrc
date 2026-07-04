@@ -108,7 +108,7 @@ set fillchars=eob:\ ,vert:│,stl:─,stlnc:─,fold:\ ,foldsep:│,foldopen:┬
 set noruler
 set nonumber
 set laststatus=2
-set signcolumn=yes
+set signcolumn=auto
 set conceallevel=2
 
 colo custom
@@ -178,6 +178,7 @@ autocmd FileType python     set foldmethod=indent
 autocmd FileType vim        set foldmethod=marker
 autocmd FileType conf       set foldmethod=marker
 autocmd FileType sh         set foldmethod=indent
+autocmd FileType i3config   set foldmethod=marker
 
 autocmd FileType * set foldtext=FoldText()
 autocmd FileType c,cpp,h,hpp set foldtext=C_FoldText()

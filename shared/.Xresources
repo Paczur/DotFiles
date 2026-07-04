@@ -7,12 +7,14 @@ Xft.hintstyle:  hintfull
 Xft.autohint:   false
 Xft.lcdfilter:  lcddefault
 
-*geometry: 400x400
-*font: xft:CodeNewRoman Nerd Font Propo:size=14:style=Regular
+!*geometry: 400x400
+!*font: xft:CodeNewRoman Nerd Font Propo:size=14:style=Regular
+*faceName: xft:CodeNewRoman Nerd Font
+*faceSize: 14
 *savelines: 16384
 *ScrollBar: false
 *scrollBar: false
-*termName: rxvt-unicode
+*termName: xterm-256color
 *BellIsUrgent: true
 *urgentOnBell: true
 *cursorBlink: true

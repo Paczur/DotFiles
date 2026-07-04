@@ -76,7 +76,7 @@
   bindsym --release $mod+p exec scrot -s -q 100 -e "xclip -selection clipboard -t image/png -i $scrot_path" $scrot_path
   bindsym --release $mod+Shift+p exec scrot -q 100 -e "xclip -selection clipboard -t image/png -i $scrot_path" $scrot_path
   bindsym $mod+r exec dmenu_run -f -i -fn "CodeNewRoman Nerd Font Propo:size=14" -nb "$d" -nf "$w" -sb "$g" -sf "$w" -w "$(xwininfo -name "i3bar for output $m1" | grep -o '0x[0123456789abcdef]\+' | head -n1)"
-  bindsym $mod+Return exec "urxvt"
+  bindsym $mod+Return exec "xterm"
 
   bindsym XF86MonBrightnessDown exec sudo backlight - && pkill -SIGRTMIN+11 i3blocks
   bindsym XF86MonBrightnessUp exec sudo backlight + && pkill -SIGRTMIN+11 i3blocks
