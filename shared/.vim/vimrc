@@ -21,6 +21,7 @@ set ttimeoutlen=1
 set nohidden
 set splitbelow
 set splitright
+set hlsearch
 let mapleader=' '
 let g:work = 0
 
