@@ -17,6 +17,7 @@ let g:colors_name="custom"
 " PALETTE {{{
 
 let g:underline     = ["UNDERLINE", "UNDERLINE"]
+let g:bold          = ["BOLD", "BOLD"]
 let g:none          = ["NONE", "NONE"]
 let g:white         = ["#ffffff", "White"]
 let g:black         = ["#000000", "Black"]
@@ -94,7 +95,7 @@ call s:HL("CursorLineNR")
 call s:HL("CursorColumn")
 call s:HL("LineNr", g:gray)
 call s:HL("VertSplit", g:gray)
-call s:HL("ColorColumn", g:light_red + g:none)
+call s:HL("ColorColumn", g:dark_red + g:none)
 call s:HL("TabLine", g:gray)
 call s:HL("TabLineFill", g:gray)
 call s:HL("TabLineSel", g:black + g:light_gray)

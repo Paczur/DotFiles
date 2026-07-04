@@ -22,6 +22,7 @@ set nohidden
 set splitbelow
 set splitright
 let mapleader=' '
+let g:work = 0
 
 vnoremap p "0p
 vnoremap P "0P
@@ -104,7 +105,11 @@ let &t_SR .= "\e[3 q"
 let &t_EI .= "\e[1 q"
 set t_md=
 set guicursor=i:blinkwait0-blinkon100-blinkoff150
-set fillchars=eob:\ ,vert:│,stl:─,stlnc:─,fold:\ ,foldsep:│,foldopen:┬
+if v:version >= 901
+  set fillchars=eob:\ ,vert:│,stl:─,stlnc:─,fold:\ ,foldsep:│,foldopen:┬
+else
+  set fillchars=vert:│,stl:─,stlnc:─,fold:\ 
+endif
 set noruler
 set nonumber
 set laststatus=2
@@ -186,18 +191,21 @@ autocmd FileType c,cpp,h,hpp set foldtext=C_FoldText()
 
 "PLUGINS {{{
 call plug#begin()
-Plug 'https://github.com/airblade/vim-gitgutter'
-Plug 'https://github.com/tpope/vim-fugitive'
-Plug 'https://github.com/powerman/vim-plugin-AnsiEsc'
-Plug 'https://github.com/matze/vim-move'
-Plug 'https://github.com/bfrg/vim-qf-diagnostics'
-Plug 'https://github.com/tpope/vim-commentary'
-Plug 'https://github.com/skywind3000/asyncrun.vim'
-Plug 'https://github.com/vim-scripts/cmdalias.vim'
-Plug 'https://github.com/rhysd/vim-clang-format'
-Plug 'https://github.com/Konfekt/FastFold'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'powerman/vim-plugin-AnsiEsc'
+Plug 'matze/vim-move'
+Plug 'tpope/vim-commentary'
+Plug 'skywind3000/asyncrun.vim'
+Plug 'vim-scripts/cmdalias.vim'
+Plug 'rhysd/vim-clang-format'
+Plug 'Konfekt/FastFold'
 Plug 'aymericbeaumet/vim-symlink'
 Plug 'Jorengarenar/vim-syntaxMarkerFold'
+Plug 'tpope/vim-eunuch'
+if v:version >= 901
+  Plug 'bfrg/vim-qf-diagnostics'
+endif
 call plug#end()
 let g:clang_format#auto_format = 1
 let g:clang_format#auto_formatexpr = 1
@@ -213,18 +221,20 @@ let g:clang_format#enable_fallback_style = 0
 "         \ let b:vimtex_main = 'main.tex'
 " augroup end
 
-let g:qfdiagnostics = {
-      \  'texthl': 1,
-      \  'sign_error': { 'text': '*', 'priority': 14, 'texthl': 'SignError'},
-      \  'sign_warning': { 'text': '*', 'priority': 13, 'texthl': 'SignWarning'},
-      \  'sign_info': { 'text': '*', 'priority': 12, 'texthl': 'SignInfo'},
-      \  'sign_note': { 'text': '*', 'priority': 11, 'texthl': 'SignNote'},
-      \  'sign_other': { 'text': '*', 'priority': 10, 'texthl': 'SignOther'},
-      \}
+if v:version >= 901
+  let g:qfdiagnostics = {
+        \  'texthl': 1,
+        \  'sign_error': { 'text': '*', 'priority': 14, 'texthl': 'SignError'},
+        \  'sign_warning': { 'text': '*', 'priority': 13, 'texthl': 'SignWarning'},
+        \  'sign_info': { 'text': '*', 'priority': 12, 'texthl': 'SignInfo'},
+        \  'sign_note': { 'text': '*', 'priority': 11, 'texthl': 'SignNote'},
+        \  'sign_other': { 'text': '*', 'priority': 10, 'texthl': 'SignOther'},
+        \}
+  autocmd QuickfixCmdPost  make  DiagnosticsPlace
+  autocmd User AsyncRunStop DiagnosticsPlace
+endif
 let g:move_key_modifier = 'C'
 let g:move_key_modifier_visualmode = 'C'
-autocmd QuickfixCmdPost  make  DiagnosticsPlace
-autocmd User AsyncRunStop DiagnosticsPlace
 autocmd BufWritePost * :GitGutter
 "}}}
 
@@ -247,9 +257,6 @@ autocmd Syntax * set formatoptions=rqn2jc
 autocmd Syntax tex,markdown set formatoptions+=t]
 autocmd Syntax tex,markdown set textwidth=80
 
-au BufRead,BufNewFile *.c,*.h set syntax=custom-c
-au BufRead,BufNewFile Makefile set syntax=custom-make
-au BufRead,BufNewFile *.py set syntax=custom-python
 au BufRead,BufNewFile *.cu set filetype=cpp
 "}}}
 
@@ -265,15 +272,20 @@ packadd! termdebug
 let g:termdebug_wide=1
 let g:termdebug_popup = 0
 let g:termdebug_use_prompt = 1
+if g:work == 1
+  au VimEnter * call CmdAlias("f", "Cfind -name")
+else
+  au VimEnter * call CmdAlias("f", "find")
+endif
+au VimEnter * call CmdAlias("gr", "grep --recurse-submodules")
 au VimEnter * call CmdAlias("ga", "Git add")
 au VimEnter * call CmdAlias("gc", "Git commit")
 au VimEnter * call CmdAlias("gca", "Git commit --amend")
 au VimEnter * call CmdAlias("gpl", "Git pull")
 au VimEnter * call CmdAlias("gph", "Git push")
 au VimEnter * call CmdAlias("gch", "Git checkout")
+au VimEnter * call CmdAlias("gd", "Gvdiffsplit!")
 au VimEnter * call CmdAlias("g", "grep")
-au VimEnter * call CmdAlias("gr", "grep --recurse-submodules")
-au VimEnter * call CmdAlias("f", "find")
 au VimEnter * call CmdAlias("m", "make")
 au VimEnter * call CmdAlias("ma", "make all")
 au VimEnter * call CmdAlias("co", "botright copen")
@@ -293,8 +305,13 @@ endfunction
 function! ClearCC()
   set colorcolumn=0
 endfunction
-autocmd Syntax c call SetCC(81)
-autocmd Syntax cpp call SetCC(81)
-autocmd Syntax vim call SetCC(81)
-call ClearCC()
+
+if g:work == 1
+  call SetCC(100)
+else
+  autocmd Syntax c call SetCC(81)
+  autocmd Syntax cpp call SetCC(81)
+  autocmd Syntax vim call SetCC(81)
+  call ClearCC()
+endif
 "}}}
