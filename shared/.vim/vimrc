@@ -106,9 +106,9 @@ let &t_EI .= "\e[1 q"
 set t_md=
 set guicursor=i:blinkwait0-blinkon100-blinkoff150
 if v:version >= 901
-  set fillchars=eob:\ ,vert:│,stl:─,stlnc:─,fold:\ ,foldsep:│,foldopen:┬
+  set fillchars=eob:\ ,vert:│,stl:_,stlnc:─,fold:\ ,foldsep:│,foldopen:┬
 else
-  set fillchars=vert:│,stl:─,stlnc:─,fold:\ 
+  set fillchars=vert:│,stl:_,stlnc:─,fold:\ 
 endif
 set noruler
 set nonumber
@@ -288,6 +288,9 @@ au VimEnter * call CmdAlias("gca", "Git commit --amend")
 au VimEnter * call CmdAlias("gpl", "Git pull")
 au VimEnter * call CmdAlias("gph", "Git push")
 au VimEnter * call CmdAlias("gch", "Git checkout")
+au VimEnter * call CmdAlias("gst", "Git status")
+au VimEnter * call CmdAlias("gsh", "Git show")
+au VimEnter * call CmdAlias("gshn", "Git show --name-only")
 au VimEnter * call CmdAlias("gd", "Gvdiffsplit!")
 au VimEnter * call CmdAlias("g", "grep")
 au VimEnter * call CmdAlias("m", "make")
