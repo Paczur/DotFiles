@@ -13,8 +13,8 @@ set nowrap
 set autoread
 set complete=
 set incsearch
-set so=3
-set switchbuf="useopen,vsplit,hsplit"
+set scrolloff=3
+set switchbuf="usetab,uselast"
 set ttyfast
 set ttimeout
 set ttimeoutlen=1
@@ -111,14 +111,6 @@ set laststatus=2
 set signcolumn=yes
 set conceallevel=2
 
-augroup CursorLine
-    au!
-    au WinNew * setlocal nocursorline
-    au VimEnter * setlocal cursorline
-    au WinEnter * setlocal cursorline
-    au BufWinEnter * setlocal cursorline
-    au WinLeave * setlocal nocursorline
-augroup END
 colo custom
 "}}}
 
@@ -139,14 +131,13 @@ autocmd FileType c set cindent
 
 "FOLDS {{{
 set foldlevel=0
-set foldnestmax=0
+set foldnestmax=10
 set foldcolumn=0
 function! Common_FoldText()
   let foldtext = substitute(
         \    substitute(substitute(substitute(
-        \    substitute(substitute(getline(v:foldstart),
-        \    '{\+\s*\(\*/\)\?\s*$', '',                                  ''),
-        \    '^"\s*',                '',                                  ''),
+        \    substitute(getline(v:foldstart),
+        \    '^"\+\s*',                '',                                  ''),
         \    '\s*/\*\s*',   '',                     ''),
         \    '\s*\*/\s*',   '',                     ''),
         \    '^\s*//\s*',            '',                                  ''),
@@ -176,36 +167,17 @@ endfunction
 set foldexpr=FoldMethod(v:lnum)
 let javaScript_fold=1
 autocmd FileType c          set foldmethod=syntax
-autocmd FileType c          set foldnestmax=5
 autocmd FileType cpp        set foldmethod=syntax
-autocmd FileType cpp        set foldnestmax=2
 autocmd FileType javascript set foldmethod=syntax
-autocmd FileType javascript set foldnestmax=1
-autocmd FileType alang      set foldmethod=syntax
-autocmd FileType alang      set foldnestmax=5
 autocmd FileType java       set foldmethod=syntax
 autocmd FileType java       set foldlevel=1
-autocmd FileType java       set foldnestmax=2
 autocmd FileType css        set foldmethod=marker
-autocmd FileType css        set foldnestmax=1
 autocmd FileType html       set foldmethod=indent
 autocmd FileType html       set foldlevel=5
-autocmd FileType htmldjango set foldmethod=indent
-autocmd FileType htmldjango set foldlevel=5
 autocmd FileType python     set foldmethod=indent
-autocmd FileType python     set foldnestmax=1
 autocmd FileType vim        set foldmethod=marker
-autocmd FileType vim        set foldnestmax=1
-autocmd FileType i3config   set foldmethod=marker
-autocmd FileType i3config   set foldnestmax=2
 autocmd FileType conf       set foldmethod=marker
-autocmd FileType conf       set foldnestmax=2
 autocmd FileType sh         set foldmethod=indent
-autocmd FileType sh         set foldnestmax=1
-autocmd FileType custom-alang      set foldmethod=syntax
-autocmd FileType custom-alang      set foldnestmax=5
-autocmd FileType custom-c      set foldmethod=syntax
-autocmd FileType custom-c      set foldnestmax=5
 
 autocmd FileType * set foldtext=FoldText()
 autocmd FileType c,cpp,h,hpp set foldtext=C_FoldText()
@@ -219,7 +191,6 @@ Plug 'https://github.com/powerman/vim-plugin-AnsiEsc'
 Plug 'https://github.com/matze/vim-move'
 Plug 'https://github.com/bfrg/vim-qf-diagnostics'
 Plug 'https://github.com/tpope/vim-commentary'
-Plug 'https://github.com/lervag/vimtex'
 Plug 'https://github.com/skywind3000/asyncrun.vim'
 Plug 'https://github.com/vim-scripts/cmdalias.vim'
 Plug 'https://github.com/rhysd/vim-clang-format'
@@ -231,15 +202,15 @@ let g:clang_format#auto_format = 1
 let g:clang_format#auto_formatexpr = 1
 let g:clang_format#detect_style_file = 1
 let g:clang_format#enable_fallback_style = 0
-let g:tex_flavor='latex'
-let g:vimtex_quickfix_open_on_warning = 0
-let g:vimtex_view_method = 'mupdf'
-let g:vimtex_compiler = 'latexmk'
-augroup VimTeX
-  autocmd!
-  autocmd BufReadPre *.tex
-        \ let b:vimtex_main = 'main.tex'
-augroup end
+" let g:tex_flavor='latex'
+" let g:vimtex_quickfix_open_on_warning = 0
+" let g:vimtex_view_method = 'mupdf'
+" let g:vimtex_compiler = 'latexmk'
+" augroup VimTeX
+"   autocmd!
+"   autocmd BufReadPre *.tex
+"         \ let b:vimtex_main = 'main.tex'
+" augroup end
 
 let g:qfdiagnostics = {
       \  'texthl': 1,
@@ -264,8 +235,6 @@ function! s:syntax_query() abort
 endfunction
 command! SyntaxQuery call s:syntax_query()
 au! Syntax markdown source syntax/markdown.vim
-au! Syntax html source syntax/html.vim
-au! Syntax alang source syntax/alang.vim
 filetype on
 filetype plugin on
 filetype indent on
@@ -278,16 +247,12 @@ autocmd Syntax tex,markdown set formatoptions+=t]
 autocmd Syntax tex,markdown set textwidth=80
 
 au BufRead,BufNewFile *.c,*.h set syntax=custom-c
-au BufRead,BufNewFile *.alang set filetype=custom-alang
 au BufRead,BufNewFile Makefile set syntax=custom-make
 au BufRead,BufNewFile *.py set syntax=custom-python
-au BufRead,BufNewFile *.ejs set filetype=html
 au BufRead,BufNewFile *.cu set filetype=cpp
 "}}}
 
 "PROGRAMMING {{{
-set tags=./tags;/
-"set csprg=gtags-cscope
 set errorformat^=%f:%l-%e:%c-%k\ [%t%*[a-z]]\ %m,%f:%l-%e:%c-%k\ [%t%n]\ %m,%f:%l:%c\ style:\ %m,%f:%l:%c:\ %t%*[^\ ]\ %m,%.%#[%f\|%l\|%t]\ %m,
 let c_gnu=1
 let c_comment_strings=0
@@ -299,32 +264,27 @@ packadd! termdebug
 let g:termdebug_wide=1
 let g:termdebug_popup = 0
 let g:termdebug_use_prompt = 1
-command -nargs=1 Javadoc execute "silent !javadocs-search <args>" | :redraw!
-au VimEnter * Alias f find
-au VimEnter * Alias m make
+au VimEnter * call CmdAlias("ga", "Git add")
+au VimEnter * call CmdAlias("gc", "Git commit")
+au VimEnter * call CmdAlias("gca", "Git commit --amend")
+au VimEnter * call CmdAlias("gpl", "Git pull")
+au VimEnter * call CmdAlias("gph", "Git push")
+au VimEnter * call CmdAlias("gch", "Git checkout")
+au VimEnter * call CmdAlias("g", "grep")
+au VimEnter * call CmdAlias("gr", "grep --recurse-submodules")
+au VimEnter * call CmdAlias("f", "find")
+au VimEnter * call CmdAlias("m", "make")
 au VimEnter * call CmdAlias("ma", "make all")
 au VimEnter * call CmdAlias("co", "botright copen")
 au VimEnter * call CmdAlias("copen", "botright copen")
 au VimEnter * call CmdAlias("vf", "vert sf")
-au VimEnter * Alias run !run
-au VimEnter * Alias r !run
-au BufWritePost *.c,*.h,*.ino AsyncRun! -strip -program=make
+au VimEnter * call CmdAlias("t", "tab")
+au VimEnter * call CmdAlias("te", "tabedit")
 runtime! macros/matchit.vim
 runtime ftplugin/man.vim
 autocmd Syntax c set commentstring=//%s
 autocmd Syntax cpp set commentstring=//%s
-autocmd Syntax java set keywordprg=:Javadoc
 autocmd CursorHold * checktime
-
-command VH vert split %:r:r.h
-command VC vert split %:r:r.c
-command VT vert split %:r:r.test.c
-command HH split %:r:r.h
-command HC split %:r:r.c
-command HT split %:r:r.test.c
-command H edit %:r:r.h
-command C edit %:r:r.c
-command T edit %:r:r.test.c
 
 function! SetCC(val)
   let &colorcolumn=join(range(a:val,999),",")

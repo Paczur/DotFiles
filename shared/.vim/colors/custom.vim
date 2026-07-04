@@ -1,12 +1,13 @@
 set background=light
-set t_Co=16
+" set termguicolors
+ set t_Co=16
 let g:colors_name="custom"
 
 " PALETTE {{{
 
-let g:base = ["#ffffff", "White", "#000000", "Black"]
-let g:gray = ["#cfcfcf", "Gray"]
-let g:bg_gray = ["NONE", "NONE", "#333333", "DarkGray"]
+let g:base = ["#000000", "White", "#ffffff", "Black"]
+let g:gray = ["#333333", "Gray"]
+let g:bg_gray = ["NONE", "NONE", "#dddddd", "DarkGray"]
 let g:transparent = ["NONE", "NONE", "NONE", "NONE"]
 let g:red = ["#ffbaba", "Red"]
 let g:bg_red = ["NONE", "NONE", "#ffbaba", "Red"]
@@ -94,9 +95,9 @@ call s:HL("CursorColumn")
 call s:HL("LineNr", g:grayed_out)
 call s:HL("VertSplit", g:grayed_out)
 call s:HL("ColorColumn", g:error_sign)
-call s:HL("TabLine", g:grayed_out)
-call s:HL("TabLineFill", g:grayed_out)
-call s:HL("TabLineSel", g:grayed_out)
+call s:HL("TabLine", g:bg_gray)
+call s:HL("TabLineFill", g:bg_gray)
+call s:HL("TabLineSel", g:bg_gray)
 call s:HL("Directory", g:normal)
 call s:HL("Search", g:highlight)
 call s:HL("IncSearch", g:highlight)
