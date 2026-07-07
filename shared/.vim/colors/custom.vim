@@ -18,6 +18,7 @@ let g:colors_name="custom"
 
 let g:underline     = ["UNDERLINE", "UNDERLINE"]
 let g:bold          = ["BOLD", "BOLD"]
+let g:standout      = ["STANDOUT", "STANDOUT"]
 let g:none          = ["NONE", "NONE"]
 let g:white         = ["#ffffff", "White"]
 let g:black         = ["#000000", "Black"]
@@ -90,24 +91,23 @@ endfunction
 "BASIC {{{
 call s:HL("Normal", g:base)
 call s:HL("Cursor", g:base)
-call s:HL("CursorLine")
-call s:HL("CursorLineNR")
-call s:HL("CursorColumn")
+hi clear CursorLine
+hi clear CursorLineNR
+hi clear CursorColumn
 call s:HL("LineNr", g:gray)
 call s:HL("VertSplit", g:gray)
 call s:HL("ColorColumn", g:dark_red + g:none)
 call s:HL("TabLine", g:gray)
 call s:HL("TabLineFill", g:gray)
-call s:HL("TabLineSel", g:black + g:light_gray)
-call s:HL("Title", g:gray)
+call s:HL("TabLineSel")
+hi clear Title
 call s:HL("Directory", g:base)
-call s:HL("Search", g:magenta)
-call s:HL("IncSearch", g:magenta)
+call s:HL("Search", g:cyan)
+call s:HL("IncSearch", g:cyan)
 call s:HL("FoldColumn")
 call s:HL("Folded", g:gray)
-call s:HL("WildMenu", g:magenta)
+call s:HL("WildMenu", g:cyan)
 call s:HL("Question", g:yellow)
-call s:HL("Title")
 call s:HL("RedundantSpaces", g:red)
 "}}}
 "SIGNS {{{
@@ -131,40 +131,41 @@ call s:HL("StatusLineTerm", g:gray)
 call s:HL("StatusLineTermNC", g:gray)
 "}}}
 "CODE {{{
-call s:HL("WhiteSpaceChar")
-call s:HL("WhiteSpace")
-call s:HL("Constant")
+call s:HL("cFormat", g:green + g:underline)
 call s:HL("String", g:green)
 call s:HL("StringDelimiter", g:green)
 call s:HL("Character", g:green)
-call s:HL("Number")
-call s:HL("Boolean")
-call s:HL("Float")
-call s:HL("Identifier")
-call s:HL("Function")
-call s:HL("Statement")
-call s:HL("Conditional")
-call s:HL("Repeat")
-call s:HL("Label")
-call s:HL("Operator")
-call s:HL("Keyword")
-call s:HL("Exception")
 call s:HL("Comment", g:gray)
-call s:HL("Special")
-call s:HL("SpecialChar")
-call s:HL("Tag")
-call s:HL("Delimiter")
-call s:HL("SpecialComment")
-call s:HL("Debug")
 call s:HL("PreProc", g:gray)
 call s:HL("Include", g:gray)
 call s:HL("Define", g:gray)
 call s:HL("Macro", g:gray)
 call s:HL("PreCondit", g:gray)
-call s:HL("Type")
-call s:HL("StorageClass")
-call s:HL("Structure")
-call s:HL("Typedef")
+hi clear WhiteSpaceChar
+hi clear WhiteSpace
+hi clear Constant
+hi clear Number
+hi clear Boolean
+hi clear Float
+hi clear Identifier
+hi clear Function
+hi clear Statement
+hi clear Conditional
+hi clear Repeat
+hi clear Label
+hi clear Operator
+hi clear Keyword
+hi clear Exception
+hi clear Special
+hi clear SpecialChar
+hi clear Tag
+hi clear Delimiter
+hi clear SpecialComment
+hi clear Debug
+hi clear Type
+hi clear StorageClass
+hi clear Structure
+hi clear Typedef
 "}}}
 "DIFF {{{
 call s:HL("DiffAdd", g:green)
@@ -206,9 +207,9 @@ call s:HL("SpellRare", g:base)
 
 call s:HL("ModeMsg", g:gray)
 call s:HL("MoreMsg", g:gray)
-call s:HL("MatchParen", g:base)
-call s:HL("Visual", g:gray)
-call s:HL("VisualNOS", g:gray)
+call s:HL("MatchParen", g:cyan)
+call s:HL("Visual", g:magenta)
+call s:HL("VisualNOS", g:magenta)
 call s:HL("NonText", g:base)
 call s:HL("Todo", g:cyan)
 call s:HL("Underlined", g:none + g:none + g:underline)

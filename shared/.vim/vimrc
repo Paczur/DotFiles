@@ -24,6 +24,7 @@ set splitright
 set hlsearch
 let mapleader=' '
 let g:work = 0
+set grepprg=git-grep\ -I\ -n\ $*
 
 vnoremap p "0p
 vnoremap P "0P
@@ -212,10 +213,17 @@ if v:version >= 901
   Plug 'bfrg/vim-qf-diagnostics'
 endif
 call plug#end()
-let g:clang_format#auto_format = 1
-let g:clang_format#auto_formatexpr = 1
-let g:clang_format#detect_style_file = 1
-let g:clang_format#enable_fallback_style = 0
+if g:work == 1
+  let g:clang_format#auto_format = 0
+  let g:clang_format#auto_formatexpr = 0
+  let g:clang_format#detect_style_file = 1
+  let g:clang_format#enable_fallback_style = 0
+else
+  let g:clang_format#auto_format = 1
+  let g:clang_format#auto_formatexpr = 1
+  let g:clang_format#detect_style_file = 1
+  let g:clang_format#enable_fallback_style = 0
+endif
 " let g:tex_flavor='latex'
 " let g:vimtex_quickfix_open_on_warning = 0
 " let g:vimtex_view_method = 'mupdf'
@@ -259,8 +267,7 @@ autocmd Syntax * syn sync fromstart
 autocmd Syntax * syn match Important /.TODO.*/hs=s+1 containedin=.*Comment.*
 autocmd Syntax * syn region Important start="!:" end=":!\|\n" containedin=.*Comment.*
 autocmd Syntax * set formatoptions=rqn2jc
-autocmd Syntax tex,markdown set formatoptions+=t]
-autocmd Syntax tex,markdown set textwidth=80
+autocmd Syntax tex,markdown set formatoptions+=t
 
 au BufRead,BufNewFile *.cu set filetype=cpp
 "}}}
@@ -273,6 +280,11 @@ let c_space_errors=1
 let c_syntax_for_h=1
 set cinoptions=:0,b1,(0,c0,L0,l1
 set cinkeys=0=break,o,O,e,i,=if,0=switch,=for,=while,0},0{,0),0],;,0#,*<Return>
+if g:work == 1
+  set textwidth = 100
+else
+  set textwidth = 80
+endif
 packadd! termdebug
 let g:termdebug_wide=1
 let g:termdebug_popup = 0
@@ -323,3 +335,42 @@ else
   call ClearCC()
 endif
 "}}}
+
+" WORK {{{
+function! Test()
+  let l:output = system('change ' . shellescape(expand("%:p")) . ' test')
+  execute ':edit ' . l:output
+endfunction
+
+function! Body()
+  let l:output = system('change ' . shellescape(expand("%:p")) . ' body')
+  execute ':edit ' . l:output
+endfunction
+
+function! ApiPrivate()
+  let l:output = system('change ' . shellescape(expand("%:p")) . ' api-private')
+  execute ':edit ' . l:output
+endfunction
+
+function TraceInfo()
+  :r !next-trace
+  :normal ITRACE_INFO_UID(MH.
+  :normal $a, "", NO_ARG);
+  :normal 10h
+endfunction
+
+function TraceBus()
+  :r !next-trace
+  :normal ITRACE_BUS_WH_UID(MH.
+  :normal $a, CM_NULL, , , "", NO_ARG);
+  :normal 15h
+endfunction
+
+if g:work == 1
+  command T call Test()
+  command B call Body()
+  command A call ApiPrivate()
+  command TI call TraceInfo()
+  command TB call TraceBus()
+endif
+" }}}
