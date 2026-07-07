@@ -281,9 +281,9 @@ let c_syntax_for_h=1
 set cinoptions=:0,b1,(0,c0,L0,l1
 set cinkeys=0=break,o,O,e,i,=if,0=switch,=for,=while,0},0{,0),0],;,0#,*<Return>
 if g:work == 1
-  set textwidth = 100
+  set textwidth=100
 else
-  set textwidth = 80
+  set textwidth=80
 endif
 packadd! termdebug
 let g:termdebug_wide=1
