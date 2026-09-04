@@ -10,7 +10,7 @@ Xft.lcdfilter:  lcddefault
 !*geometry: 400x400
 !*font: xft:CodeNewRoman Nerd Font Propo:size=14:style=Regular
 *faceName: xft:CodeNewRoman Nerd Font
-*faceSize: 14
+*faceSize: 11
 *savelines: 16384
 *ScrollBar: false
 *scrollBar: false
@@ -22,6 +22,13 @@ Xft.lcdfilter:  lcddefault
 *scrollWithBuffer: true
 *scrollTtyKeypress: true
 *letterSpace: -1
+
+XTerm*VT100.Translations: #override \
+      Shift Ctrl<Key>V: insert-selection(CLIPBOARD) \n\
+      Shift Ctrl<Key>V: insert-selection(PRIMARY) \n\
+      Shift<Btn1Down>: select-start() \n\
+      Shift<Btn1Motion>: select-extend() \n\
+      Shift<Btn1Up>: select-end(CLIPBOARD) \n\
 
 !*.cursorColor: #f3f3f3
 !*.pointerColor: #f3f3f3
