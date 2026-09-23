@@ -209,6 +209,7 @@ Plug 'Konfekt/FastFold'
 Plug 'aymericbeaumet/vim-symlink'
 Plug 'Jorengarenar/vim-syntaxMarkerFold'
 Plug 'tpope/vim-eunuch'
+Plug 'dominikduda/vim_current_word'
 if v:version >= 901
   Plug 'bfrg/vim-qf-diagnostics'
 endif
@@ -366,11 +367,19 @@ function TraceBus()
   :normal 15h
 endfunction
 
+function Fatal()
+  :normal oLPP_FATALERROR("");
+  :normal
+endfunction
+
 if g:work == 1
   command T call Test()
   command B call Body()
   command A call ApiPrivate()
   command TI call TraceInfo()
   command TB call TraceBus()
+  command F call Fatal()
 endif
+
+au BufRead,BufNewFile *.acp set filetype=c
 " }}}

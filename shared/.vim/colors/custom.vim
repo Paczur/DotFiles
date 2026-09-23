@@ -224,5 +224,7 @@ call s:HL("Pmenu", g:gray)
 call s:HL("PmenuSbar", g:gray)
 call s:HL("PmenuThumb", g:gray)
 call s:HL("Important", g:cyan)
+call s:HL("CurrentWord", g:none + g:none + g:underline)
+call s:HL("CurrentWordTwins", g:none + g:none + g:underline)
 
 match RedundantSpaces /\s\+$/
