@@ -38,17 +38,28 @@
 #}}}
 
 # KEYBINDS {{{
-  bindsym $mod+Ctrl+Left workspace prev
-  bindsym $mod+Ctrl+Right workspace next
-  bindsym $mod+Shift+Ctrl+Left move container to workspace prev
-  bindsym $mod+Shift+Ctrl+Right move container to workspace next
-  bindsym $alt+F4 kill
+  bindsym $mod+1 workspace $ws1
+  bindsym $mod+2 workspace $ws2
+  bindsym $mod+3 workspace $ws3
+  bindsym $mod+4 workspace $ws4
+  bindsym $mod+5 workspace $ws5
+  bindsym $mod+6 workspace $ws6
+  bindsym $mod+7 workspace $ws7
+  bindsym $mod+8 workspace $ws8
+  bindsym $mod+9 workspace $ws9
+  bindsym $mod+Shift+1 move container to workspace $ws1
+  bindsym $mod+Shift+2 move container to workspace $ws2
+  bindsym $mod+Shift+3 move container to workspace $ws3
+  bindsym $mod+Shift+4 move container to workspace $ws4
+  bindsym $mod+Shift+5 move container to workspace $ws5
+  bindsym $mod+Shift+6 move container to workspace $ws6
+  bindsym $mod+Shift+7 move container to workspace $ws7
+  bindsym $mod+Shift+8 move container to workspace $ws8
+  bindsym $mod+Shift+9 move container to workspace $ws9
   bindsym $mod+f fullscreen toggle
   bindsym $mod+g floating toggle
   bindsym $mod+b split h
   bindsym $mod+v split v
-  bindsym $alt+Tab focus right
-  bindsym Shift+$alt+Tab focus left
   bindsym $mod+h focus left
   bindsym $mod+j focus down
   bindsym $mod+k focus up
@@ -57,9 +68,18 @@
   bindsym $mod+Shift+j move down
   bindsym $mod+Shift+k move up
   bindsym $mod+Shift+l move right
+  bindsym $mod+Return exec "xterm -e tmux"
+  bindsym $mod+r exec dmenu_run -f -i -fn "CodeNewRoman Nerd Font Propo:size=14" -nb "$d" -nf "$w" -sb "$g" -sf "$w" -w "$(xwininfo -name "i3bar for output $m1" | grep -o '0x[0123456789abcdef]\+' | head -n1)"
+
+  bindsym $mod+Ctrl+Left workspace prev
+  bindsym $mod+Ctrl+Right workspace next
+  bindsym $mod+Shift+Ctrl+Left move container to workspace prev
+  bindsym $mod+Shift+Ctrl+Right move container to workspace next
+  bindsym $alt+F4 kill
+  bindsym $alt+Tab focus right
+  bindsym Shift+$alt+Tab focus left
   bindsym --release Print exec scrot -s -q 100 -e "xclip -selection clipboard -t image/png -i $scrot_path" $scrot_path
   bindsym Ctrl+Escape exec dmenu_run -f -i -fn "CodeNewRoman Nerd Font Propo:size=14" -nb "$d" -nf "$w" -sb "$g" -sf "$w" -w "$(xwininfo -name "i3bar for output $m1" | grep -o '0x[0123456789abcdef]\+' | head -n1)"
-  bindsym $mod+Return exec "xterm -e tmux"
 
   bindsym XF86MonBrightnessDown exec sudo backlight - && pkill -SIGRTMIN+11 i3blocks
   bindsym XF86MonBrightnessUp exec sudo backlight + && pkill -SIGRTMIN+11 i3blocks
