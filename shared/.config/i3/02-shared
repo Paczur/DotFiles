@@ -33,7 +33,8 @@
     workspace $ws10 output $m1
 
     assign [class="^TelegramDesktop$"] $ws7
-    assign [class="^firefox$"] $ws1
+    assign [class="^firefox$"] $ws2
+    assign [class="^xterm$"] $ws1
     assign [class="^KeePassXC$"] $ws6
 #}}}
 
