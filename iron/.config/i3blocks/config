@@ -17,22 +17,9 @@ interval=-1
 #Signalled  - 2
 #Timed      - 1
 
-[net]
-interval=60
-signal=12
-
+[date]
 [volume]
 signal=13
-
-[gpu]
-label= 
-interval=5
-
-[cpu]
-label= 
-interval=5
-
-[date]
 label=󰃶 
 interval=3600
 command=date '+%d.%m'

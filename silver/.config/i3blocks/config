@@ -17,10 +17,6 @@ interval=-1
 #Signalled  - 2
 #Timed      - 1
 
-[net]
-interval=60
-signal=12
-
 [volume]
 interval=-1
 signal=13
@@ -33,10 +29,6 @@ command=sudo backlight g
 
 [battery]
 interval=60
-
-[cpu]
-label= 
-interval=5
 
 [date]
 label=󰃶 
