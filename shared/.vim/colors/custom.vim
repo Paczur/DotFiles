@@ -1,6 +1,5 @@
 set background=light
-set termguicolors
-"set t_Co=16
+set t_Co=256
 let g:colors_name="custom"
 
 " Colors done by:
@@ -13,6 +12,7 @@ let g:colors_name="custom"
 "  - Lightness: 75 or 62.5
 " Gray:
 "  - Lightness: 50 and 95
+" Then converted to 256 color pallet
 
 " PALETTE {{{
 
@@ -20,22 +20,22 @@ let g:underline     = ["UNDERLINE", "UNDERLINE"]
 let g:bold          = ["BOLD", "BOLD"]
 let g:standout      = ["STANDOUT", "STANDOUT"]
 let g:none          = ["NONE", "NONE"]
-let g:white         = ["#ffffff", "White"]
-let g:black         = ["#000000", "Black"]
-let g:light_gray    = ["#f2f2f2", "Gray"]
-let g:dark_gray     = ["#808080", "DarkGray"]
-let g:light_red     = ["#ffdfdf", "Red"]
-let g:dark_red      = ["#bf1818", "DarkRed"]
-let g:light_green   = ["#dfffdf", "Green"]
-let g:dark_green    = ["#18bf18", "DarkGreen"]
-let g:light_blue    = ["#dfdfff", "Blue"]
-let g:dark_blue     = ["#1818bf", "DarkBlue"]
-let g:light_cyan    = ["#dfffff", "Cyan"]
-let g:dark_cyan     = ["#149f9f", "DarkCyan"]
-let g:light_magenta = ["#ffdfff", "Magenta"]
-let g:dark_magenta  = ["#bf18bf", "DarkMagenta"]
-let g:light_yellow  = ["#ffffbf", "Yellow"]
-let g:dark_yellow   = ["#9f9f14", "DarkYellow"]
+let g:white         = ["#ffffff", "Black"]
+let g:black         = ["#000000", "White"]
+let g:light_gray    = ["#eeeeee", "255"]
+let g:dark_gray     = ["#808080", "244"]
+let g:light_red     = ["#ffd7d7", "224"]
+let g:dark_red      = ["#af0000", "124"]
+let g:light_green   = ["#d7ffd7", "194"]
+let g:dark_green    = ["#00af00", "34"]
+let g:light_blue    = ["#d7d7ff", "189"]
+let g:dark_blue     = ["#0000af", "19"]
+let g:light_cyan    = ["#d7ffff", "195"]
+let g:dark_cyan     = ["#00afaf", "37"]
+let g:light_magenta = ["#ffd7ff", "225"]
+let g:dark_magenta  = ["#af00af", "127"]
+let g:light_yellow  = ["#ffffaf", "229"]
+let g:dark_yellow   = ["#afaf00", "142"]
 
 let g:base    = g:black + g:white
 let g:gray    = g:dark_gray + g:light_gray

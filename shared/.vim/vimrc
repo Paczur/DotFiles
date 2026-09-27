@@ -24,7 +24,7 @@ set splitright
 set hlsearch
 let mapleader=' '
 let g:work = 0
-set grepprg=git-grep\ -I\ -n\ $*
+set grepprg=git\ grep\ -I\ -n\ $*
 
 vnoremap p "0p
 vnoremap P "0P
@@ -320,12 +320,17 @@ autocmd Syntax c set commentstring=//%s
 autocmd Syntax cpp set commentstring=//%s
 autocmd CursorHold * checktime
 
+au BufRead,BufNewFile *.ino set filetype=c
+
 function! SetCC(val)
   let &colorcolumn=join(range(a:val,999),",")
 endfunction
 function! ClearCC()
   set colorcolumn=0
 endfunction
+
+command Grep :set grepprg=grep\ -r\ -I\ -n\ $*
+command GitGrep :set grepprg=git\ grep\ -I\ -n\ $*
 
 if g:work == 1
   call SetCC(100)

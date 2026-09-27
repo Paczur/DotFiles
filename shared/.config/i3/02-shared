@@ -34,7 +34,7 @@
 
     assign [class="^TelegramDesktop$"] $ws7
     assign [class="^firefox$"] $ws2
-    assign [class="^xterm$"] $ws1
+    assign [class="^XTerm$"] $ws1
     assign [class="^KeePassXC$"] $ws6
 #}}}
 
