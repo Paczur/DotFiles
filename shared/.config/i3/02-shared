@@ -82,7 +82,7 @@
   bindsym Shift+$alt+Tab focus left
   bindsym --release Print exec scrot -s -q 100 -e "xclip -selection clipboard -t image/png -i $scrot_path" $scrot_path
   bindsym Ctrl+Escape exec dmenu_run -f -i -fn "CodeNewRoman Nerd Font Propo:size=14" -nb "$d" -nf "$w" -sb "$g" -sf "$w" -w "$(xwininfo -name "i3bar for output $m1" | grep -o '0x[0123456789abcdef]\+' | head -n1)"
-  bindsym $alt+w mode $window
+  bindsym $mod+tab mode $window
 
   mode $window {
     bindsym $alt+w mode "default"
